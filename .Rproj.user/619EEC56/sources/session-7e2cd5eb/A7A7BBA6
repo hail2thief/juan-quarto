@@ -1,0 +1,31 @@
+{
+    "id": "A7A7BBA6",
+    "path": "~/Dropbox/websites/juanftellez.com/index.qmd",
+    "project_path": "index.qmd",
+    "type": "quarto_markdown",
+    "hash": "997686740",
+    "contents": "",
+    "dirty": false,
+    "created": 1671565035009.0,
+    "source_on_save": true,
+    "relative_order": 1,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "23,0",
+        "scrollLine": "15",
+        "rmdVisualMode": "false",
+        "rmdVisualWrapConfigured": "true",
+        "docOutlineVisible": "1",
+        "rmdVisualCollapsedChunks": "",
+        "rmdVisualModeLocation": "192:356"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1671566302,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1671566302832,
+    "read_only": false,
+    "read_only_alternatives": []
+}

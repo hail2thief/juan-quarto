@@ -1,0 +1,14 @@
+---
+date: "2022-12-20"
+title: "juanr"
+subtitle: "R package of political science datasets"
+categories: "R"
+---
+
+![](../logos/sticker.png)
+
+
+This course covers civil war
+
+
+### [Course website](https://civwar.juanftellez.com/)

@@ -1,0 +1,47 @@
+{
+  "index.qmd": {
+    "index.html": "6d85a980"
+  },
+  "publications.qmd": {
+    "publications.html": "70885c3f"
+  },
+  "about.qmd": {
+    "about.html": "8342c3fc"
+  },
+  "research.qmd": {
+    "research.html": "c511ee9d"
+  },
+  "teaching.qmd": {
+    "teaching.html": "514bf39b"
+  },
+  "courses/pol51.qmd": {
+    "pol51.html": "8f8fcea0"
+  },
+  "courses/quantpol.qmd": {
+    "quantpol.html": "e0d55aab"
+  },
+  "courses/lapol.qmd": {
+    "lapol.html": "53987383"
+  },
+  "courses/civwar.qmd": {
+    "civwar.html": "6356c02a"
+  },
+  "courses/undergrad/quantpol.qmd": {
+    "quantpol.html": "8b615be0"
+  },
+  "courses/undergrad/lapol.qmd": {
+    "lapol.html": "9ecd5d8f"
+  },
+  "courses/undergrad/civwar.qmd": {
+    "civwar.html": "90c2ecd0"
+  },
+  "courses/grad/ir.qmd": {
+    "ir.html": "f642ca03"
+  },
+  "courses/grad/civwar.qmd": {
+    "civwar.html": "67510cfd"
+  },
+  "courses/software/juanr.qmd": {
+    "juanr.html": "51e1fd34"
+  }
+}

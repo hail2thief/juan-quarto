@@ -1,0 +1,46 @@
+---
+title: "Teaching"
+listing:
+  - id: undergrad
+    contents: "undergrad/*.qmd"
+    sort: "date desc"
+    type: grid
+    fields: [title, subtitle, image, categories]
+    sort-ui: false
+    filter-ui: false
+  - id: grad
+    contents: "grad/*.qmd"
+    sort: "date desc"
+    type: grid
+    fields: [title, subtitle, image, categories]
+    sort-ui: false
+    filter-ui: false
+  - id: software
+    contents: "software/*.qmd"
+    sort: "date desc"
+    type: grid
+    fields: [title, subtitle, image, categories]
+    sort-ui: false
+    filter-ui: false
+page-layout: full
+title-block-banner: false
+format:
+  html:
+    anchor-sections: false
+---
+
+## Undergraduate
+
+:::{#undergrad}
+:::
+
+
+## Graduate
+
+:::{#grad}
+:::
+
+## Software
+
+:::{#software}
+:::

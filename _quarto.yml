@@ -1,0 +1,31 @@
+project:
+  type: website
+
+execute:
+  freeze: auto
+
+website:
+  title: "Juan F. Tellez"
+  search: false
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: publications.qmd
+        text: Research
+      - href: teaching.qmd
+        text: Teaching
+      - href: https://www.dropbox.com/s/fmx1cgqubxj8wzv/tellez_cv.pdf?dl=0
+        text: CV
+
+format:
+  html:
+    theme:
+      - sandstone
+      - html/custom.scss
+    toc: true
+    highlight-style: monokai
+
+bibliography: /Users/juan/Dropbox/github/whistle2/master.bib
+csl: /Users/juan/Dropbox/Mac/Downloads/poli-301/static/bib/chicago-fullnote-bibliography.csl
+

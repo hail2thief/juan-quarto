@@ -1,0 +1,14 @@
+{
+  "hash": "4952cc17c72c7c657e8faa26066ae5c1",
+  "result": {
+    "markdown": "---\ntitle: \"Research-2\"\nbibliography: /Users/juan/Dropbox/github/whistle2/master.bib\n---\n\n::: {.cell}\n::: {.cell-output .cell-output-stderr}\n```\nignoring entry 'balcells:etal:2022a' (line 15) because :\n\tA bibentry of bibtype 'Article' has to specify the field: journal\n```\n:::\n\n::: {.cell-output .cell-output-stderr}\n```\nignoring entry 'balcells:etal:2022b' (line 21) because :\n\tA bibentry of bibtype 'Article' has to specify the field: journal\n```\n:::\n\n::: {.cell-output .cell-output-stderr}\n```\nignoring entry 'dow:etal:2022' (line 34) because :\n\tA bibentry of bibtype 'Article' has to specify the field: journal\n```\n:::\n\n::: {.cell-output .cell-output-stderr}\n```\nignoring entry 'cardenas:etal:2020' (line 43) because :\n\tA bibentry of bibtype 'Article' has to specify the fields: journal, year\n```\n:::\n\n::: {.cell-output .cell-output-stderr}\n```\nignoring entry 'denny:etal:2021' (line 48) because :\n\tA bibentry of bibtype 'Article' has to specify the fields: journal, year\n```\n:::\n\n::: {.cell-output .cell-output-stderr}\n```\nignoring entry 'myers:etal:2022' (line 154) because :\n\tA bibentry of bibtype 'Article' has to specify the field: journal\n```\n:::\n:::\n\n\nTellez JF (2021). \"Peace without Impunity: Worldview in the Settlement, of Civil Wars.\" _The Journal of Politics_, *83*(4), 000-000.",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

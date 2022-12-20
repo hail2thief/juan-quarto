@@ -1,0 +1,14 @@
+---
+date: "2021-12-20"
+title: "Civil Wars"
+subtitle: "Taught: Winter 2023"
+categories: "undergraduate"
+---
+
+![](../logos/pol126.jpeg)
+
+
+This course covers civil war
+
+
+### [Course website](https://civwar.juanftellez.com/)

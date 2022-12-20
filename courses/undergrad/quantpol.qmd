@@ -1,0 +1,14 @@
+---
+date: "2022-12-20"
+title: "The Scientific Study of Politics"
+subtitle: "Taught: Fall 2022"
+categories: "undergraduate"
+---
+
+![](../logos/pol51.gif)
+
+
+This course covers the basics of data wrangling, visualization, and analysis in R (via the tidyverse), linear regression, a primer on causal inference, and sampling uncertainty. 
+
+
+### [Course website](https://quantpol.juanftellez.com/)
