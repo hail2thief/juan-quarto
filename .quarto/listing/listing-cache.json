@@ -1,12 +1,6 @@
 {
   "listingMap": {
-    "pubs.qmd": [
-      "pubs"
-    ],
     "teaching.qmd": [
-      "B3049D40",
-      "courses",
-      "classes.yml",
       "undergrad/*.qmd",
       "grad/*.qmd",
       "software/*.qmd"
