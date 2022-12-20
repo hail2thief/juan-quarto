@@ -7,7 +7,7 @@ format:
   html:
     anchor-sections: false
 bibliography: /Users/juan/Dropbox/github/whistle2/master.bib
-csl: /Users/juan/Dropbox/websites/tellez-site/static/bib/chicago-syllabus-no-bib.csl
+csl: /Users/juan/Dropbox/websites/juanftellez.com/files/bib/chicago-syllabus-no-bib.csl
 ---
 
 ![](../logos/spanish-war.jpeg)
