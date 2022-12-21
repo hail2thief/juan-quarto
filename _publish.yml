@@ -1,0 +1,4 @@
+- source: project
+  netlify:
+    - id: a87937bc-f6c2-4d0e-bcee-f11e5b76ae45
+      url: 'https://juanftellez.com'

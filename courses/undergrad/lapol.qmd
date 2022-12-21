@@ -8,7 +8,7 @@ categories: "undergraduate"
 ![](../logos/lapol.jpg)
 
 
-This course covers the basics of data wrangling, visualization, and analysis in R (via the tidyverse), linear regression, a primer on causal inference, and sampling uncertainty. 
+A course organized around key governance challenges in Latin America. 
 
 
 ### [Course website](https://lapol.juanftellez.com/)

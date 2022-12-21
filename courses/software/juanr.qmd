@@ -8,7 +8,7 @@ categories: "R"
 ![](../logos/sticker.png)
 
 
-This course covers civil war
+`{juanr}` is a collection of data sets for teaching, wrapped up in an `R` package. 
 
 
-### [Course website](https://civwar.juanftellez.com/)
+### [Package website](https://github.com/hail2thief/juanr)

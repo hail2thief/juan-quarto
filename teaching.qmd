@@ -1,5 +1,6 @@
 ---
 title: "Teaching"
+subtitle: "Syllabi and websites for my courses"
 listing:
   - id: undergrad
     contents: "undergrad/*.qmd"
