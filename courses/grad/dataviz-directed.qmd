@@ -1,0 +1,108 @@
+---
+title: "Directed reading: Data visualization"
+date: today
+link-citations: false
+subtitle: "Taught: F23"
+categories: "Graduate"
+author: "Juan Tellez"
+format:
+  html:
+    citation-hover: false
+    anchor-sections: false
+bibliography: "/Users/juan/Dropbox/websites/juanftellez.com/files/bib/refs.bib"
+csl: "/Users/juan/Dropbox/websites/juanftellez.com/files/bib/chicago-syllabus-no-bib.csl"
+---
+
+
+![](../logos/draw-owl2.jpeg)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,warning = FALSE, message = FALSE)
+
+library(tidyverse)
+library(lubridate)
+
+# function to deal with week dates (from steve miller)
+advdate <- function(obj, adv) {
+ tmon <- obj + 7*(adv-1)
+ tmp <- paste("Week", adv, "--", month(tmon, label = TRUE), day(tmon), ":")
+ return(tmp)
+}
+
+# first day of the quarter
+mon = ymd("2023-09-28")
+```
+
+## Overview
+
+
+The goal of this directed reading is to get better at data visualization. We will: 
+
+- Read books on effective data visualization
+- Practice making *good* data visualization in R
+
+
+
+## Format
+
+Every week you will:
+
+1. Read about data visualization
+2. Meet with me for 60-90 minutes to discuss / present
+3. Keep a Quarto notebook of notes and visualizations from each week's content
+
+
+## What you will need
+
+- The books below
+- R and RStudio installed and updated to latest version
+- Git installed and a Github account
+
+
+## Books
+
+- @cairo:2016
+- @wilke:2019
+- @healy:2018
+
+
+
+## Deliverables
+
+- Each week you will turn in a Quarto notebook with your notes / visualizations
+- A final code-thru analysis of a dataset from here (or whatever else you want): [Full Archive](https://www.data-is-plural.com/archive/)
+
+
+## Schedule
+
+
+### `r advdate(mon, 1)` Orientation
+
+Make sure everything is installed and you have all the materials
+
+
+### `r advdate(mon, 2)` Grammar of graphics
+
+
+- "Visualizing data: Mapping data onto aesthetics" in [@wilke:2019]
+
+
+### `r advdate(mon, 3)` Amounts and proportions
+
+
+### `r advdate(mon, 4)` Distributions
+
+### `r advdate(mon, 5)` Relationships
+
+### `r advdate(mon, 6)` Models and results
+
+### `r advdate(mon, 7)` Annotations
+
+### `r advdate(mon, 8)` Maps
+
+### `r advdate(mon, 9)` Multi-panel figures
+
+### `r advdate(mon, 10)` Themes, color
+
+
+

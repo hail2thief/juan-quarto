@@ -1,7 +1,5 @@
 project:
   type: website
-  resources:
-    - "files/**"
 
 execute:
   freeze: auto
@@ -21,11 +19,13 @@ website:
         text: Research
       - href: teaching.qmd
         text: Teaching
+      - href: policy.qmd
+        text: Policy
       - href: https://www.dropbox.com/s/fmx1cgqubxj8wzv/tellez_cv.pdf?dl=0
         text: CV
   page-footer:
     left: |
-      <span class="faux-block">{{< fa brands creative-commons >}} 2019-2022 Juan Tellez</span>
+      <span class="faux-block">{{< fa brands creative-commons >}} 2019-2023 Juan Tellez</span>
       <span class="faux-block">All content licensed under<br>[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-sa >}} Creative Commons CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</span>      
     right: |
       <span class="faux-block">Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)</span>
@@ -40,5 +40,5 @@ format:
     highlight-style: monokai
 
 bibliography: /Users/juan/Dropbox/github/whistle2/master.bib
-csl: /Users/juan/Dropbox/Mac/Downloads/poli-301/static/bib/chicago-fullnote-bibliography.csl
+csl: chicago-fullnote-bibliography.csl
 

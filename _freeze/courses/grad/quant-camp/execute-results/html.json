@@ -1,0 +1,14 @@
+{
+  "hash": "cb8a9065c76a1f93b7ecf2e50291cf7e",
+  "result": {
+    "markdown": "---\ntitle: \"Quant camp\"\nsubtitle: \"Extracting online content with R\"\nauthor: \"Juan F. Tellez\"\ninstitute: \"University of California, Davis\"\ndate: today\ndate-format: long\ncategories: \"Graduate\"\nformat:\n  html:\n    anchor-sections: false\nbibliography: /Users/juan/Dropbox/github/whistle2/master.bib\ncsl: /Users/juan/Dropbox/websites/juanftellez.com/files/bib/chicago-syllabus-no-bib.csl\n---\n\n\n\n## Install packages\n\n\nWe're going to use a few packages right out the gate, you can install them using the code below:\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ninstall.packages(c(\"tidyverse\", \"remotes\", \"unvotes\"))\n```\n:::\n\n\nTo install my R package, you'll need: \n\n\n::: {.cell}\n\n```{.r .cell-code}\nremotes::install_github(\"hail2thief/juanr\")\n```\n:::\n\n\n\n[Slides](https://www.dropbox.com/scl/fi/38wzqalapzdfnk1j13r4g/02-viz.html?rlkey=g9vnk30eb5dfcbhsrqy04nu2l&dl=0)\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,5 +1,0 @@
-"0","reticulate::repl_python()
-"
-"2","Error in py_initialize(config$python, config$libpython, config$pythonhome,  : 
-  /opt/homebrew/opt/python@3.9/Frameworks/Python.framework/Versions/3.9/lib/python3.9/config-3.9-darwin/libpython3.9.dylib - dlopen(/opt/homebrew/opt/python@3.9/Frameworks/Python.framework/Versions/3.9/lib/python3.9/config-3.9-darwin/libpython3.9.dylib, 0x000A): tried: '/opt/homebrew/opt/python@3.9/Frameworks/Python.framework/Versions/3.9/lib/python3.9/config-3.9-darwin/libpython3.9.dylib' (mach-o file, but is an incompatible architecture (have (arm64), need (x86_64))), '/opt/homebrew/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/Python' (mach-o file, but is an incompatible architecture (have (arm64), need (x86_64))), '/Library/Frameworks/Python.framework/Versions/3.9/Python' (no such file), '/System/Library/Frameworks/Python.framework/Versions/3.9/Python' (no such file)
-"

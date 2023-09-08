@@ -43,5 +43,35 @@
   },
   "courses/software/juanr.qmd": {
     "juanr.html": "51e1fd34"
+  },
+  "posts/teaching-uncertainty.qmd": {
+    "teaching-uncertainty.html": "587aebcd"
+  },
+  "policy.qmd": {
+    "policy.html": "359dfe9f"
+  },
+  "policy/lrdp.qmd": {
+    "lrdp.html": "e1a322d3"
+  },
+  "policy/wd-displace.qmd": {
+    "wd-displace.html": "3be91e94"
+  },
+  "policy/laser-ethiopia.qmd": {
+    "laser-ethiopia.html": "fcc30cad"
+  },
+  "policy/mpp.qmd": {
+    "mpp.html": "9ed5710c"
+  },
+  "policy/generasi.qmd": {
+    "generasi.html": "bc1162ac"
+  },
+  "trial.qmd": {
+    "trial.html": "189bc201"
+  },
+  "courses/grad/quant-camp.qmd": {
+    "quant-camp.html": "0ba518e7"
+  },
+  "courses/grad/dataviz-directed.qmd": {
+    "dataviz-directed.html": "42529e49"
   }
 }

@@ -1,0 +1,14 @@
+{
+  "hash": "d4a9676424ed3e780d592d36c05818e2",
+  "result": {
+    "markdown": "---\ntitle: \"Teaching uncertainty\"\nauthor: \"Juan Tellez\"\ncategories: \n  - r\n  - teaching\n  - uncertainty\n---\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(socviz)\ntheme_nice = function() {\n  theme_minimal(base_family = \"Fira Sans\") +\n    theme(panel.grid.minor = element_blank(),\n          plot.background = element_rect(fill = \"white\", color = NA),\n          plot.title = element_text(face = \"bold\"),\n          axis.title = element_text(face = \"bold\"),\n          strip.text = element_text(face = \"bold\", size = rel(0.8), hjust = 0),\n          strip.background = element_rect(fill = \"grey80\", color = NA),\n          legend.title = element_text(face = \"bold\"))\n}\n\ntheme_set(theme_nice())\n```\n:::\n\n\n\nThe way that I like to teach sampling uncertainty is to say: \"imagine that we'd like to know how many kids the average American has, and that there are only 2,867 people in the US and they were all perfectly sampled in `{socviz::gss_sm}`. \n\n\nHow many kids does the average American have? In this mini-America world we can find the exact answer:\n\n\n::: {.cell}\n\n```{.r .cell-code}\ngss_sm %>% \n  summarise(`Average number of kids` = mean(childs, na.rm = TRUE)) %>% \n  knitr::kable(digits = 2, align = \"c\")\n```\n\n::: {.cell-output-display}\n| Average number of kids |\n|:----------------------:|\n|          1.85          |\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\ntibble(reps = 1:500) %>% \n  mutate(samples = map(reps, ~ sample_n(starwars, size = 10, replace = FALSE))) %>% \n  unnest(samples) %>% \n  group_by(reps) %>% \n  summarise(mass = mean(mass, na.rm = TRUE))\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n# A tibble: 500 × 2\n    reps  mass\n   <int> <dbl>\n 1     1  72.5\n 2     2 103. \n 3     3  65.3\n 4     4  53.8\n 5     5  77  \n 6     6  84.9\n 7     7  66.6\n 8     8  80.2\n 9     9 335. \n10    10  70.4\n# … with 490 more rows\n```\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

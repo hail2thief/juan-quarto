@@ -4,6 +4,9 @@
       "undergrad/*.qmd",
       "grad/*.qmd",
       "software/*.qmd"
+    ],
+    "policy.qmd": [
+      "policy/*.qmd"
     ]
   }
 }

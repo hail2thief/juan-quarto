@@ -1,4 +1,26 @@
 # published
+synthesis_report:
+    title: "Social Cohesion and Forced Displacement: A Synthesis of New Research"
+    authors:
+        - Emily Myers
+        - Audrey Sacks
+        - me
+        - Erik Wibbels
+        - Stephen Winlker
+    year: 2022
+    venue: World Bank Group
+    published_url: "https://openknowledge.worldbank.org/handle/10986/38431"
+
+guate_vigilante:
+    title: "State absence, vengeance, and vigilantism in Guatemala"
+    authors: 
+      - David Dow
+      - Gabriella Levy
+      - Diego Romero
+      - me
+    year: 2023
+    venue: Comparative Political Studies
+    published_url: "https://journals.sagepub.com/doi/abs/10.1177/00104140231169026"
 
 india_policing:
     title: "Local order, policing, and bribes: Evidence from India"
@@ -82,6 +104,7 @@ isis:
     venue: International Interactions
     published_url: "https://www.tandfonline.com/doi/abs/10.1080/03050629.2019.1604520?journalCode=gini20"
 
+
 # wps
 
 
@@ -90,35 +113,59 @@ wb_displace:
     authors:
       - me
       - Laia Balcells
-    year: 2022
+    year: 2023
     preprint: "https://www.dropbox.com/s/67irqrujxs4d3v2/wb_displace.pdf?dl=0"
-guate_vigilante:
-    title: "State absence, vengeance, and vigilantism in Guatemala"
-    authors: 
-      - David Dow
-      - Gabriella Levy
-      - Diego Romero
-      - me
-    year: 2022
-
-media:
-    title: "Identity, media and mass polarization in Spain"
-    authors: 
-      - Laia Balcells
-      - me
-      - Francisco Villamil
-    year: 2022
-# war_others:
-#     title: "The Wars of Others: The Effect of the Russian Invasion of Ukraine on Spanish Nationalism"
+# 
+# 
+# media:
+#     title: "Identity, media and mass polarization in Spain"
 #     authors: 
 #       - Laia Balcells
 #       - me
 #       - Francisco Villamil
-#     year: 2022
-
-excomb:
-    title: "Project on economic reintegration of ex-combatants"
+#     year: 2023
+# 
+war_others:
+    title: "The Wars of Others: The Effect of the Russian Invasion of Ukraine on Spanish Nationalism"
     authors:
-    - me
-    - Mateo Villamizar Chaparro
-    year: 2022
+      - Laia Balcells
+      - me
+      - Francisco Villamil
+    year: 2023
+    venue: Conditionally accepted at The Journal of Politics
+# 
+# excomb:
+#     title: "Project on economic reintegration of ex-combatants"
+#     authors:
+#     - me
+#     - Mateo Villamizar Chaparro
+#     year: 2022
+# 
+# ethiopia_eval:
+#     title: "Social cohesion and political tolerance in Ethiopia: A randomized impact evaluation"
+#     year: 2023
+#     authors:
+#     - Hareg Adamu
+#     - David Dow
+#     - Mesele Mengsteab
+#     - Jeremy Springman
+#     - me
+#     
+# ethiopia_exp:
+#     title: "Territory, ethnicity and federalism in Ethiopia"
+#     year: 2023
+#     authors:
+#     - Hareg Adamu
+#     - David Dow
+#     - Fitsum Hailu Embaye
+#     - Mesele Mengsteab
+#     - Jeremy Springman
+#     - me
+#     
+# brazil_color:
+#     title: "Who 'deserves' affirmative action? Evidence from Brazil"
+#     year: 2023
+#     authors: 
+#     - Anissa Joseph
+#     - Nura Sediqe
+#     - me

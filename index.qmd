@@ -2,6 +2,7 @@
 title: "Juan F. Tellez"
 subtitle: "Assistant Professor <br> Department of Political Science <br> University of California, Davis"
 image: /images/abimael-cage.jpg
+toc: false
 about: 
   template: trestles
   image-shape: rounded
@@ -31,12 +32,12 @@ I was born in Cali, Colombia, grew up in Cali/South Florida, and have lived in T
 ### Education
 
 <div class="topbr">
-<p class="custom-subtitle">`r fontawesome::fa("graduation-cap", fill = "#022851", a11y = "sem")` **PhD in Political Science, 2019** | Duke University</p>  
+<p class="custom-subtitle"> {{< fa graduation-cap >}} **PhD in Political Science, 2019** | Duke University</p>  
 
-<p class="custom-subtitle">`r fontawesome::fa("graduation-cap", fill = "#022851", a11y = "sem")` **MA in Political Science, 2016** | Duke University</p>  
+<p class="custom-subtitle">{{< fa graduation-cap >}} **MA in Political Science, 2016** | Duke University</p>  
 
 
-<p class="custom-subtitle">`r fontawesome::fa("graduation-cap", fill = "#022851", a11y = "sem")` **BA in Political Science, 2013** | University of Florida </p>  
+<p class="custom-subtitle"> {{< fa graduation-cap >}} **BA in Political Science, 2013** | University of Florida </p>  
 </div>
 
 

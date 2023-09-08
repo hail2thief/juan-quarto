@@ -1,0 +1,57 @@
+---
+title: "Teaching uncertainty"
+author: "Juan Tellez"
+categories: 
+  - r
+  - teaching
+  - uncertainty
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,warning = FALSE, message = FALSE)
+```
+
+
+```{r}
+library(tidyverse)
+library(socviz)
+theme_nice = function() {
+  theme_minimal(base_family = "Fira Sans") +
+    theme(panel.grid.minor = element_blank(),
+          plot.background = element_rect(fill = "white", color = NA),
+          plot.title = element_text(face = "bold"),
+          axis.title = element_text(face = "bold"),
+          strip.text = element_text(face = "bold", size = rel(0.8), hjust = 0),
+          strip.background = element_rect(fill = "grey80", color = NA),
+          legend.title = element_text(face = "bold"))
+}
+
+theme_set(theme_nice())
+```
+
+
+The way that I like to teach sampling uncertainty is to say: "imagine that we'd like to know how many kids the average American has, and that there are only `r scales::comma(nrow(gss_sm))` people in the US and they were all perfectly sampled in `{socviz::gss_sm}`. 
+
+
+How many kids does the average American have? In this mini-America world we can find the exact answer:
+
+```{r}
+gss_sm %>% 
+  summarise(`Average number of kids` = mean(childs, na.rm = TRUE)) %>% 
+  knitr::kable(digits = 2, align = "c")
+```
+
+
+
+
+
+
+```{r}
+tibble(reps = 1:500) %>% 
+  mutate(samples = map(reps, ~ sample_n(starwars, size = 10, replace = FALSE))) %>% 
+  unnest(samples) %>% 
+  group_by(reps) %>% 
+  summarise(mass = mean(mass, na.rm = TRUE))
+```
+
