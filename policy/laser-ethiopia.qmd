@@ -5,7 +5,7 @@ date: "2023-01-20"
 categories: "policy"
 ---
 
-![](../../images/ethiopia.png)
+![](../images/ethiopia.png)
 
 
 Impact evaluation of an intervention aimed at increasing tolerant civic engagement among Ethiopian youth.

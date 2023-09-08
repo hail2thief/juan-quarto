@@ -5,7 +5,7 @@ listing:
   - id: policy
     contents: "policy/*.qmd"
     sort: "date desc"
-    type: grid
+    type: default
     fields: [title, subtitle, image, categories]
     sort-ui: false
     filter-ui: false
