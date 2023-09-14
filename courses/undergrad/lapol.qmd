@@ -1,7 +1,7 @@
 ---
 date: "2021-12-20"
 title: "Latin American Politics"
-subtitle: "Taught: Spring 2021"
+subtitle: "Taught: S2021, F23"
 categories: "undergraduate"
 ---
 

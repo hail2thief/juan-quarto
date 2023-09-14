@@ -61,9 +61,9 @@ Every week you will:
 
 ## Books
 
-- @cairo:2016
-- @wilke:2019
-- @healy:2018
+- @cairo:2016 (I have a copy)
+- @wilke:2019 (free online)
+- @healy:2018 (free online)
 
 
 
@@ -78,31 +78,67 @@ Every week you will:
 
 ### `r advdate(mon, 1)` Orientation
 
-Make sure everything is installed and you have all the materials
-
+- Make sure everything is installed and you have all the materials
+- Ch1 in [@healy:2018]
 
 ### `r advdate(mon, 2)` Grammar of graphics
 
 
-- "Visualizing data: Mapping data onto aesthetics" in [@wilke:2019]
+- Ch 2 in [@wilke:2019]
+- Ch 5 in [@cairo:2016]    
+- Ch 3 in [@healy:2018]
 
 
 ### `r advdate(mon, 3)` Amounts and proportions
 
 
+- Ch 6, 10, 11 in [@wilke:2019]
+
+
 ### `r advdate(mon, 4)` Distributions
+
+ 
+- Ch 7, 9 in [@wilke:2019]
+- [Raincloud plots](https://www.cedricscherer.com/2021/06/06/visualizing-distributions-with-raincloud-plots-and-how-to-create-them-with-ggplot2/)
+
 
 ### `r advdate(mon, 5)` Relationships
 
-### `r advdate(mon, 6)` Models and results
+ 
+- Ch 12 in [@wilke:2019]
+- Ch 13 in [@wilke:2019]
+
+
+### `r advdate(mon, 6)` Model output
+
+- Ch 6 in [@healy:2018]
+
 
 ### `r advdate(mon, 7)` Annotations
 
+- Ch 17, 18, 22 in [@wilke:2019]
+- Ch 5 in [@healy:2018]
+
 ### `r advdate(mon, 8)` Maps
 
-### `r advdate(mon, 9)` Multi-panel figures
+   
+- Ch 7 in [@healy:2018]
+- Ch 15 in [@wilke:2019]
+- [Why all the world maps are wrong](https://www.youtube.com/watch?v=kIID5FDi2JQ )
 
+
+### `r advdate(mon, 9)` Networks
+
+Skim these:
+
+- [Network analysis](https://bookdown.org/jdholster1/idsr/network-analysis.html)
+- [ggnet package](https://bookdown.org/jdholster1/idsr/network-analysis.html)
+
+  
 ### `r advdate(mon, 10)` Themes, color
+
+- Ch 4, 19, 22 in [@wilke:2019]
+- Ch 8 in [@healy:2018]
 
 
 
