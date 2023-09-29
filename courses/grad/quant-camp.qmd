@@ -1,0 +1,31 @@
+---
+title: "Quant camp"
+subtitle: "for incoming PhD students"
+date: today
+link-citations: false
+categories: "Graduate"
+author: "Juan Tellez"
+format:
+  html:
+    citation-hover: false
+    anchor-sections: false
+bibliography: "/Users/juan/Dropbox/websites/juanftellez.com/files/bib/refs.bib"
+csl: "/Users/juan/Dropbox/websites/juanftellez.com/files/bib/chicago-syllabus-no-bib.csl"
+---
+
+
+![](../logos/wide-computer.jpg)
+
+
+## Overview
+
+This is the landing page for the quant ("nerd") camp at UC Davis
+
+
+## Schedule
+
+
+### Day one: data visualization
+
+
+[Slides](/Users/juan/Dropbox/code/quant-camp/01-viz.html)

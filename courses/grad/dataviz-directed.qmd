@@ -30,7 +30,7 @@ advdate <- function(obj, adv) {
 }
 
 # first day of the quarter
-mon = ymd("2023-09-28")
+mon = ymd("2023-10-02")
 ```
 
 ## Overview
@@ -40,6 +40,7 @@ The goal of this directed reading is to get better at data visualization. We wil
 
 - Read books on effective data visualization
 - Practice making *good* data visualization in R
+- Meet on Mondays at 9am in my office to discuss
 
 
 
@@ -47,9 +48,9 @@ The goal of this directed reading is to get better at data visualization. We wil
 
 Every week you will:
 
-1. Read about data visualization
-2. Meet with me for 60-90 minutes to discuss / present
-3. Keep a Quarto notebook of notes and visualizations from each week's content
+1. **Read** about data visualization
+2. Complete visualization **tasks** in Quarto notebooks (**ahead of our meeting**)
+3. Meet with me for 60ish minutes to discuss / present
 
 
 ## What you will need
@@ -78,21 +79,43 @@ Every week you will:
 
 ### `r advdate(mon, 1)` Orientation
 
-- Make sure everything is installed and you have all the materials
+Reading: 
+
 - Ch1 in [@healy:2018]
+
+
+Tasks:
+
+- Make sure everything is installed and you access to all the materials
+
+
 
 ### `r advdate(mon, 2)` Grammar of graphics
 
+
+Reading: 
 
 - Ch 2 in [@wilke:2019]
 - Ch 5 in [@cairo:2016]    
 - Ch 3 in [@healy:2018]
 
 
+Tasks: 
+
+- make a plot that uses the x-axis, y-axis, and at least two other aesthetics, axis labels, title, and a theme
+- make the plot painfully *slowly*, iterating through each addition
+
+
 ### `r advdate(mon, 3)` Amounts and proportions
 
+Reading:
 
 - Ch 6, 10, 11 in [@wilke:2019]
+
+
+Tasks: 
+
+- make a barplot, stacked barplot, heat map, nested area plot
 
 
 ### `r advdate(mon, 4)` Distributions
