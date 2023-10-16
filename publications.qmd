@@ -87,18 +87,18 @@ for year in sorted(pub_strs["pubs"].keys(), reverse=True):
     ))
 ```
 
-## Working Papers
+<!-- ## Working Papers -->
 
-```{python}
-#| label: "not-published-year"
-#| id: "not-published-year"
-#| output: asis
-for year in sorted(pub_strs["wps"].keys(), reverse=True):
-   #display(Markdown(f"### {year}" + "{#" + f"not-published-{year}" + "}"))
-    display(HTML(
-        "<ul class='list-group list-group-flush'>" + '\n'.join(pub_strs["wps"][year]) + "</ul>"
-    ))
-```
+<!-- ```{python} -->
+<!-- #| label: "not-published-year" -->
+<!-- #| id: "not-published-year" -->
+<!-- #| output: asis -->
+<!-- for year in sorted(pub_strs["wps"].keys(), reverse=True): -->
+<!--    #display(Markdown(f"### {year}" + "{#" + f"not-published-{year}" + "}")) -->
+<!--     display(HTML( -->
+<!--         "<ul class='list-group list-group-flush'>" + '\n'.join(pub_strs["wps"][year]) + "</ul>" -->
+<!--     )) -->
+<!-- ``` -->
 
 
 

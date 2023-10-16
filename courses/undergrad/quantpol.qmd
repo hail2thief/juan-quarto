@@ -1,7 +1,7 @@
 ---
 date: "2022-12-20"
 title: "The Scientific Study of Politics"
-subtitle: "Taught: Fall 2022"
+subtitle: "Taught: F22, F23"
 categories: "undergraduate"
 ---
 

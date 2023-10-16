@@ -125,16 +125,25 @@ Tasks:
 - [Raincloud plots](https://www.cedricscherer.com/2021/06/06/visualizing-distributions-with-raincloud-plots-and-how-to-create-them-with-ggplot2/)
 
 
+Tasks: 
+
+- make a histogram, density graph, grouped version of each (e.g, using fill), boxplot, violin plot
+
+
 ### `r advdate(mon, 5)` Relationships
 
  
-- Ch 12 in [@wilke:2019]
-- Ch 13 in [@wilke:2019]
+- Ch 12, 13 in [@wilke:2019]
+
+
+Tasks: make scatterplot, correlogram, time series, multiple time series, area chart
 
 
 ### `r advdate(mon, 6)` Model output
 
 - Ch 6 in [@healy:2018]
+
+Tasks: make scatterplot with smoothing line, coefficient plot (pointrange), marginal effect plots
 
 
 ### `r advdate(mon, 7)` Annotations

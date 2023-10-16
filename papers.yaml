@@ -7,8 +7,18 @@ wd_issue:
         - me
         - Erik Wibbels
     year: 2023
-    venue: Accepted at World Development
-    preprint: "https://www.dropbox.com/scl/fi/2whszy0r0a38e07q2uspj/WD_essay-8.pdf?rlkey=ywv8qd2lchfv2m2g5fuscqaar&dl=0"
+    venue: World Development
+    published_url: "https://www.sciencedirect.com/science/article/abs/pii/S0305750X23002346"
+
+war_others:
+    title: "The Wars of Others: The Effect of the Russian Invasion of Ukraine on Spanish Nationalism"
+    authors:
+      - Laia Balcells
+      - me
+      - Francisco Villamil
+    year: 2023
+    venue: The Journal of Politics
+    published_url: "https://www.journals.uchicago.edu/doi/10.1086/726939"
 
 synthesis_report:
     title: "Social Cohesion and Forced Displacement: A Synthesis of New Research"
@@ -136,14 +146,7 @@ wb_displace:
 #       - Francisco Villamil
 #     year: 2023
 # 
-war_others:
-    title: "The Wars of Others: The Effect of the Russian Invasion of Ukraine on Spanish Nationalism"
-    authors:
-      - Laia Balcells
-      - me
-      - Francisco Villamil
-    year: 2023
-    venue: Conditionally accepted at The Journal of Politics
+
 # 
 # excomb:
 #     title: "Project on economic reintegration of ex-combatants"
