@@ -136,20 +136,23 @@ Tasks:
 - Ch 12, 13 in [@wilke:2019]
 
 
-Tasks: make scatterplot, correlogram, time series, multiple time series, area chart
+Tasks: make scatterplot, correlogram, time series, multiple time series
 
 
 ### `r advdate(mon, 6)` Model output
 
 - Ch 6 in [@healy:2018]
 
-Tasks: make scatterplot with smoothing line, coefficient plot (pointrange), marginal effect plots
+Tasks: make scatterplot with smoothing line, coefficient plot (pointrange), marginal effect plots, regression table with 3 models using `modelsummary` package
 
 
 ### `r advdate(mon, 7)` Annotations
 
 - Ch 17, 18, 22 in [@wilke:2019]
 - Ch 5 in [@healy:2018]
+
+
+Tasks: make a jitter plot, scatterplot with labeled points, barplot with text over the bars, use facet_wrap in a plot, make all plots with title, subtitle, caption, and every aesthetic has a title
 
 ### `r advdate(mon, 8)` Maps
 
@@ -159,18 +162,25 @@ Tasks: make scatterplot with smoothing line, coefficient plot (pointrange), marg
 - [Why all the world maps are wrong](https://www.youtube.com/watch?v=kIID5FDi2JQ )
 
 
-### `r advdate(mon, 9)` Networks
+Tasks: make a country level world map or region map where countries filled by some variable using `rnaturalearth`, make a county-level chloropleth map using `county_data` from `socviz`
 
-Skim these:
 
-- [Network analysis](https://bookdown.org/jdholster1/idsr/network-analysis.html)
-- [ggnet package](https://bookdown.org/jdholster1/idsr/network-analysis.html)
+### `r advdate(mon, 9)` Themes, color
 
-  
-### `r advdate(mon, 10)` Themes, color
 
 - Ch 4, 19, 22 in [@wilke:2019]
 - Ch 8 in [@healy:2018]
+
+
+Tasks: make a plot using a non-default color or fill scale, make one using a sequential scale, one using a discrete scale, a plot where you use the fact that geometries can have local aesthetics to highlight specific points or bars
+
+  
+### `r advdate(mon, 10)` Make own website
+
+
+- Make sure Quarto is installed on your computer (`quarto --version` in the Terminal should return a version)
+- If not, download and install: https://quarto.org/docs/download/
+- Create a user account on Netlify
 
 
 
