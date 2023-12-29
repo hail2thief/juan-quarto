@@ -1,12 +1,13 @@
 ---
-date: "2021-12-20"
+date: "2023-12-26"
 title: "Civil Wars"
-subtitle: "Taught: Spring 2022"
+subtitle: "Taught: S22, W24"
 categories: "Graduate"
 format:
   html:
     anchor-sections: false
-bibliography: /Users/juan/Dropbox/github/whistle2/master.bib
+bibliography: /Users/juan/Dropbox/refs/zotero-master.bib
+link-citations: false
 csl: /Users/juan/Dropbox/websites/juanftellez.com/files/bib/chicago-syllabus-no-bib.csl
 ---
 
@@ -27,7 +28,7 @@ advdate <- function(obj, adv) {
 }
 
 # first day of the quarter
-mon = ymd("2022-03-29")
+mon = ymd("2024-01-08")
 ```
 
 
@@ -40,45 +41,44 @@ mon = ymd("2022-03-29")
 
 <i class="fas fa-clock"></i> Tuesdays, 9:00 AM - 11:50 AM
 
-<i class="fas fa-home"></i> Kerr Hall 594
+<i class="fas fa-home"></i> Kerr Hall 593
 
-<i class="fas fa-calendar-check"></i> [Office Hours](https://calendly.com/juan-f-tellez/)
 
 
 # Course description
 
 
-This course is a graduate seminar on the study of civil wars and other forms of political violence. The course is designed to prepare advanced graduate students to do research on civil wars and political violence. Each week, we will cover a mix of foundational and new research in one of (to my mind) the key active research agendas in the study of civil wars. The weekly readings are primarily how students will: a) develop a foundation in the literature; b) figure out which topic areas might drive their dissertation work. 
-
-
-The course will also emphasize applied learning through: 1) critical reviews that mirror journal article reviews; 2) a data exploration exercise; 3) an original research design. 
+This course is a graduate seminar on the study of civil wars and other forms of political violence. The course is designed to prepare graduate students to do research on these topics. Each week, we will cover a mix of "foundational" and new research in one of the key active research agendas in the study of civil wars. The weekly readings are primarily how students will: a) develop the basics of the literature; b) figure out which topic areas might drive their dissertation work. 
 
 
 
-This course is designed for graduate students who already have basic training in research design and methods. The replication assignment in particular assumes an ability to read and write code in R. If you want to take the course but have not already taken the methods sequence POL 211-213, please come talk to me.
-
-
-
-# Course policies
-
-Late proposals, papers, etc. will be penalized by a letter grade per day. 
 
 
 # Assignments
 
 
-* Weekly comments (10 percent): Each week you will post (at most) a half page of questions or bullet points comments on the readings. You can raise questions about theory, method, point out conflicts between readings, develop links with previous weeks’ readings, whatever. These needn’t be long and detailed, but they should be thoughtful. Due by **Monday 6pm before each class**. 
-* Two article reviews (30 percent): You will write two, three-page (or so, double-spaced) reviews. Your review should eschew summary in favor of critically evaluating the paper ([a great guide here](http://macartan.nyc/teaching/how-to-critique/)). The basic goal is to make a recommendation to an editor (me in this case) as to whether or not the paper should be published. If your recommendation is to "revise and resubmit" assume that implies a high probability of publication. The first review is due by **end of day Friday, April 15th**. The second review is due by **end of day Friday, May 13th**. Note that these are dissertation projects or job market papers of recent PhDs. Please review two of these three papers: 
-    * ["They're still here, he's all gone: American Fatalities in Foreign Wars and Right-Wing Radicalization at Home"](https://preprints.apsanet.org/engage/apsa/article-details/61115b4018911da2f6dd1def)
-    * ["More than money: The political consequences of compensation"](https://files.osf.io/v1/resources/akz26/providers/osfstorage/60856f96f1616000a69ced0a?action=download&direct&version=3)
-    * ["The Legacies of Atrocities and Who Fights"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3861710)
-* Data exploration (30 percent): You will be placed into two-member research teams. Each team will present for 10ish minutes on the empirics of their paper for the week. Presentations should describe the paper, put it in the context of a broader literature, and promote discussion about the empirics of the paper. You have two options: 1) explore the underlying dataset or replication data; look at distributions, patterns, temporal and spatial limitations, etc.; replicate findings or estimate different models from the authors; 2) make a tutorial / "explainer" of the methodology at the center of the paper (e.g., matching, instrumental variables, etc.). You will turn in: 
-    * an RMarkdown file to replicate all of your (1) analysis or (2) methods tutorial
-    * a cleaned .rda datafile (i.e., ready to use, only relevant variables, no "-999" for NA, etc.) for either (1) the analysis or (2) the methods tutorial
-    * your presentation slides
-* Research proposal (30 percent): 12 pages. See rubric. **Draft research proposals due May 27th by midnight. Final proposal due June 7th.** 
+* Participation (10%). I will grade you on the quality of your participation in seminar. Being unprepared, not having done the readings, being absent, etc., will hurt your participation.
 
 
+* Weekly comments (10%). Each week you will post one bullet point comment *per reading*. The goal of your comment is to motivate discussion among your peers. You can raise questions about theory, method, point out conflicts between readings, develop links with previous weeks’ readings, whatever. **Due by 5pm before each class**. 
+
+
+* Article review (20%):  You will write one, three-page (or so, double-spaced) article review. Your review should eschew summary in favor of critically evaluating the paper ([a good guide here](https://benjaminnoble.org/blog/reviewing)). The goal is to make a recommendation to an editor (in this case: me) as to whether or not the paper should be published. If your recommendation is to "revise and resubmit" assume that implies a high probability of publication. **Due January 22nd, 5PM.**
+
+
+* Guest lecture (20%): You will prepare a lecture on the week's topic and present for 30-40 minutes. The lecture should be aimed at an upper division undergraduate audience. [Guidelines here](#lecture). See the signup sheet for dates. 
+
+
+* Replication (20%): You will replicate the primary findings of a paper of your choosing and then extend the paper in some interesting way. [Guidelines here](#replication). **Due Feb 23rd.**
+
+
+* Research design (20%): 8-10 pages. [Guidelines here](#paper). **Due March 20th.**. I encourage you to meet with me about your idea *at least* a few weeks before the deadline. 
+
+
+# Course policies
+
+
+Late proposals, papers, etc. will be penalized by a letter grade per day. 
 
 
 
@@ -94,70 +94,105 @@ Late proposals, papers, etc. will be penalized by a letter grade per day.
 
 
 * [@kalyvas:balcells:2010]
-* [@blattman:miguel:2010]
-* [@kalyvas:2003]
-* [@ward:etal:2010]
+* [@balcells:stanton:2021]
+* [@sambanis:2004]
+* [@fearon:2017]
 
 
 ### Recommended
 
 
+* [@ward:etal:2010]
+* [@blattman:miguel:2010]
+* [@kalyvas:2003]
 * [@kalyvas:straus:2020]
-* [@sambanis:2004]
+ 
 
 
-## `r advdate(mon, 2)` Causes of civil war
+## `r advdate(mon, 2)` 'Macro' causes of civil war
 
 
 ### Required
 
+
 * [@fearon:laitin:2003]
-* [@cederman:etal:2011]
 * [@carter:etal:2019]
-* [@denny:walter:2014]
 * [@collier:hoeffler:2004]
-* [@hsiang:etal:2013]
+* [@hendrix:salehyan:2012]
+
 
 
 ### Recommended
 
 * [@buhaug:etal:2014]
-* [@hendrix:salehyan:2012]
 * [@oloughlin:etal:2012]
-* [@cunningham:2013b]
 * [@horowitz:1985]
+* [@ying:2021]
 
 
-## `r advdate(mon, 3)` Political economy of conflict
-⭐First review due: Friday, April 15th
+
+::: {.callout-warning}
+Article review due: January 22nd, 5PM
+:::
+
+
+
+## `r advdate(mon, 3)` Ethnicity and conflict
+
+
+
+
+
+### Required
+
+* [@posen:1993]
+* [@sambanis:shayo:2013]
+* [@cederman:etal:2011]
+* Chapter 2 in [@christia:2012]
+
+
+
+### Recommended
+
+
+* [@esteban:ray:2008a]
+* [@esteban:ray:2008]
+* [@denny:walter:2014]
+* [@paine:2019]
+
+
+
+## `r advdate(mon, 4)` Political economy of conflict
 
 
 ### Required
 
 
+* [@paine:2016]
 * [@dube:vargas:2013]
-* [@dalbo:dalbo:2011]
-* [@sanchez:2020]
+* [@sanchezdelasierra:2020]
 * [@nunn:qian:2014]
-* [@berman:etal:2017]
+* [@lichbach:1994]
 
 
 ### Recommended
 
 * [Revisiting the Effect of Food Aid on Conflict: A Methodological Caution](http://barrett.dyson.cornell.edu/presentations/Revisiting%20Food%20Aid%20%20Conflict%20Otago%20May%202018.pdf)
 * [@ross:2004]
-* [@azam:anke:2002]
+* [@azam:hoeffler:2002]
+* [@dalbo:dalbo:2011]
 
 
-## `r advdate(mon, 4)` Rebel groups as organizations
+
+## `r advdate(mon, 5)` Rebel groups as organizations
 
 ### Required
 
 
 * The introduction in [@weinstein:2007]
-* Chapter 3 in [@arjona:2016]
+* [@gutierrez-sanin:wood:2014]
 * [@siegel:2011]
-* [@balcells:etal:2022]
+* [@staniland:2012]
 
 
 ### Recommended
@@ -166,100 +201,177 @@ Late proposals, papers, etc. will be penalized by a letter grade per day.
 * [@staniland:2012b]
 * [@parkinson:2013]
 * [@tamm:2016]
+* [@balcells:etal:2022]
+* [@shapiro:siegel:2007]
 
 
-
-## `r advdate(mon, 5)` Dynamics of violence in civil wars
+## `r advdate(mon, 6)` Dynamics of violence in civil wars
 
 ### Required
 
+
 * Introduction, chapter 6, and chapter 7 in [@kalyvas:2006]
 * [@schubiger:2019]
-* [@sawyer:etal:2021]
 * [@carey:mitchell:2017]
+* [@acemoglu:etal:2013a]
 
 
 ### Recommended
 
-* [@sanin:vargas:2017]
-* [@acemoglu:etal:2013]
+* [@gutierrez-sanin:vargas:2017]
 * [@albertus:2020]
 * [@cohen:2013]
 * [@condra:etal:2018]
+* [@sawyer:etal:2021]
+* [@sonin:wright:2023]
+* [@valentino:etal:2004]
 
 
 
 
-
-## `r advdate(mon, 6)` Civil war duration and termination
+## `r advdate(mon, 7)` Civil war duration and termination
 
 
 ## Required 
 
-* [@mattes:savun:2010]
 * [@cunningham:2006]
-* [@toft:2010a]
-* [@manekin:etal:2017]
-* [@williams:etal:2021]
+* [@luttwak:1999]
+* [@fortna:2015]
+* Chapter 1 in [@schulhofer-wohl:2020]
 
 
 ### Recommended
 
+* [@williams:etal:2021]
+* [@toft:2010a]
 * [@cunningham:2011]
 * [@kaufmann:1996]
 * [@posen:1993]
+* [@lyall:wilson:2009]
+* [@manekin:etal:2017]
 
 
-## `r advdate(mon, 7)` Wartime displacement
-⭐Second review due: Friday, May 17th
+::: {.callout-warning}
+Replication due: Feb 23rd by end of day
+:::
+
+
+## `r advdate(mon, 8)` Wartime displacement
+
+
+
 
 ### Required
 
-* [@steele:2011]
-* [@mcnamee:2018]
+
+* Chapter 1 in [@steele:2017]
 * [@lichtenheld:2020]
 * [@zhou:shaver:2021]
+* [@albarosa:elsner:2023]
+
+### Recommended
+
+
+* [@mcnamee:2018]
 * [@zhukov:2015]
+* [@tellez:2022]
 
 
-## `r advdate(mon, 8)` Peacekeeping and peacebuilding
+
+
+
+
+
+## `r advdate(mon, 9)` Peacekeeping and peacebuilding
 
 
 ### Required 
 
 * [@walter:etal:2021]
-* [@matanock:2017]
-* [@cunningham:2016]
-* [@beber:etal:2017]
-* [@wolford:2017]
-
+* [@severine:2019]
+* [@samii:2013]
+* [@sambanis:schulhofer-wohl:2009]
+* [@mattes:savun:2010]
 
 
 ### Recommended
 
+* [@russell:sambanis:2022]
+* [@wolford:2017]
+* [@cunningham:2016]
+* [@matanock:2017]
+* [@sambanis:schulhofer-wohl:2009]
+* [@beber:etal:2017]
 
-## `r advdate(mon, 9)` Political and social consequences of war
-⭐ *DRAFT/OUTLINE RESEARCH PROPOSALS DUE 5/27 BY MIDNIGHT*
+
+
+## `r advdate(mon, 10)` Political and social consequences of war
 
 * [@bauer:etal:2016]
-* [@hazlett:2020]
 * [@ch:etal:2018]
+* [@tepperman:2002]
+* [@villamil:2021]
+* [@atran:axelrod:2008]
+
+
+### Recommended
+
+* [@grossman:etal:2015]
+* [@jha:shayo:2019]
+* [@sambanis:etal:2015]
+* [@kang:meernik:2005]
+* [@hazlett:2020]
 * [@bara:2018]
 * [@lupu:peisakhin:2017]
 
 
-## `r advdate(mon, 10)` Presentations
-⭐ *FINAL PROPOSAL DUE JUNE 7th BY MIDNIGHT*
+
+::: {.callout-warning}
+⭐ *FINAL PAPER DUE MARCH 20th, MIDNIGHT*
+:::
+
+
 
 
 
 # Resources
 
 
-## Final research design rubric
 
 
-12 pages MAX, double-spaced.
+## Guest lecture {#lecture}
+
+
+You will:
+
+* Present for 30-40 minutes at the start of class on the topic of choice, aimed at an upper level undergraduate who has likely *heard* of the topic (e.g., in the news), but knows little about it
+* Your guiding prompt: "if you had to give advanced undergraduates a mini lecture on X, what would you say? What is crucial, most interesting, compelling, relevant, etc? What are the big questions, debates?"
+* Lecture should engage with existing literature, *can* reference some of the week's readings, but cannot be *solely* about the week's readings
+* The group will provide you feedback based on my rubric
+
+
+## Replication {#replication}
+
+
+You will: 
+
+* Find a paper with available replication data
+* Visualize or summarize some interesting element of the data as a figure or table
+* Replicate the paper's main findings + a key figure from the paper
+* Extend the analysis in a theory-driven way, for instance:
+    * Looking at sub-samples where effects *should* be different based on your argument
+    * Looking at interactions such that the effect of X on Y depends on Z (you need a compelling argument as to why Z *should* moderate the effect of X on Y *and* is interesting!)
+
+
+The final output will be a Quarto document that can compile without error. I will provide a template. 
+
+
+
+
+## Final research design rubric {#paper}
+
+
+10 pages MAX, double-spaced.
 
 1. Introduction (2 pages)
 	1. Motivate why we should care about the question you want to answer (e.g., because of its real-world impact, as a gap in the literature)
@@ -267,21 +379,16 @@ Late proposals, papers, etc. will be penalized by a letter grade per day.
 2. Literature review (2 pages)
 	1. Briefly describe what we already know about your topic
 	2. Highlight what is unknown or what gap your project will fill
-3. Theory + hypotheses (3 pages)
+3. Theory + hypotheses (3-4 pages)
 	1. Big note: theory != literature review
 	2. Need an argument about a causal process
 	3. Think about who the actors are in your story, what they want, and how their interactions produce different outcomes
-4. Research design (3-4 pages)
+4. Research design (2-3 pages)
 	1. Data
 		1. Where will the data come from? What is the unit of analysis (e.g., country-year)?
 		2. How will you measure the outcome variable(s)? Treatment variable(s)?
 		3. Identification strategy — how will you (try to) identify the effect of X on Y? If prediction, how will you select what variables to include in the model?
 		4. Modeling strategy — how will you model the relationship?
-5. Conclusion (1)
-	1. What will your project teach us? Or what area of policy or real-world relevance might your project touch on? 
-	2. Where else might you go from here? What other questions will you or an interested reader want to answer next?
 
 
-## Exercises
 
-* The [instrumental variable](/img/instrument-simulation.R) simulation from class

@@ -25,7 +25,7 @@ library(lubridate)
 # function to deal with week dates (from steve miller)
 advdate <- function(obj, adv) {
  tmon <- obj + 7*(adv-1)
- tmp <- paste("Week", adv, "--", month(tmon, label = TRUE), day(tmon), ":")
+ tmp <- paste0("W", adv, ": ", month(tmon, label = TRUE), day(tmon), " - ")
  return(tmp)
 }
 
@@ -182,5 +182,12 @@ Tasks: make a plot using a non-default color or fill scale, make one using a seq
 - If not, download and install: https://quarto.org/docs/download/
 - Create a user account on Netlify
 
+
+
+
+## Final Assignment
+
+
+A final code-thru analysis of a dataset from here (or whatever else you want): [Full Archive](https://www.data-is-plural.com/archive/) where you use at least three plots to tell some story about the data or datasets. This should be a PDF with the images embedded and text to explain them and your overall approach. Due December 10th at midnight. 
 
 
