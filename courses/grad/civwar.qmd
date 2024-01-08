@@ -28,7 +28,7 @@ advdate <- function(obj, adv) {
 }
 
 # first day of the quarter
-mon = ymd("2024-01-08")
+mon = ymd("2024-01-09")
 ```
 
 
