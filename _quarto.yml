@@ -21,8 +21,6 @@ website:
         text: Teaching
       - href: policy.qmd
         text: Policy
-      - href: https://www.dropbox.com/s/fmx1cgqubxj8wzv/tellez_cv.pdf?dl=0
-        text: CV
   page-footer:
     left: |
       <span class="faux-block">{{< fa brands creative-commons >}} 2019-2023 Juan Tellez</span>
