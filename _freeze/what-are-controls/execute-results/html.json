@@ -1,0 +1,15 @@
+{
+  "hash": "5de93f3e7e3f891573011f8aab81a1c3",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Untitled\"\n---\n\n\n\n\n## Overview\n\n\n\n> How, then, can we think of the coefficient for height in the fitted model? We can say that, under the fitted model, the average difference in earnings, comparing two people of the same sex but one inch different in height, is $600. The safest interpretation of a regression is as a comparison.\n\n\n> The coefficient of maternal high school completion. Comparing children whose mothers have the same IQ, but who differed in whether they completed high school, the model predicts an expected difference of 6 in their test scores.\n\n> We interpret regression slopes as comparisons of individuals that differ in one predictor while being at the same levels of the other predictors.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\nWarning: package 'ggplot2' was built under R version 4.2.3\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.2     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.5.0     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors\n```\n\n\n:::\n\n```{.r .cell-code}\ndf = read.csv(\"/Users/juan/Dropbox/github/ROS-Examples/Earnings/data/earnings.csv\")\n\nlm(earn ~ height, data = df)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n\nCall:\nlm(formula = earn ~ height, data = df)\n\nCoefficients:\n(Intercept)       height  \n     -85027         1595  \n```\n\n\n:::\n\n```{.r .cell-code}\nlm(earn ~ height + male, data = df)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n\nCall:\nlm(formula = earn ~ height + male, data = df)\n\nCoefficients:\n(Intercept)       height         male  \n     -25872          647        10633  \n```\n\n\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

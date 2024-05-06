@@ -18,7 +18,7 @@ $gray-800: #373a3c !default;
 $gray-900: #212529 !default;
 $black:    #000000 !default;
 
-$blue:    #022851 !default;
+$blue:    #355B85 !default;
 $indigo:  #6610f2 !default;
 $purple:  #170C3A !default;
 $pink:    #A52C60 !default;
@@ -45,18 +45,23 @@ $dark:      $black !default;
 
 
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');*/
+
+
+@import"https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900";
+@import"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,600;0,800;0,900&display=swap&text=0123456789";
 
 
 
-$font-family-sans-serif: "Poppins" !default;
 
-$headings-font-family: "Jost" !default;
+$font-family-sans-serif: "Raleway" !default;
+
+$headings-font-family: "Raleway" !default;
 $headings-font-weight: 600 !default;
 
-$navbar-font-family: "Jost" !default;
-$toc-font-family: "Jost" !default;
-$footer-font-family: "Jost" !default;
+$navbar-font-family: "Raleway" !default;
+$toc-font-family: "Raleway" !default;
+$footer-font-family: "Raleway" !default;
 
 $font-size-base: .95rem !default; // Assumes the browser default, typically `16px`
 // $font-size-sm: $font-size-base * .875 !default;
@@ -66,7 +71,7 @@ $font-size-base: .95rem !default; // Assumes the browser default, typically `16p
 $body-color: $gray-900 !default;
 
 // Links
-$link-color: $blue !default;
+$link-color: #4F7094 !default;
 $link-decoration: underline !default;
 $link-hover-color: $light-orange !default;
 $link-hover-decoration: underline !default;
@@ -93,7 +98,38 @@ $footer-fg: $gray-300 !default;
 
 /*-- scss:rules --*/
 
-$web-font-path: "https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" !default;
+body {
+  font-family: "Roboto", $font-family-base, sans-serif;
+}
+
+div.quarto-post .metadata {
+  font-family: "Roboto", $font-family-base, sans-serif;
+}
+
+#title-block-header {
+  margin-block-end: 2rem;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+  font-family: "Roboto", $font-family-base, sans-serif;
+  font-weight: 800;
+}
+
+/* navbar */
+
+.nav-link {
+  font-weight: 700;
+}
+
+.nav-link.active {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+hr {
+  margin: 0rem 0;
+}
+
 
 @if $web-font-path {
     @import url($web-font-path);
@@ -118,6 +154,10 @@ body {
     &.home {
         margin-block-end: 0.5rem;
     }
+}
+
+.reveal ul {
+  margin-bottom: 105px;
 }
 
 .home {
@@ -640,4 +680,51 @@ pre.text, pre.sourceCode, .cell-output pre {
     @media (max-width: map-get($grid-breakpoints, md)) {
         left: 0;
     }
+}
+
+
+/* Link buttons - see Research page */
+
+.icon-link {
+    background-color: $blue;
+    color: white;
+    padding: 1px 4px 1px 4px;
+    margin: 1px 1px 1px 1px;
+    border-radius: 5px; /* Rounded edges */
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.icon-link:hover {
+    background-color: $blue;
+    color: white;
+    box-shadow: 0px 10px 15px $blue;
+    transform: translateY(-2px);
+}
+
+.icon-link-summary {
+    background-color: $blue;
+    color: white;
+    padding: 4px 5px 4px 5px;
+    margin: 1px 1px 1px 1px;
+    border-radius: 5px; /* Rounded edges */
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.icon-link-summary:hover {
+    background-color: $blue;
+    color: white;
+    box-shadow: 0px 10px 15px $blue;
+    transform: translateY(-2px);
 }

@@ -15,7 +15,7 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: publications.qmd
+      - href: research.qmd
         text: Research
       - href: teaching.qmd
         text: Teaching
@@ -23,8 +23,8 @@ website:
         text: Policy
   page-footer:
     left: |
-      <span class="faux-block">{{< fa brands creative-commons >}} 2019-2023 Juan Tellez</span>
-      <span class="faux-block">All content licensed under<br>[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-sa >}} Creative Commons CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</span>      
+      <span class="faux-block">{{< fa brands creative-commons >}} 2019-2024 Juan Tellez</span>
+      <span class="faux-block">All content licensed under[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-sa >}} Creative Commons CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</span>      
     right: |
       <span class="faux-block">Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)</span>
       <span class="faux-block">[View the source at {{< fa brands github >}} GitHub](https://github.com/hail2thief/juan-quarto)</span>

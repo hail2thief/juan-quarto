@@ -1,0 +1,130 @@
+---
+page-layout: article
+toc: true
+section-divs: false
+keep-md: false
+format:
+  html:
+    anchor-sections: false
+include-in-header:
+  text: |
+    <style type="text/css">
+      h2, .h2 {
+        border-bottom: none;
+      }
+    </style>
+---
+
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(googlesheets4)
+library(pander)
+library(kableExtra)
+library(htmltools)
+library(fontawesome)
+
+get_cv_sheet <- function(sheet) {
+    return(read_sheet(
+        ss = 'https://docs.google.com/spreadsheets/d/1uLEK1UTYKKJBWfenDIvAHgOH4LwX3f8C2hzU22R_DMU/edit?usp=sharing',
+        sheet = sheet
+    ))
+}
+
+icon_link <- function(
+  icon = NULL,
+  text = NULL,
+  url = NULL,
+  class = "icon-link",
+  target = "_blank"
+) {
+  if (!is.null(icon)) {
+    text <- make_icon_text(icon, text)
+  }
+  return(htmltools::a(
+    href = url, text, class = class, target = target, rel = "noopener"
+  ))
+}
+
+make_icon_text <- function(icon, text) {
+  return(HTML(paste0(make_icon(icon), " ", text)))
+}
+
+make_icon <- function(icon) {
+  return(tag("i", list(class = icon)))
+}
+```
+
+
+<center>
+
+`r htmltools::HTML(paste0(icon_link(icon = "ai ai-google-scholar", text = "Google Scholar", url  = "https://scholar.google.com/citations?user=CtLI42kAAAAJ&hl=en"), icon_link(icon = "ai ai-orcid", text = "ORCID", url  = "https://orcid.org/0000-0003-0237-7410")))`
+
+</center>
+
+
+
+## Peer-reviewed articles
+
+```{r, echo=FALSE, warning=FALSE,message=FALSE, results='asis'}
+# get pubs
+pubs_raw = get_cv_sheet("pubs") |> 
+    filter(category == "peer_reviewed")
+  
+# clean up
+pubs = pubs_raw |> 
+    mutate(
+    journal  = ifelse(is.na(journal), '', paste0('<i>', journal, '</i>')),
+    number   = ifelse(is.na(number), '', paste0(number, '.')),
+    author = str_replace(author, "JF Tellez", "<b>JF Tellez</b>")
+  )
+
+
+pubs |>
+  arrange(desc(pub_date)) |>
+  mutate(title = ifelse(!is.na(url), cell_spec(title, "html", link = url),
+                        title)) |>
+  select(year, title, journal, author) |>
+  kable(format = "html", escape = FALSE, align = "rlcc",
+        col.names = NULL) %>%
+  kable_styling(bootstrap_options = c("hover", "responsive"))
+
+# pubs |>
+#   mutate(title = cell_spec(title, "html", link = url)) |>
+#   mutate(citation = paste(title, "(", year, ")", "<br>", journal, "<br>", author)) |>
+#   arrange(desc(pub_date)) |>
+#   pull(citation) |>
+#   pandoc.list(style = 'bullet', loose = TRUE)
+```
+
+
+
+## Other writing (edited chapters, policy reports, blog posts)
+
+```{r, echo=FALSE, warning=FALSE,message=FALSE, results='asis'}
+# get pubs
+pubs_raw = get_cv_sheet("pubs") |> 
+    filter(category %in% c("book_chapter", "report")) |> 
+  filter(!str_detect(title, "indicators"))
+  
+# clean up
+pubs = pubs_raw |> 
+    mutate(
+    journal  = ifelse(is.na(journal), '', paste0('<i>', journal, '</i>')),
+    number   = ifelse(is.na(number), '', paste0(number, '.')),
+    author = str_replace(author, "JF Tellez", "<b>JF Tellez</b>")
+  )
+
+
+pubs |> 
+  arrange(desc(pub_date)) |> 
+  select(year, title, journal) |> 
+  kable(format = "html", escape = FALSE, align = "rlll",
+        col.names = NULL) %>%
+  kable_styling(bootstrap_options = c("hover", "responsive"))
+```
+
+
+
+
+
