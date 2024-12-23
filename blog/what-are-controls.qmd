@@ -1,0 +1,90 @@
+---
+title: "Untitled"
+format: html
+---
+
+
+
+## Introduction
+
+
+When I first learned regression, we would look at a model like this: 
+
+$$Income_i = \beta_1 \times Education_i + \epsilon_i$$
+
+ 
+We'd then say that for every additional year of Education, Income would be expected to increase by $\beta_1$. We'd then add a control for Age:
+
+$$Income_i = \beta_1 \times Education_i + \beta_2 \times Age_i + \epsilon_i$$
+
+And then something mysterious would happen. We would now say that for every additional year of Education, Income would be expected to increase by $\beta_1$, *controlling for Age*. What did this mean, "controlling for age"? Other, no less mysterious versions of this phrase include "adjusting for age", or "holding age constant". 
+
+Some textbooks would discuss controlling for age in terms of comparisons. Here's Gelman in *Regression and other stories*:
+
+> > We interpret the regression slopes as comparisons of individuals that differ in one predictor while being at the same levels of the other predictors.
+
+Or from *The Effect*:
+
+> If two observations have the same values of the other variables in the model, but one has a value of𝑋 that is one unit higher, the observation with the X one unit higher will on average have a𝑌that is B1 units higher
+
+
+This was much more intuitive to me. In our case, we'd say that *comparing two people of identical age*, we'd expect someone with an additional year of education to have $\beta_1$ more in earnings. 
+
+
+But how is regression *doing this*? What about the regression makes this comparison possible? 
+
+
+Here are two ways of thinking about this that clarified regression *controls*, and what they can and can't tell us. 
+
+
+
+
+```{r}
+library(tidyverse)
+```
+
+
+Let's look at some survey data, a sample of the GSS from `socviz`:
+
+```{r}
+library(socviz)
+gss_sm |> 
+  select(id, year, obama, childs, age)
+```
+
+
+## "What's left over"
+
+
+
+
+```{r}
+mod1 = lm(childs ~ age, data = gss_sm)
+modelsummary::modelsummary(mod1)
+```
+
+
+Let's look at the residuals:
+
+```{r}
+augmented_data = broom::augment(mod1) 
+
+augmented_data |> 
+  select(.rownames, childs, age, .fitted, .resid) |> 
+  sample_n(5) |> 
+  kableExtra::kable(digits = 2)
+```
+
+
+
+
+```{r}
+mod2 = lm(obama ~ age, data = gss_sm)
+mod2
+```
+
+
+```{r}
+broom::augment(mod2)
+```
+

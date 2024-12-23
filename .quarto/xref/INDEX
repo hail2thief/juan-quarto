@@ -79,5 +79,11 @@
   },
   "policy/guate-smart.qmd": {
     "guate-smart.html": "8b76664d"
+  },
+  "blog/what-are-controls.qmd": {
+    "what-are-controls.html": "6c342e95"
+  },
+  "blog/using-priogrid.qmd": {
+    "using-priogrid.html": "e55a8445"
   }
 }

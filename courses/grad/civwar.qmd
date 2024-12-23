@@ -1,7 +1,8 @@
 ---
 date: "2023-12-26"
+date-modified: last-modified
 title: "Civil Wars"
-subtitle: "Taught: S22, W24"
+subtitle: "Taught: S22, W24, W25"
 categories: "Graduate"
 format:
   html:
@@ -28,7 +29,7 @@ advdate <- function(obj, adv) {
 }
 
 # first day of the quarter
-mon = ymd("2024-01-09")
+mon = ymd("2025-01-06")
 ```
 
 
@@ -39,7 +40,7 @@ mon = ymd("2024-01-09")
 
 <i class="fas fa-envelope"></i> [jftellez@ucdavis.edu](mailto:jftellez@ucdavis.edu)
 
-<i class="fas fa-clock"></i> Tuesdays, 9:00 AM - 11:50 AM
+<i class="fas fa-clock"></i> Thu, 12:10 PM - 03:00 PM
 
 <i class="fas fa-home"></i> Kerr Hall 593
 
@@ -63,16 +64,16 @@ This course is a graduate seminar on the study of civil wars and other forms of 
 * Weekly comments (10%). Each week you will post one bullet point comment *per reading*. The goal of your comment is to motivate discussion among your peers. You can raise questions about theory, method, point out conflicts between readings, develop links with previous weeks’ readings, whatever. **Due by 5pm before each class**. 
 
 
-* Article review (20%):  You will write one, three-page (or so, double-spaced) article review. Your review should eschew summary in favor of critically evaluating the paper ([a good guide here](https://benjaminnoble.org/blog/reviewing)). The goal is to make a recommendation to an editor (in this case: me) as to whether or not the paper should be published. If your recommendation is to "revise and resubmit" assume that implies a high probability of publication. **Due January 22nd, 5PM.**
+* Article review (20%):  You will write one three-page (double-spaced) article review. Your review should eschew summary in favor of critically evaluating the paper ([a good guide here](https://benjaminnoble.org/blog/reviewing)). The goal is to make a recommendation to an editor (in this case: me) as to whether or not the paper should be published. If your recommendation is to "revise and resubmit" assume that implies a high probability of publication. **Due January 24th, 5PM.**
 
 
 * Guest lecture (20%): You will prepare a lecture on the week's topic and present for 30-40 minutes. The lecture should be aimed at an upper division undergraduate audience. [Guidelines here](#lecture). See the signup sheet for dates. 
 
 
-* Replication (20%): You will replicate the primary findings of a paper of your choosing and then extend the paper in some interesting way. [Guidelines here](#replication). **Due Feb 23rd.**
+* Replication (20%): You will replicate the primary findings of a paper of your choosing and then extend the paper in some interesting way. [Guidelines here](#replication). **Due EOD Feb 23rd.**
 
 
-* Research design (20%): 8-10 pages. [Guidelines here](#paper). **Due March 20th.**. I encourage you to meet with me about your idea *at least* a few weeks before the deadline. 
+* Research design (20%): 8-10 pages. [Guidelines here](#paper). **Due EOD March 20th**. I encourage you to meet with me about your idea *at least* a few weeks before the deadline. 
 
 
 # Course policies
@@ -94,93 +95,116 @@ Late proposals, papers, etc. will be penalized by a letter grade per day.
 
 
 * [@kalyvas:balcells:2010]
-* [@balcells:stanton:2021]
 * [@sambanis:2004]
-* [@fearon:2017]
+* [@kalyvas:2003]
 
 
+::: {.callout-note collapse="true"}
 ### Recommended
 
-
+* [@fearon:2017]
 * [@ward:etal:2010]
 * [@blattman:miguel:2010]
-* [@kalyvas:2003]
 * [@kalyvas:straus:2020]
- 
-
-
-## `r advdate(mon, 2)` 'Macro' causes of civil war
-
-
-### Required
-
-
-* [@fearon:laitin:2003]
-* [@carter:etal:2019]
-* [@collier:hoeffler:2004]
-* [@hendrix:salehyan:2012]
-
-
-
-### Recommended
-
-* [@buhaug:etal:2014]
-* [@oloughlin:etal:2012]
-* [@horowitz:1985]
-* [@ying:2021]
-
-
-
-::: {.callout-warning}
-Article review due: January 22nd, 5PM
+* [@balcells:stanton:2021]
+* [@samii:2016]
 :::
 
 
 
-## `r advdate(mon, 3)` Ethnicity and conflict
+ 
 
 
+## `r advdate(mon, 2)` Causes of civil war: grievances
+
+
+### Required
+
+
+* Chapter 1 in [@wood:2003]
+* [@lichbach:1994]
+* [@brosche:sundberg:2024]
+* [@hassner:2011]
+
+::: {.callout-note collapse="true"}
+### Recommended
+* [@lewis:2023]
+* [@toft:2021]
+* [@horowitz:2009a]
+* [@justino:2009]
+
+:::
+
+
+<!-- ### Recommended -->
+
+
+<!-- * [@fearon:laitin:2003] -->
+<!-- * [@carter:etal:2019] -->
+<!-- * [@collier:hoeffler:2004] -->
+<!-- * [@hendrix:salehyan:2012] -->
+<!-- * [@buhaug:etal:2014] -->
+<!-- * [@oloughlin:etal:2012] -->
+<!-- * [@horowitz:1985] -->
+<!-- * [@ying:2021] -->
+
+
+
+::: {.callout-warning}
+Article review due: January 24th, 5PM
+:::
+
+
+
+## `r advdate(mon, 3)` Causes of war: ethnicity
 
 
 
 ### Required
 
-* [@posen:1993]
-* [@sambanis:shayo:2013]
+* [@posen:1993b]
+* [@carter:etal:2019]
 * [@cederman:etal:2011]
-* Chapter 2 in [@christia:2012]
+* Chapters 1 and 2 in [@petersen:2002]
 
-
-
+::: {.callout-note collapse="true"}
 ### Recommended
 
-
+* [@sambanis:shayo:2013]
+* Chapter 2 in [@christia:2012]
 * [@esteban:ray:2008a]
 * [@esteban:ray:2008]
 * [@denny:walter:2014]
 * [@paine:2019]
+:::
 
 
 
-## `r advdate(mon, 4)` Political economy of conflict
+
+## `r advdate(mon, 4)` Causes of war: resources
 
 
 ### Required
 
-
-* [@paine:2016]
+* [@collier:hoeffler:2004]
+* [@snyder:2006]
 * [@dube:vargas:2013]
-* [@sanchezdelasierra:2020]
-* [@nunn:qian:2014]
-* [@lichbach:1994]
+* [@paine:2016]
 
 
+::: {.callout-note collapse="true"}
 ### Recommended
 
 * [Revisiting the Effect of Food Aid on Conflict: A Methodological Caution](http://barrett.dyson.cornell.edu/presentations/Revisiting%20Food%20Aid%20%20Conflict%20Otago%20May%202018.pdf)
 * [@ross:2004]
 * [@azam:hoeffler:2002]
 * [@dalbo:dalbo:2011]
+* [@sanchezdelasierra:2020]
+* [@nunn:qian:2014]
+* [@jha:shayo:2019]
+:::
+
+
 
 
 
@@ -189,74 +213,113 @@ Article review due: January 22nd, 5PM
 ### Required
 
 
-* The introduction in [@weinstein:2007]
-* [@gutierrez-sanin:wood:2014]
+* [@benmelech:berrebi:2007]
+* [@weinstein:2005]
 * [@siegel:2011]
-* [@staniland:2012]
+* [@gutierrez-sanin:wood:2014]
 
 
+::: {.callout-note collapse="true"}
 ### Recommended
 
+* [@weinstein:2007]
 * [@shapiro:siegel:2012]
 * [@staniland:2012b]
 * [@parkinson:2013]
 * [@tamm:2016]
 * [@balcells:etal:2022]
 * [@shapiro:siegel:2007]
+* [@staniland:2012]
+* [@benmelech:etal:2012]
+:::
 
 
-## `r advdate(mon, 6)` Dynamics of violence in civil wars
+
+
+
+## `r advdate(mon, 6)` Insurgency
 
 ### Required
 
 
-* Introduction, chapter 6, and chapter 7 in [@kalyvas:2006]
-* [@schubiger:2019]
-* [@carey:mitchell:2017]
-* [@acemoglu:etal:2013a]
+* Chapters 4, 5, 6 in [@kalyvas:2006]
+* [@horowitz:2010a]
+* [@cohen:2013]
 
 
+
+::: {.callout-note collapse="true"}
 ### Recommended
 
-* [@gutierrez-sanin:vargas:2017]
-* [@albertus:2020]
-* [@cohen:2013]
+
 * [@condra:etal:2018]
 * [@sawyer:etal:2021]
 * [@sonin:wright:2023]
+* [@acemoglu:etal:2013a]
+* [@taber:1965]
+:::
+
+
+
+## `r advdate(mon, 7)` Counterinsurgency
+
+### Required
+
+
 * [@valentino:etal:2004]
+* "Twenty-eight Articles" in [@kilcullen:2010]
+* [@lyall:etal:2013]
+* [@carey:mitchell:2017]
 
 
 
 
-## `r advdate(mon, 7)` Civil war duration and termination
-
-
-## Required 
-
-* [@cunningham:2006]
-* [@luttwak:1999]
-* [@fortna:2015]
-* Chapter 1 in [@schulhofer-wohl:2020]
-
-
+::: {.callout-note collapse="true"}
 ### Recommended
-
-* [@williams:etal:2021]
-* [@toft:2010a]
-* [@cunningham:2011]
-* [@kaufmann:1996]
-* [@posen:1993]
-* [@lyall:wilson:2009]
-* [@manekin:etal:2017]
+* [@straus:2019]
+* [@gutierrez-sanin:vargas:2017]
+* [@albertus:2020]
+* [@condra:etal:2018]
+* [@sawyer:etal:2021]
+* [@sonin:wright:2023]
+* [@schubiger:2019]
+:::
 
 
 ::: {.callout-warning}
 Replication due: Feb 23rd by end of day
 :::
 
+## `r advdate(mon, 8)` Civil war termination and resolution
 
-## `r advdate(mon, 8)` Wartime displacement
+
+## Required 
+
+* [@luttwak:1999]
+* [@sambanis:2000]
+* [@cunningham:2006]
+* [@mattes:savun:2010]
+
+::: {.callout-note collapse="true"}
+### Recommended
+
+* [@fortna:2015]
+* [@williams:etal:2021]
+* [@lyall:wilson:2009]
+* [@manekin:etal:2017]
+* [@schulhofer-wohl:2020]
+* [@russell:sambanis:2022]
+* [@wolford:2017]
+* [@cunningham:2016]
+* [@matanock:2017]
+* [@sambanis:schulhofer-wohl:2009]
+* [@beber:etal:2017]
+:::
+
+
+
+
+## `r advdate(mon, 9)` Wartime displacement
 
 
 
@@ -264,70 +327,50 @@ Replication due: Feb 23rd by end of day
 ### Required
 
 
-* Chapter 1 in [@steele:2017]
+* [@steele:2011]
 * [@lichtenheld:2020]
 * [@zhou:shaver:2021]
 * [@albarosa:elsner:2023]
 
-### Recommended
 
+::: {.callout-note collapse="true"}
+### Recommended
 
 * [@mcnamee:2018]
 * [@zhukov:2015]
 * [@tellez:2022]
+:::
 
 
 
+## `r advdate(mon, 10)` Legacies of war
 
+* [@hazlett:2020]
+* [@ch:etal:2018]
+* [@dell:querubin:2018]
+* [@ramos-toro:voytas:2024]
 
-
-
-## `r advdate(mon, 9)` Peacekeeping and peacebuilding
-
-
-### Required 
-
-* [@walter:etal:2021]
-* [@severine:2019]
-* [@samii:2013]
-* [@sambanis:schulhofer-wohl:2009]
-* [@mattes:savun:2010]
-
-
+::: {.callout-note collapse="true"}
 ### Recommended
 
-* [@russell:sambanis:2022]
-* [@wolford:2017]
-* [@cunningham:2016]
-* [@matanock:2017]
-* [@sambanis:schulhofer-wohl:2009]
-* [@beber:etal:2017]
-
-
-
-## `r advdate(mon, 10)` Political and social consequences of war
-
-* [@bauer:etal:2016]
-* [@ch:etal:2018]
 * [@tepperman:2002]
 * [@villamil:2021]
-* [@atran:axelrod:2008]
-
-
-### Recommended
-
 * [@grossman:etal:2015]
-* [@jha:shayo:2019]
 * [@sambanis:etal:2015]
 * [@kang:meernik:2005]
-* [@hazlett:2020]
 * [@bara:2018]
 * [@lupu:peisakhin:2017]
+* [@atran:axelrod:2008]
+
+:::
+
+
+
 
 
 
 ::: {.callout-warning}
-⭐ *FINAL PAPER DUE MARCH 20th, MIDNIGHT*
+⭐ *FINAL PAPER DUE MARCH 20th, EOD*
 :::
 
 

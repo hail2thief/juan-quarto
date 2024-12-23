@@ -64,6 +64,38 @@ make_icon <- function(icon) {
 
 
 
+
+
+```{r, echo=FALSE, warning=FALSE,message=FALSE, results='asis', eval = FALSE}
+# get pubs
+pubs_raw = get_cv_sheet("pubs") |> 
+    filter(category == "working_paper")
+  
+# clean up
+pubs = pubs_raw |> 
+    mutate(
+    author = str_replace(author, "JF Tellez", "<b>JF Tellez</b>")
+  )
+
+
+pubs |>
+  arrange(desc(pub_date)) |>
+  mutate(title = ifelse(!is.na(url), cell_spec(title, "html", link = url),
+                        title)) |>
+  select(year, title, author) |>
+  kable(format = "html", escape = FALSE, align = "rlcc",
+        col.names = NULL) %>%
+  kable_styling(bootstrap_options = c("hover", "responsive"))
+
+# pubs |>
+#   mutate(title = cell_spec(title, "html", link = url)) |>
+#   mutate(citation = paste(title, "(", year, ")", "<br>", journal, "<br>", author)) |>
+#   arrange(desc(pub_date)) |>
+#   pull(citation) |>
+#   pandoc.list(style = 'bullet', loose = TRUE)
+```
+
+
 ## Peer-reviewed articles
 
 ```{r, echo=FALSE, warning=FALSE,message=FALSE, results='asis'}
@@ -99,7 +131,9 @@ pubs |>
 
 
 
-## Other writing (edited chapters, policy reports, blog posts)
+## Other writing
+
+Book chapters, reports, blogs...
 
 ```{r, echo=FALSE, warning=FALSE,message=FALSE, results='asis'}
 # get pubs

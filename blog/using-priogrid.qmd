@@ -1,0 +1,265 @@
+---
+title: "Working with PRIO-GRID data"
+date: today
+subtitle: Walkthrough of the PRIO-GRID data in R.
+page-layout: full
+title-block-banner: false
+format:
+  html:
+    anchor-sections: false
+---
+
+
+
+```{r}
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  echo = TRUE,
+  fig.width = 6,
+  fig.height = 6 * 0.618,
+  fig.retina = 3,
+  fig.align = "center",
+  out.width = "90%",
+  collapse = TRUE,
+  cache.extra = 1234  # Change number to invalidate cache
+)
+
+options(
+  digits = 4,
+  width = 300,
+  dplyr.summarise.inform = FALSE
+)
+```
+
+
+
+
+
+
+
+## PRIO-GRID data
+
+
+PRIO-GRID breaks up the Earth into a grid of little squares, or cells, each of which is 0.5 x 0.5 decimal degrees (roughly 50 x 50 km at the equator; you can read more about the data [here](https://journals.sagepub.com/doi/full/10.1177/0022343311431287)). Researchers then conformed a variety of available spatial data to this grid system, giving users access to things like the population of each 50 x 50 km square everywhere on the globe.
+
+
+The data come in three forms: 
+
+1. `Shapefiles`: information for plotting and doing spatial analysis on the grid system
+2. `Static variables`: data at the cell-level on stuff that doesn't change (e.g., how mountainous that cell is)
+3. `Yearly variables`: data at the cell-level that changes over time (e.g., rain, population, etc.)
+
+
+
+## Spatial data in R
+
+There are two main packages for dealing with spatial data in R:
+
+- `spdep`: older, richer set of functions, not-tidy
+- `sf`: newer, fewer functions, tidy
+
+
+I would rather only use `sf`, but there are some nice functions in `spdep` we'll need to use in this example that I'm not sure I can replicate in `sf`. 
+
+
+```{r libraries}
+# libraries
+library(tidyverse)
+library(sf)
+library(spdep)
+
+# theme
+theme_set(theme_minimal())
+```
+
+
+
+The starting point of the data is [the cells themselves](https://grid.prio.org/#/extensions), stored as a shapefile. We can interact with shapefiles with the great `sf` library:
+
+
+```{r}
+grid = read_sf("/Users/juan/Downloads/priogrid_cellshp/priogrid_cell.shp")
+head(grid)
+```
+
+Each row in this tibble is a cell; there are almost 260,000 of them. The key columns are `gid` (a unique identifier for each grid cell) and `geometry` which `{sf}` can work with for map-making and other spatial data stuff. 
+
+
+## Merging in the yearly data
+
+The grid of cells itself doesn't have much use without other information. We'll need to merge in other variables, such as what country each cell is in. This is stored as [yearly data by PRIO](https://grid.prio.org/#/download). Note: for the yearly variables we can choose a start and end date, but each variable varies in what years of data it has available. Below, I choose a few variables from the year 2010:
+
+```{r}
+yearly_prio = read_csv("/Users/juan/Downloads/PRIO-GRID Yearly Variables for 2010-2010 - 2024-08-26.csv")
+yearly_prio
+```
+
+
+As you can see, I pulled nightlight data, population, precipitation, average temperatures, and the Gleditsch and Ward country identifiers (`gwno`).
+
+
+We merge on `gid`:
+
+```{r}
+grid_merged = left_join(grid, yearly_prio, by = "gid")
+grid_merged |> head()
+```
+
+
+
+## Cleaning the grid
+
+
+We can take a couple more steps to make this data user-friendly. First, the Earth is mostly water so a lot of these cells are just water. We can get rid of the water by using the fact that the oceans (and other unclaimed territory) have missing `gwno` codes. Second, we can back out country names from `gwno` using `{countrycodes}`. Third, we can drop the coordinate variables:
+
+
+```{r}
+clean_grid = grid_merged |> 
+  drop_na(gwno) |> 
+  mutate(country = countrycode::countrycode(gwno, origin = "gwn", destination = "country.name")) |> 
+  select(gid, year, country, geometry, capdist, nlights_mean, pop_gpw_sum, prec_gpcp, temp)
+
+head(clean_grid)
+```
+
+ Notice that we are down to about 65,000 cells here. The oceans and Antartica are gone (and probably other stuff). 
+
+
+## Plotting
+
+
+The `{sf}` package works nicely with `ggplot`. We can plot the whole world:
+
+```{r}
+ggplot(clean_grid) + geom_sf()
+```
+
+
+A specific country, Ethiopia, with cells filled by population:
+
+
+```{r}
+clean_grid |> 
+  filter(country == "Ethiopia") |> 
+  ggplot(aes(fill = pop_gpw_sum)) + 
+  geom_sf() + 
+  scale_fill_viridis_c(option = "inferno", 
+                       end = .9, 
+                       trans = "log10", 
+                       labels = scales::comma, 
+                       name = "") + 
+  labs(title = "GRID-level population in Ethiopia")
+```
+
+
+Log-transforming population is sometimes useful in maps, otherwise "outlier" units will swamp everything else, as with Addis Ababa below:
+
+
+```{r}
+clean_grid |> 
+  filter(country == "Ethiopia") |> 
+  ggplot(aes(fill = pop_gpw_sum)) + 
+  geom_sf() + 
+  scale_fill_viridis_c(option = "inferno", 
+                       end = .9, 
+                       labels = scales::comma, 
+                       name = "") + 
+  labs(title = "GRID-level population in Ethiopia")
+```
+
+
+
+## Finding neighbors
+
+Doing most forms of spatial analysis requires knowing how the different units in the data relate to one another. With spatial data, it's common to look at whether two units are *neighbors* or not. Being a neighbor might be defined as sharing a common border, the distances between the capitals, or centroids, or... whatever. 
+
+
+Let's do this for just the United States, Mexico, and Canada:
+
+```{r}
+three_countries = 
+  clean_grid |> 
+  filter(country %in% c("United States", "Mexico", "Canada"))
+
+ggplot(three_countries, aes(fill = country)) + geom_sf()
+```
+
+
+To describe these relationships, we use an *N* by *N* **adjacency matrix**, where *N* is the number of units in our data and any entry *(i,j)* tells us whether units *i* and *j* are neighbors or not. 
+
+To do this in R, I find the easiest thing is (unfortunately) to switch from `sf` to `spdep` package and use the `spdep::poly2nb()` function. 
+
+```{r}
+# convert back to sp object to use nice sp dep functions
+three_countries_sp = as(three_countries, Class = "Spatial")
+```
+
+
+
+Below, we specify `queen == FALSE` because we want to use Rook's contiguity (as opposed to Queen's). 
+
+
+```{r}
+# get neighbors
+nb = spdep::poly2nb(three_countries_sp, 
+             queen = FALSE, 
+             row.names = three_countries_sp$gid)
+```
+
+
+The output of our `nb` object looks like this, and tells us a bunch of information about what neighborhood relations among our units looks like, including whether any units were found to have no neighbors:
+
+```{r}
+nb
+```
+
+
+So, for example, `gid = 211700` has no neighbors. 
+
+
+Something prudent at this point would be to check whether the neighborhood list we got actually makes sense. 
+
+First, let's look at a place that the `nb` object tells us has no neighbors, such as `gid = 211700`:
+
+```{r}
+# plot place with no neighbors, Alaskan island
+three_countries %>% 
+  filter(country == "Canada") %>% 
+  ggplot() + 
+  geom_sf() + 
+  # add the place with no neighbors (gid == 211700)
+  geom_sf(data = filter(three_countries, gid == 211700), fill = "red") + 
+  # zoom in on location
+  coord_sf(xlim = c(-180, -140), ylim = c(50, 70), expand = FALSE)
+```
+
+Checks out: looks like some tiny island that *shouldn't* have neighbors. 
+
+
+
+Now, how about a place that should have neighbors? Let's look at a random cell in Canada: 
+
+
+```{r}
+# plot place and its neighbors (in canada) # CHECKS OUT!
+three_countries %>% 
+  filter(country == "Canada") %>% 
+  ggplot() + geom_sf() + 
+  # random place in canada
+  geom_sf(data = filter(three_countries, gid == 249328), fill = "red") + 
+  # neighbors from nb object
+  geom_sf(data = filter(three_countries, gid %in% c(249329,249327, 248608)), fill = "blue") + 
+  # zoom in on location
+  coord_sf(xlim = c(-100, -50), ylim = c(75, 85), expand = FALSE)
+  
+```
+
+A bit hard to make out, but if you zoom in you will see that the `nb` object correctly identified this GRID's neighbors. 
+
+
+
+

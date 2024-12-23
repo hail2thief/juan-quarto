@@ -13,7 +13,7 @@ about:
       href: https://github.com/hail2thief
     - icon: CV
       text: CV
-      href: https://www.dropbox.com/scl/fi/d190t27itjxlap7rulsj1/tellez_cv.pdf?rlkey=ej3msn7etrshiw765hfjbcvn9&dl=0
+      href: https://www.dropbox.com/scl/fi/ya07jp8owfvodqcpssccf/cv-tellez.pdf?rlkey=zww0gyatdvgsxmh43n3kn0883&dl=0
     - icon: mortarboard-fill
       text: Google Scholar
       href: https://scholar.google.com/citations?user=CtLI42kAAAAJ&hl=en
