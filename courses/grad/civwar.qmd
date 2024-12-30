@@ -29,7 +29,7 @@ advdate <- function(obj, adv) {
 }
 
 # first day of the quarter
-mon = ymd("2025-01-06")
+mon = ymd("2025-01-09")
 ```
 
 
@@ -79,8 +79,8 @@ This course is a graduate seminar on the study of civil wars and other forms of 
 # Course policies
 
 
-Late proposals, papers, etc. will be penalized by a letter grade per day. 
-
+- Late assignments will be penalized by a letter grade per day. After one day late, the assignment will receive a zero. 
+- You are responsible for following university-prescribed guidelines on plagiarism, cheating, and use of AI. Note that any use of AI-generated content is considered academic misconduct. Do not turn in AI-generated writing as if it were your own
 
 
 # Schedule
