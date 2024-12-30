@@ -67,7 +67,7 @@ This course is a graduate seminar on the study of civil wars and other forms of 
 * Article review (20%):  You will write one three-page (double-spaced) article review. Your review should eschew summary in favor of critically evaluating the paper ([a good guide here](https://benjaminnoble.org/blog/reviewing)). The goal is to make a recommendation to an editor (in this case: me) as to whether or not the paper should be published. If your recommendation is to "revise and resubmit" assume that implies a high probability of publication. **Due January 24th, 5PM.**
 
 
-* Guest lecture (20%): You will prepare a lecture on the week's topic and present for 30-40 minutes. The lecture should be aimed at an upper division undergraduate audience. [Guidelines here](#lecture). See the signup sheet for dates. 
+* Guest lecture (20%): You will prepare a lecture on an armed conflict and present for 30-40 minutes. The lecture should be aimed at an upper division undergraduate audience. [Guidelines here](#lecture). See the signup sheet for dates. 
 
 
 * Replication (20%): You will replicate the primary findings of a paper of your choosing and then extend the paper in some interesting way. [Guidelines here](#replication). **Due EOD Feb 23rd.**
@@ -387,10 +387,13 @@ Replication due: Feb 23rd by end of day
 
 You will:
 
-* Present for 30-40 minutes at the start of class on the topic of choice, aimed at an upper level undergraduate who has likely *heard* of the topic (e.g., in the news), but knows little about it
-* Your guiding prompt: "if you had to give advanced undergraduates a mini lecture on X, what would you say? What is crucial, most interesting, compelling, relevant, etc? What are the big questions, debates?"
-* Lecture should engage with existing literature, *can* reference some of the week's readings, but cannot be *solely* about the week's readings
-* The group will provide you feedback based on my rubric
+* Present for 30-40 minutes at the start of class on a subnational armed conflict of your choice, aimed at an upper level undergraduate
+* Each slide should contain at least one informative visual
+* Points to hit:
+    * Who are the warring parties? What are they fighting over? What ideological affinities do the rebels hold?
+    * Brief history/overview of the conflict: when did it start? how long was it fought? What tactics were used?
+    * The conflict in the literature: highlight either 1) research *on* the conflict that sheds light on some puzzle / question about the conflict; 2) research that *uses* the conflict to answer some broader question about war
+    
 
 
 ## Replication {#replication}
