@@ -1,0 +1,12 @@
+---
+title: "Blog"
+subtitle: "Syllabi and websites for my courses"
+listing:
+  contents: blog
+  sort: "date desc"
+page-layout: full
+title-block-banner: false
+format:
+  html:
+    anchor-sections: false
+---

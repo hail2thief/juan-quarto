@@ -85,5 +85,11 @@
   },
   "blog/using-priogrid.qmd": {
     "using-priogrid.html": "e55a8445"
+  },
+  "blog.qmd": {
+    "blog.html": "78b158d2"
+  },
+  "blog/trial.qmd": {
+    "trial.html": "e1525583"
   }
 }

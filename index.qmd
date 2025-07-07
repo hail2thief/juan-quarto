@@ -1,6 +1,6 @@
 ---
 title: "Juan F. Tellez"
-subtitle: "Assistant Professor <br> Department of Political Science <br> University of California, Davis <br> ✉️ [jftellez@ucdavis.edu](mailto:jftellez@ucdavis.edu)"
+subtitle: "Associate Professor <br> Department of Political Science <br> University of California, Davis <br> ✉️ [jftellez@ucdavis.edu](mailto:jftellez@ucdavis.edu)"
 image: /images/abimael-cage.jpg
 toc: false
 about: 
@@ -22,7 +22,7 @@ about:
 
 ### Bio
 
-I’m an assistant professor of political science at [The University of California, Davis](https://ps.ucdavis.edu/) where I [research](/research.html) and [teach](/teaching.html) on security, development, and research methods. In my research I often work with governments, international donors, and their implementing partners to improve the design and evaluation of development programming around the world. 
+I’m an associate professor of political science at [The University of California, Davis](https://ps.ucdavis.edu/) where I [research](/research.html) and [teach](/teaching.html) on security, development, and research methods. In my research I often work with governments, international donors, and their implementing partners to improve the design and evaluation of development programming around the world. 
 
 I was born in Cali, Colombia, grew up in Cali/South Florida, and have lived in Texas, North Carolina, South Carolina, and now California. 
 
