@@ -1,6 +1,6 @@
 /*-- scss:defaults --*/
 
-
+$theme: "ath" !default;
 
 //
 // Color system
@@ -25,7 +25,7 @@ $pink:    #A52C60 !default;
 $red:     #CF4446 !default;
 $orange:  #EE6A24 !default;
 $light-orange:  #FB9E07 !default;
-$yellow:  #e9c46a !default;
+$yellow:  #F6D645 !default;
 $green:   #118230 !default;
 $teal:    #20c997 !default;
 $cyan:    #3093CF !default;
@@ -44,26 +44,16 @@ $dark:      $black !default;
 // Fonts
 
 
+$font-family-sans-serif: "Libre Franklin" !default;
 
-/*@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');*/
-
-
-@import"https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900";
-@import"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,600;0,800;0,900&display=swap&text=0123456789";
-
-
-
-
-$font-family-sans-serif: "Public Sans" !default;
-
-$headings-font-family: "Public Sans" !default;
+$headings-font-family: "Jost" !default;
 $headings-font-weight: 600 !default;
 
-$navbar-font-family: "Public Sans" !default;
-$toc-font-family: "Public Sans" !default;
-$footer-font-family: "Public Sans" !default;
+$navbar-font-family: "Jost" !default;
+$toc-font-family: "Jost" !default;
+$footer-font-family: "Jost" !default;
 
-$font-size-base: .95rem !default; // Assumes the browser default, typically `16px`
+// $font-size-base: 1.1rem !default; // Assumes the browser default, typically `16px`
 // $font-size-sm: $font-size-base * .875 !default;
 
 
@@ -71,8 +61,8 @@ $font-size-base: .95rem !default; // Assumes the browser default, typically `16p
 $body-color: $gray-900 !default;
 
 // Links
-$link-color: #4F7094 !default;
-$link-decoration: underline !default;
+$link-color: $blue !default;
+$link-decoration: none !default;
 $link-hover-color: $light-orange !default;
 $link-hover-decoration: underline !default;
 
@@ -81,10 +71,10 @@ $code-bg: $gray-200 !default;
 $code-color: $gray-900 !default;
 
 // Code copy
-$btn-code-copy-color-active: $orange !default;
+$btn-code-copy-color-active: $blue !default;
 
 // TOC
-$toc-color: $orange;
+$toc-color: $blue;
 $toc-font-size: 1em;
 
 // Navbar
@@ -98,38 +88,7 @@ $footer-fg: $gray-300 !default;
 
 /*-- scss:rules --*/
 
-body {
-  font-family: "Roboto", $font-family-base, sans-serif;
-}
-
-div.quarto-post .metadata {
-  font-family: "Roboto", $font-family-base, sans-serif;
-}
-
-#title-block-header {
-  margin-block-end: 2rem;
-}
-
-h1, .h1, h2, .h2, h3, .h3 {
-  font-family: "Roboto", $font-family-base, sans-serif;
-  font-weight: 800;
-}
-
-/* navbar */
-
-.nav-link {
-  font-weight: 700;
-}
-
-.nav-link.active {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-}
-
-hr {
-  margin: 0rem 0;
-}
-
+$web-font-path: "https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" !default;
 
 @if $web-font-path {
     @import url($web-font-path);
@@ -154,10 +113,6 @@ body {
     &.home {
         margin-block-end: 0.5rem;
     }
-}
-
-.reveal ul {
-  margin-bottom: 105px;
 }
 
 .home {
@@ -187,6 +142,7 @@ pre.text, pre.sourceCode, .cell-output pre {
 #TOC {
     font-family: $toc-font-family;
     padding-bottom: 0.1em;
+    font-weight: 300;
 
     .active {
         font-weight: 400;
@@ -202,6 +158,7 @@ pre.text, pre.sourceCode, .cell-output pre {
     padding-bottom: 0.25rem;
 }
 
+// Blog categories
 #quarto-margin-sidebar {
     .quarto-listing-category-title {
         margin-left: 0.5em;
@@ -222,7 +179,7 @@ pre.text, pre.sourceCode, .cell-output pre {
 
         .active {
             font-weight: 400;
-            color: $orange;
+            color: $blue;
         }
 
         .quarto-category-count {
@@ -371,6 +328,22 @@ pre.text, pre.sourceCode, .cell-output pre {
                 cursor: pointer;
             }
         }
+               
+        .post-doi {
+            font-weight: 300;
+            font-size: 0.85em;
+            margin: 0.5em 0;
+            text-align: right;
+            
+            .doi-icon {
+                width: 1.1em;
+                padding-bottom: 1px;
+            }
+            
+            a {
+                color: $gray-600;
+            }
+        }
     }
 }
 
@@ -379,12 +352,16 @@ pre.text, pre.sourceCode, .cell-output pre {
         margin-top: 1.5em;
 
         .quarto-category {
-            background-color: shift-color($purple, -25%);
-            border-color: shift-color($purple, -45%);
+            background-color: shift-color($blue, -25%);
+            border-color: shift-color($blue, -45%);
             color: $white;
             font-size: 0.65em;
             opacity: 1;
         }
+    }
+    
+    .quarto-title-author-orcid img {
+        margin-bottom: -3px;
     }
 }
 
@@ -588,7 +565,7 @@ pre.text, pre.sourceCode, .cell-output pre {
             li {
                 display: inline-block;
                 white-space: nowrap;
-                background-color: $orange;
+                background-color: $blue;
                 margin: 0 0.2em 0.4em 0;
                 padding: 0.2em 0.4em;
                 font-size: 0.85em;
@@ -680,51 +657,4 @@ pre.text, pre.sourceCode, .cell-output pre {
     @media (max-width: map-get($grid-breakpoints, md)) {
         left: 0;
     }
-}
-
-
-/* Link buttons - see Research page */
-
-.icon-link {
-    background-color: $blue;
-    color: white;
-    padding: 1px 4px 1px 4px;
-    margin: 1px 1px 1px 1px;
-    border-radius: 5px; /* Rounded edges */
-    align-items: center;
-    justify-content: center;
-    border: none;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-}
-
-.icon-link:hover {
-    background-color: $blue;
-    color: white;
-    box-shadow: 0px 10px 15px $blue;
-    transform: translateY(-2px);
-}
-
-.icon-link-summary {
-    background-color: $blue;
-    color: white;
-    padding: 4px 5px 4px 5px;
-    margin: 1px 1px 1px 1px;
-    border-radius: 5px; /* Rounded edges */
-    align-items: center;
-    justify-content: center;
-    border: none;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-}
-
-.icon-link-summary:hover {
-    background-color: $blue;
-    color: white;
-    box-shadow: 0px 10px 15px $blue;
-    transform: translateY(-2px);
 }
