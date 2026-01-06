@@ -1,6 +1,6 @@
 ---
 title: "Working with PRIO-GRID data"
-date: today
+date: "2021"
 subtitle: Walkthrough of the PRIO-GRID data in R.
 page-layout: full
 title-block-banner: false

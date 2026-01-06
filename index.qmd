@@ -6,7 +6,7 @@ toc: false
 about: 
   template: trestles
   image-shape: rounded
-  image-width: 16em
+  image-width: 20em
   links:
     - icon: github 
       text: Github

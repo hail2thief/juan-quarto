@@ -1,0 +1,394 @@
+---
+title: "The year in *content*: 2024"
+subtitle: "Music, books, and movies"
+author: "Juan Tellez"
+toc: true
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(
+  fig.width = 7,
+  fig.height = 5,
+  fig.retina = 3,
+  dev = "ragg_png",
+  fig.align = "center",
+  out.width = "85%",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  echo = FALSE,
+  cache.extra = 1234
+)
+
+options(
+  digits = 4,
+  width = 300,
+  dplyr.summarise.inform = FALSE
+)
+
+# Libraries
+library(tidyverse)
+library(kableExtra)
+
+# Nice ggplot theme
+theme_nice = function() {
+  theme_minimal(base_size = 12) + 
+    theme(
+      panel.grid.minor = element_blank(),
+      plot.title = element_text(face = "bold", size = rel(1.25)),
+      plot.subtitle = element_text(face = "plain"),
+      plot.caption = element_text(face = "plain"),
+      axis.title = element_text(face = "bold", size = rel(0.8)),
+      axis.title.x = element_text(hjust = 0),
+      axis.title.y = element_text(hjust = 1),
+      strip.text = element_text(
+        face = "bold",
+        size = rel(0.8), hjust = 0
+      ),
+      strip.background = element_rect(fill = "grey90", color = NA),
+      legend.title = element_text(size = rel(0.8)),
+      legend.text = element_text(size = rel(0.8)),
+      legend.position = "bottom",
+      legend.justification = "left",
+      legend.title.position = "top",
+      legend.margin = margin(l = 0, t = 0)
+    )
+}
+
+theme_set(theme_nice())
+
+# Palette
+pal <- MoMAColors::moma.colors("VanGogh")
+
+# kbl wrapper
+my_kbl = function(x, ...) {
+  kbl(
+    x,
+    digits = 2,
+    booktabs = TRUE,
+    align = "c",
+    ...
+  ) |>
+    kable_styling(
+      full_width = FALSE,
+      bootstrap_options = c("striped", "hover"),
+      position = "center"
+    )
+}
+
+# Load data
+music = readr::read_rds(here::here("personal_files/itunes_library.rds"))
+books = readr::read_rds(here::here("personal_files/goodreads_clean.rds")) |> 
+  filter(year(date_read) == 2024)
+movies = read_rds(here::here("personal_files/letterboxd_clean.rds")) |> 
+  filter(year(watched_date) == 2024)
+```
+
+# Intro
+
+Here's all the content I consumed this year. The music data comes from Apple Music, the books from Goodreads, and the movies from Letterboxd.
+
+The code I used to clean up the Apple Music data is slightly adapted from Andrew Heiss, which is slightly adapted from somewhere else.
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show code"
+#| echo: true
+
+read_itunes_library <- function(path) {
+  raw <- xml2::read_xml(path)
+  
+  res <- xml2::as_list(raw)
+  res <- purrr::pluck(res, "plist", "dict", "dict")
+  res <- res[names(res) != "key"]
+  
+  res <- 
+    tibble::enframe(res) %>%
+    dplyr::rowwise() %>%
+    dplyr::mutate(value = list(tibble::enframe(value))) %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate(id = dplyr::row_number()) %>%
+    dplyr::select(-name) %>%
+    tidyr::unnest(value) %>%
+    dplyr::mutate(
+      entry_id = (dplyr::row_number() + (dplyr::row_number() %% 2)) / 2
+    ) %>%
+    dplyr::rowwise() %>%
+    dplyr::mutate(
+      value = dplyr::if_else(length(value) == 0L, list(list(NA)), list(value)),
+      value = unlist(value)
+    ) %>%
+    dplyr::ungroup() %>%
+    tidyr::pivot_wider(
+      id_cols = c(id, entry_id), 
+      names_from = name, 
+      values_from = value, 
+      values_fn = list
+    ) %>%
+    tidyr::pivot_longer(
+      cols = 4:ncol(.), 
+      names_to = "type", 
+      values_drop_na = TRUE
+    ) %>%
+    dplyr::select(-type) %>%
+    tidyr::pivot_wider(id_cols = id, names_from = key, values_from = value) %>%
+    janitor::clean_names() %>%
+    dplyr::select(
+      id, track_title = name, artist, album_artist, album, 
+      genre, total_time, date_added, skip_count, play_count, year
+    ) %>%
+    dplyr::rowwise() %>%
+    dplyr::mutate(dplyr::across(
+      everything(), 
+      ~dplyr::if_else(is.null(.x), list(NA), list(.x))
+    )) %>%
+    dplyr::mutate(dplyr::across(everything(), unlist)) %>%
+    dplyr::mutate(
+      date_added = strsplit(date_added, "T"),
+      date_added = date_added[1],
+      date_added = lubridate::ymd(date_added),
+      skip_count = as.numeric(skip_count),
+      play_count = as.numeric(play_count),
+      total_time = as.numeric(total_time),
+      year = as.numeric(year)
+    ) %>%
+    dplyr::ungroup() %>%
+    dplyr::arrange(dplyr::desc(play_count))
+  
+  res
+}
+```
+
+# Music
+
+## New albums in my library
+
+First, the **albums I first added to my Apple Music library this year**. These are the records I discovered this year, whether they came out this year or earlier. Below are the top five by play count^[One limitation is that, all else equal, albums with more songs will have higher play counts.].
+
+```{r}
+music |> 
+  filter(year(date_added) == 2024) |>
+  filter(genre != "Holiday") |> 
+  group_by(artist, album) |> 
+  summarise(play_count = sum(play_count), .groups = "drop") |>
+  slice_max(order_by = play_count, n = 5) |> 
+  select(Artist = artist, Album = album) |> 
+  my_kbl(caption = "Top albums added to my Apple Music library in 2024")
+```
+
+- *Adrianne Lenker* is always good, respect for musicians who put out a lot of music. Some great tracks on this one, and I love the versions on the live album.
+- *Karen Dalton*, new discovery for me. Odd voice, and I love the bass on some of these songs.
+- The *Nap Eyes* record is great. I first listened to them years ago. They came to that vineyard near here but I couldn't go see them.
+
+## Favorite records of the year
+
+These are the records that *came out this year* and that I *added to my library this year*.
+
+```{r}
+music |> 
+  filter(album %in% c(
+    "Paris 1919 (Deluxe Edition)", 
+    "I Wanna Run Barefoot Through Your Hair",
+    "Magnolia"
+  )) |> 
+  distinct(album, .keep_all = TRUE) |> 
+  select(Artist = artist, Album = album, Genre = genre) |>
+  my_kbl(caption = "Favorite albums of 2024")
+```
+
+**For my favorites that came out this year**, I'll pick:
+
+- This great, piano-forward jazz record by *Okonski*.
+- The new *Christopher Owens* solo record. Listened to Girls for years, and this one still surprised me.
+- *Paris 1919* did not come out this year, obviously, but this deluxe edition did, which gives me an excuse to list one of my favorite records of all time. Cale is a genius, has such a sweet perspective, great Welsh accent.
+
+# Books
+
+## Books I read this year
+
+Here's the books I finished reading this year and my rating:
+
+```{r results='asis'}
+last_books <- books %>%
+  mutate(`Date Read` = date_read) |> 
+  filter(!is.na(`Date Read`)) |>
+  arrange(desc(`Date Read`)) |> 
+  mutate(
+    formatted_date = format(`Date Read`, "%B %d, %Y"),
+    stars = map_chr(`my_rating`, ~ strrep("★", .x))
+  )
+
+last_books %>%
+  mutate(item = glue::glue(
+    "<li>
+      <strong>{title}</strong> by {author}<br>
+      <em>My Rating:</em> {stars}<br>
+      <em>Date Read:</em> {formatted_date}<br>
+    </li>"
+  )) %>%
+  pull(item) %>%
+  {cat("<ul>\n", paste(., collapse = "\n"), "\n</ul>")}
+```
+
+## Descriptives
+
+How do my ratings compare versus the averages reported by Goodreads?
+
+```{r}
+#| code-fold: true
+#| fig.height: 6
+
+books |> 
+  select(title, my_rating, average_rating) |> 
+  mutate(title = str_remove(title, ":.*$")) |>
+  mutate(diff = my_rating - average_rating) |>  
+  ggplot(aes(y = reorder(title, diff), x = diff, fill = diff > 0)) +
+  geom_col(alpha = 0.8) + 
+  labs(
+    title = "Difference between my ratings and the\naverage Goodreads user", 
+    x = "My rating - average Goodreads user", 
+    fill = "Books I liked:", 
+    y = NULL
+  ) + 
+  scale_fill_manual(
+    values = pal[c(1, 7)], 
+    labels = c(
+      "...less than the Goodreads average",
+      "...more than the Goodreads average"
+    )
+  ) +
+  theme(
+    panel.grid.major = element_blank(),
+    axis.line = element_blank(),
+    legend.position = "top"
+  )
+```
+
+How long am I spending on each book? Caveat: the dates added / read are approximations in some cases.
+
+```{r}
+#| code-fold: true
+#| fig.height: 6
+
+books_bell = books %>%
+  mutate(title = str_remove(title, ":.*$")) |> 
+  mutate(title = fct_reorder(title, date_read)) 
+
+hilite = books_bell |> 
+  mutate(duration = date_read - date_added) |> 
+  slice_max(order_by = duration, n = 3) |> 
+  mutate(title = str_remove(title, ":.*$")) |> 
+  mutate(title = fct_reorder(title, date_added))
+
+ggplot(filter(books_bell, date_added >= ymd("2023-01-01")), aes(y = title)) +
+  geom_segment(
+    aes(x = date_added, xend = date_read, yend = title), 
+    color = "gray70", 
+    size = 2
+  ) +
+  geom_point(aes(x = date_added), color = pal[1], size = 4) +
+  geom_point(aes(x = date_read), color = pal[7], size = 4) +
+  labs(
+    title = "Time spent on each book",
+    x = "Date",
+    y = NULL
+  ) +
+  scale_x_date(date_labels = "%b %Y", date_breaks = "3 months")
+```
+
+## Favorite books
+
+**Favorite books** I read this year:
+
+- *Lituma en los Andes*. A sorta police procedural / mystery novel set in the Peruvian highlands during the time of Shining Path. Incredible atmosphere and treatment of SP as a kind of ghost haunting this town.
+- I can't believe I read *Temporada de huracanes* and *2666* in the same year. Both incredible. Books that deal directly with violence. Bolaño just an unbelievable writer, he can do anything.
+- I'm over the limit now but *Maus* is just devastating. And I don't even like graphic novels.
+
+**Surprise read**: *My Year of Rest and Relaxation*. The gender-flipped version of American Psycho. I'm a big Ottessa Moshfegh fan now.
+
+**Worst book**: *Una historia política de Colombia*. Repetitive, not much new to say.
+
+# Movies
+
+You can see all the movies I watched this year at the bottom. Here's my stats for the year:
+
+```{r}
+movies |> 
+  summarise(
+    `Number of movies watched` = n(),
+    `Average rating` = mean(rating),
+    `Highest rated movie` = name[which.max(rating)],
+    `Lowest rated movie` = name[which.min(rating)], 
+    `Cor(rating, release date)` = cor(rating, year)
+  ) |> 
+  mutate(across(is.numeric, ~round(.x, 2))) |>
+  mutate(across(everything(), as.character)) |> 
+  pivot_longer(everything(), names_to = "Statistic", values_to = "Value") |> 
+  my_kbl(caption = "My movie watching stats for 2024")
+```
+
+Here's when I watched:
+
+```{r}
+#| fig.height: 4
+
+movies |> 
+  mutate(
+    month = month(watched_date, label = TRUE),
+    day = day(watched_date)
+  ) |> 
+  count(month, day) |> 
+  ggplot(aes(x = day, y = month, fill = factor(n))) +
+  geom_tile(color = "white") + 
+  coord_fixed(ratio = 1) + 
+  scale_y_discrete(expand = c(0, 0)) +
+  scale_x_continuous(breaks = c(1, 5, 10, 15, 20, 25, 31), expand = c(0, 0)) + 
+  scale_fill_manual(values = c(pal[5], pal[3])) + 
+  theme(
+    panel.grid = element_blank(),
+    panel.grid.major.y = element_line(color = "grey92", linewidth = 0.3),
+    axis.title = element_blank(),
+    axis.text = element_text(color = "grey30"),
+    legend.title = element_blank(),
+    legend.position = "bottom",
+    plot.margin = margin(5, 5, 5, 5)
+  ) + 
+  labs(x = NULL, y = NULL, title = "Movie watching calendar", fill = NULL)
+```
+
+And here's the distribution of ratings, for fun:
+
+```{r}
+#| fig.height: 4
+
+movies |> 
+  ggplot(aes(x = rating)) + 
+  geom_histogram(binwidth = 0.5, fill = pal[7], color = "white", alpha = .8) + 
+  labs(x = "My rating", y = "Number of movies watched") + 
+  scale_x_continuous(breaks = seq(0, 5, by = 0.5))
+```
+
+## Favorite movies
+
+**The two best movies I saw this year** were:
+
+- *Red Rooms*. One of those movies that is completely engrossing and then you take a beat and realize you've just been watching a few actors, some shots in a courtroom, an apartment, etc. No bells and whistles, just great writing and pacing.
+- *Possession*. Had heard all the lore and finally watched it at *Dreamland Cinema*. The worst couple of all time.
+
+**The worst movie I saw this year** was *Civil War*. Really it should be *Anyone But You* but that movie isn't putting on airs. I thought *Civil War* was totally undermined by its focus on small potatoes photo-journalism. Who cares?
+
+**The best movie that came out this year** was *Daughters*, the documentary about a prison program that connects inmates with their daughters for a father-daughter dance. Ugly cry kind of film.
+
+## Full list of movies
+
+```{r}
+#| code-fold: true
+
+movies |> 
+  arrange(watched_date) |> 
+  select(` ` = name, `Release year` = year, `My rating` = rating) |> 
+  kableExtra::kbl(caption = "Movies I watched this year")
+```

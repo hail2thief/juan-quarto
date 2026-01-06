@@ -1,90 +1,220 @@
 ---
-title: "Untitled"
+title: "What do controls do?"
+date: "2026-01-01"
+author: "Juan Tellez"
 format: html
+toc: true
 ---
 
+
+
+```{r}
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(
+  fig.width = 8,
+  fig.height = 10 * 0.618,
+  fig.retina = 3,
+  dev = "ragg_png",
+  fig.align = "center",
+  out.width = "90%",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  echo = FALSE,
+  cache.extra = 1234  # Change number to invalidate cache
+)
+
+options(
+  digits = 4,
+  width = 300,
+  dplyr.summarise.inform = FALSE
+)
+
+
+## libraries
+library(tidyverse)
+library(kableExtra)
+
+# Nice ggplot theme
+theme_nice = function() {
+  theme_minimal(base_size = 12) + 
+    theme(
+      panel.grid.minor = element_blank(),
+      plot.title = element_text(face = "bold", size = rel(1.25)),
+      plot.subtitle = element_text(face = "plain"),
+      plot.caption = element_text(face = "plain"),
+      axis.title = element_text(face = "bold", size = rel(0.8)),
+      axis.title.x = element_text(hjust = 0),
+      axis.title.y = element_text(hjust = 1),
+      strip.text = element_text(
+        face = "bold",
+        size = rel(0.8), hjust = 0
+      ),
+      strip.background = element_rect(fill = "grey90", color = NA),
+      legend.title = element_text(size = rel(0.8)),
+      legend.text = element_text(size = rel(0.8)),
+      legend.position = "bottom",
+      legend.justification = "left",
+      legend.title.position = "top",
+      legend.margin = margin(l = 0, t = 0)
+    )
+}
+
+theme_set(theme_nice())
+
+# palette
+pal <- MoMAColors::moma.colors("VanGogh")
+
+
+
+
+# kbl wrapper
+my_kbl = function(x, ...) {
+  kbl(
+    x,
+    digits = 2,          # always round to 2 decimals
+    booktabs = TRUE,     # cleaner LaTeX/HTML tables
+    align = "c",         # default alignment
+    ...
+  ) |>
+    kable_styling(
+      full_width = FALSE,
+      bootstrap_options = c("striped", "hover"),
+      position = "center"
+    )
+}
+```
 
 
 ## Introduction
 
 
-When I first learned regression, we would look at a model like this: 
+In grad school, one of the more mysterious concepts I encountered was the use of *controls* in regression analysis. The problem was clear: we have a situation where we want to estimate the effect of $X$ on $Y$, but there is a third variable, $Z$, that affects both $X$ and $Y$. $Z$ will confound our estimates of $X$ on $Y$, so we need to "control for" $Z$ in our regression.
 
-$$Income_i = \beta_1 \times Education_i + \epsilon_i$$
 
- 
-We'd then say that for every additional year of Education, Income would be expected to increase by $\beta_1$. We'd then add a control for Age:
+```{r}
+library(ggdag)
 
-$$Income_i = \beta_1 \times Education_i + \beta_2 \times Age_i + \epsilon_i$$
+dagify(
+  Y ~ X + Z,
+  X ~ Z,
+  exposure = "X",
+  outcome = "Y",
+  coords = list(
+    x = c(X = 1, Y = 2, Z = 1),
+    y = c(X = 1, Y = 1, Z = 2)
+  )
+) |> 
+  ggdag::ggdag_status() +
+  theme_dag(legend.position = "none")
+```
 
-And then something mysterious would happen. We would now say that for every additional year of Education, Income would be expected to increase by $\beta_1$, *controlling for Age*. What did this mean, "controlling for age"? Other, no less mysterious versions of this phrase include "adjusting for age", or "holding age constant". 
+But what does it mean to "control" for Z? What are trying to do, exactly?
 
-Some textbooks would discuss controlling for age in terms of comparisons. Here's Gelman in *Regression and other stories*:
 
-> > We interpret the regression slopes as comparisons of individuals that differ in one predictor while being at the same levels of the other predictors.
+Some textbooks discuss controlling in terms of comparisons. Here's Gelman in *Regression and other stories*:
+
+> We interpret the regression slopes as comparisons of individuals that differ in one predictor while being at the same levels of the other predictors.
 
 Or from *The Effect*:
 
-> If two observations have the same values of the other variables in the model, but one has a value of𝑋 that is one unit higher, the observation with the X one unit higher will on average have a𝑌that is B1 units higher
+> If two observations have the same values of the other variables in the model, but one has a value of𝑋  that is one unit higher, the observation with the X one unit higher will on average have a𝑌that is B1 units higher
 
 
-This was much more intuitive to me. In our case, we'd say that *comparing two people of identical age*, we'd expect someone with an additional year of education to have $\beta_1$ more in earnings. 
+I love this intuition. We'd say that *comparing two people of identical Z*, we'd expect someone with an additional year of $X$ to have $\beta_1$ more in $Y$. 
 
 
 But how is regression *doing this*? What about the regression makes this comparison possible? 
 
 
-Here are two ways of thinking about this that clarified regression *controls*, and what they can and can't tell us. 
+Here is one way of thinking about this that clarified regression *controls* for me and their limitations. 
 
 
+# Example: ideology and campaign finance
 
 
-```{r}
-library(tidyverse)
-```
-
-
-Let's look at some survey data, a sample of the GSS from `socviz`:
-
-```{r}
-library(socviz)
-gss_sm |> 
-  select(id, year, obama, childs, age)
-```
-
-
-## "What's left over"
-
-
+Say we're looking at Adam Bonica's data on campaign finance, from my `{juanr}` package. Each row is a political candidate:
 
 
 ```{r}
-mod1 = lm(childs ~ age, data = gss_sm)
-modelsummary::modelsummary(mod1)
+library(juanr)
+
+bonica |> 
+  head() |> 
+  my_kbl(caption = "Sample of Bonica's campaign finance data")
 ```
 
 
-Let's look at the residuals:
+Say we wanted to estimate the effect of ideology (`dwnom1`) on the amount of money raised (`total_receipts`). `dwnom1` measures ideology using the DW-NOMINATE score, which theoretically ranges from -1 (left-wing) to 1 (right-wing). 
+
+
+We estimate this simple model:
 
 ```{r}
-augmented_data = broom::augment(mod1) 
+library(estimatr)
+library(modelsummary)
+mod = lm_robust(total_receipts ~ dwnom1, data = bonica)
 
-augmented_data |> 
-  select(.rownames, childs, age, .fitted, .resid) |> 
-  sample_n(5) |> 
-  kableExtra::kable(digits = 2)
+modelsummary(list("No controls" = mod), 
+             gof_map = "nobs", stars = TRUE)
 ```
 
 
+We see that more left-wing candidates tend to raise more money: going from a perfect moderate to a perfect left-winger results in a $258,416 increase in fundraising. Considering the median candidate raises about 15k, this is sizable. 
+
+
+Many things might confound this relationship. One potential confound ($Z$) is political party: the parties systematically have different ideologies and might also have different fundraising capacities. So we control for party:
 
 
 ```{r}
-mod2 = lm(obama ~ age, data = gss_sm)
-mod2
+mod2 = lm_robust(total_receipts ~ dwnom1 + party, data = bonica)
+
+modelsummary(list("No controls" = mod,
+                  "Control for party" = mod2), 
+             gof_map = "nobs", stars = TRUE)
 ```
 
+Now the story is completely different: controlling for party, we see that more left-wing candidates raise *less* money. Going from a perfect moderate to a perfect left-winger results in almost 1.5 million more in fundraising. 
 
-```{r}
-broom::augment(mod2)
+
+Using the "comparisons" language from the textbooks, we can say that *comparing two candidates from the same party*, the more left-wing candidate raises less money.
+
+
+But how do we get here?
+
+
+## Stratification
+
+
+One way to think about the "comparisons" interpretation of controls is as a kind of **stratification**: when we control for $Z$, what we would like to do is see if the relationship between $X$ and $Y$ "holds" *within* levels of $Z$.
+
+To put it in the "defensive" terms in which researchers typically operate, if someone says that the relationship between $X$ and $Y$ is confounded by $Z$, we can respond: "Well, if we look at two people with the same $Z$, do we still see a relationship between $X$ and $Y$?" If yes, then we can say that the relationship between $X$ and $Y$ is not fully explained by $Z$.
+
+
+In our case, this would look like estimating the relationship between ideology and fundraising *within* each of the three parties in the data (Democrats, Republicans, and Independents):
+
+
+```{r, echo = TRUE}
+bonica |> 
+  group_by(party) |> 
+  summarise(
+    mod = list(lm_robust(total_receipts ~ dwnom1, data = cur_data()))
+  ) |> 
+  mutate(tidy_mod = map(mod, broom::tidy)) |> 
+  unnest(tidy_mod) |> 
+  filter(term == "dwnom1") |> 
+  select(party, estimate, std.error, p.value) |> 
+  my_kbl(caption = "Effect of ideology on fundraising, by party")
 ```
+
+We see that within each party, the relationship between ideology and fundraising is different, big and positive for Democrats, big and negative for Republicans, and weakly positive for Independents. 
+
+
+So how do we get from these three estimates to one overall estimate that *controls for party*, as in the model at the top of the page?
+
+
+The answer is that regression is doing a kind of weighted average of these estimates, where the weights depend on how many observations there are in each party and how much variation in ideology there is within each party.
+
 

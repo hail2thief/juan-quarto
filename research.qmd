@@ -66,6 +66,80 @@ make_icon <- function(icon) {
 
 
 
+## Working papers
+
+
+```{r, echo=FALSE, warning=FALSE,message=FALSE, results='asis'}
+# get pubs
+pubs_raw = get_cv_sheet("pubs") |> 
+    filter(category == "working_paper")
+  
+
+pubs_raw |> 
+  arrange(desc(pub_date)) |> 
+  mutate(item = glue::glue(
+    "<li style='margin-bottom: 1.5em; line-height: 1.6;'>
+      <strong style='font-size: 1.05em;'>{ifelse(!is.na(url), paste0('<a href=\"', url, '\" style=\"color: #2c5aa0; text-decoration: none;\">',
+title, '</a>'), title)}</strong><br>
+      <span style='color: #555;'>{author}</span><br>
+      {ifelse(!is.na(pub_date), paste0(' (', format(pub_date, '%Y'), ')'), '')}
+      {ifelse(!is.na(summary), paste0(
+        '<details style=\"margin-top: 0.5em;\">
+          <summary style=\"cursor: pointer; color: #2c5aa0; font-size: 0.9em;\">Summary</summary>
+          <p style=\"margin-top: 0.5em; color: #555; font-size: 0.95em;\">', summary, '</p>
+        </details>'
+      ), '')}
+    </li>"
+  )) |>
+  pull(item) |>
+  (\(x) cat("<ul style='list-style-type: none; padding-left: 0;'>\n", 
+            paste(x, collapse = "\n"), 
+            "\n</ul>"))()
+```
+
+
+
+## Peer-reviewed
+
+
+```{r, echo=FALSE, warning=FALSE,message=FALSE, results='asis'}
+# get pubs
+pubs_raw = get_cv_sheet("pubs") |> 
+    filter(category == "peer_reviewed")
+  
+# clean up
+pubs = pubs_raw |> 
+    mutate(
+    journal  = ifelse(is.na(journal), '', paste0('<i>', journal, '</i>')),
+    number   = ifelse(is.na(number), '', paste0(number, '.')),
+  )
+
+pubs |> 
+  arrange(desc(pub_date)) |> 
+  mutate(item = glue::glue(
+    "<li style='margin-bottom: 1.5em; line-height: 1.6;'>
+      <strong style='font-size: 1.05em;'>{ifelse(!is.na(url), paste0('<a href=\"', url, '\" style=\"color: #2c5aa0; text-decoration: none;\">',
+title, '</a>'), title)}</strong><br>
+      <span style='color: #555;'>{author}</span><br>
+      <em style='color: #777;'>{journal}</em>
+      {ifelse(!is.na(pub_date), paste0(' (', format(pub_date, '%Y'), ')'), '')}
+      {ifelse(!is.na(summary), paste0(
+        '<details style=\"margin-top: 0.5em;\">
+          <summary style=\"cursor: pointer; color: #2c5aa0; font-size: 0.9em;\">Summary</summary>
+          <p style=\"margin-top: 0.5em; color: #555; font-size: 0.95em;\">', summary, '</p>
+        </details>'
+      ), '')}
+    </li>"
+  )) |>
+  pull(item) |>
+  (\(x) cat("<ul style='list-style-type: none; padding-left: 0;'>\n", 
+            paste(x, collapse = "\n"), 
+            "\n</ul>"))()
+```
+
+
+
+
 ```{r, echo=FALSE, warning=FALSE,message=FALSE, results='asis', eval = FALSE}
 # get pubs
 pubs_raw = get_cv_sheet("pubs") |> 
@@ -96,9 +170,8 @@ pubs |>
 ```
 
 
-## Peer-reviewed articles
 
-```{r, echo=FALSE, warning=FALSE,message=FALSE, results='asis'}
+```{r, echo=FALSE, warning=FALSE,message=FALSE, results='asis', eval = FALSE}
 # get pubs
 pubs_raw = get_cv_sheet("pubs") |> 
     filter(category == "peer_reviewed")
@@ -146,16 +219,30 @@ pubs = pubs_raw |>
     mutate(
     journal  = ifelse(is.na(journal), '', paste0('<i>', journal, '</i>')),
     number   = ifelse(is.na(number), '', paste0(number, '.')),
-    author = str_replace(author, "JF Tellez", "<b>JF Tellez</b>")
   )
 
 
 pubs |> 
   arrange(desc(pub_date)) |> 
-  select(year, title, journal) |> 
-  kable(format = "html", escape = FALSE, align = "rlll",
-        col.names = NULL) %>%
-  kable_styling(bootstrap_options = c("hover", "responsive"))
+  mutate(item = glue::glue(
+    "<li style='margin-bottom: 1.5em; line-height: 1.6;'>
+      <strong style='font-size: 1.05em;'>{ifelse(!is.na(url), paste0('<a href=\"', url, '\" style=\"color: #2c5aa0; text-decoration: none;\">',
+title, '</a>'), title)}</strong><br>
+      {ifelse(!is.na(author), paste0('<span style=\"color: #555;\">', author, '</span><br>'), '')}
+      <em style='color: #777;'>{journal}</em>
+      {ifelse(!is.na(pub_date), paste0(' (', format(pub_date, '%Y'), ')'), '')}
+      {ifelse(!is.na(summary), paste0(
+        '<details style=\"margin-top: 0.5em;\">
+          <summary style=\"cursor: pointer; color: #2c5aa0; font-size: 0.9em;\">Summary</summary>
+          <p style=\"margin-top: 0.5em; color: #555; font-size: 0.95em;\">', summary, '</p>
+        </details>'
+      ), '')}
+    </li>"
+  )) |>
+  pull(item) |>
+  (\(x) cat("<ul style='list-style-type: none; padding-left: 0;'>\n", 
+            paste(x, collapse = "\n"), 
+            "\n</ul>"))()
 ```
 
 

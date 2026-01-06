@@ -2,7 +2,7 @@ project:
   type: website
 
 execute:
-  freeze: auto
+  freeze: true
 
 website:
   title: "Juan F. Tellez"
@@ -19,8 +19,8 @@ website:
         text: Research
       - href: teaching.qmd
         text: Teaching
-      - href: policy.qmd
-        text: Policy
+      - href: blog.qmd
+        text: Blog
   page-footer:
     left: |
       <span class="faux-block">{{< fa brands creative-commons >}} 2019-2025 Juan Tellez</span>
@@ -31,10 +31,16 @@ website:
 
 format:
   html:
-    theme:
-      - sandstone
+    theme: 
       - html/custom.scss
-    toc: true
+    grid: 
+      body-width: 900px
+    toc: false
+    code-link: true
+    anchor-sections: true
+    fig-cap-location: margin
+    reference-location: margin
+    footnotes-hover: true
     highlight-style: monokai
 
 bibliography: /Users/juan/Dropbox/github/whistle2/master.bib
