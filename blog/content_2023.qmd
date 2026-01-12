@@ -166,7 +166,7 @@ read_itunes_library <- function(path) {
 
 ## New albums in my library
 
-First, the **albums I first added to my Apple Music library this year**. These are the records I discovered this year, whether they came out this year or earlier. Below are the top five by play count^[One limitation is that, all else equal, albums with more songs will have higher play counts.].
+First, the **albums I added to my Apple Music library this year**. These are the records I discovered this year, whether they came out this year or earlier. Below are the top five by play count^[One limitation is that, all else equal, albums with more songs will have higher play counts.].
 
 ```{r}
 music |> 
@@ -179,8 +179,8 @@ music |>
   my_kbl(caption = "Top albums added to my Apple Music library in 2023")
 ```
 
-- Not surprised the The Allah-Las are up there. It's me trying to make living in California more palatable.
-- This is also the year I discovered Dorothy Ashby's *Hip Harp*. *Afro-harping* is great, but so heady, takes work. *Hip Harp* is breezy, effortless, very *cool*.
+- The Allah-Las. Carefully made surfer rock. It's me trying to make living in California more palatable.
+- Also the year I discovered Dorothy Ashby's *Hip Harp*. *Afro-harping* is great, but takes work. *Hip Harp* is breezy, effortless, very *cool*.
 - 2023 I began getting Beach Boys-pilled, and so we have *Sunflower*. Hard to pick a favorite track, maybe *Cool, Cool Water*.
 
 ## Favorite records of the year
@@ -201,8 +201,8 @@ music |>
 
 **For my favorites that came out this year**, I'll pick:
 
-- *É o que a casa oferece*. Sounds like Brazilian jazz and you can tell this guy has good taste.
-- *ARIGATO*. We went to Japan this year. This record is so fun but also just really tight. My family loved it.
+- *É o que a casa oferece*. Sorta Brazilian jazz, and you can tell this guy has good taste.
+- *ARIGATO*. We went to Japan this year. This is excellent pop music. My family loved it.
 
 # Books
 
@@ -303,13 +303,13 @@ ggplot(filter(books_bell, date_added >= ymd("2023-01-01")), aes(y = title)) +
 
 **Favorite books** I read this year:
 
-- *Savage detectives*. Bolaño is one of the best "pure writers" of the last 50 years. He can just write, no question. He also loves Mexico, and you can see that all over "detectives".
-- *Generation Kill*. Caught off guard by how good this was. With many war memoirs, there is a lot of retrospective interpretation of events on the part of the author. Here, it's much more direct, not much hand-wringing about the affinity the author has for the soldiers he embedded with.
+- *Savage detectives*. Bolaño is one of the best "pure writers" of the last 50 years. He also loves Mexico, and you can see that all over "detectives".
+- *Generation Kill*. Caught off guard by how good this was. With many war memoirs, there is a bad tendency to superimpose contemporary views on past events. This book avoids doing that and gives a vivid look at one of the GWOT wars. 
 - *The Dope*. So much has been written about the war on drugs, it's hard to find a new angle. This book has lots of new things to say. Unfortunately, it is a bit too loose with the facts at times; read carefully.
 
 **Surprise read**: *Naomi*. What a weird, perverted book. And from 1924!
 
-**Worst book**: *Un-American*. The worst kind of war memoir is the one where the author keeps turning to a present-day vantage point that casts blame on everything others did wrong but fails to acknowledge their own mindset at the time. This is one of those books.
+**Worst book**: *Un-American*. Preachy with not much "stuff" to look at beyond an interesting chapter on the war academy. 
 
 # Movies
 
@@ -373,11 +373,11 @@ movies |>
 
 ## Favorite movies
 
-**The two best movies I saw this year** were *Sunset Boulevard* and *The Last Picture Show*. Blown away by both because I had low expectations. With Boulevard, I was imagining a paint by numbers noir, but it was much weirder and darker. And Picture Show does the "small town is actually rotting from within" bit way before anyone else, much better, and more devastating in the end.
+**The two best movies I saw this year** were *Sunset Boulevard* and *The Last Picture Show*. With Boulevard, I was imagining a paint by numbers noir, but it was much weirder and darker. And Picture Show does the "small town is actually rotting from within" bit way before anyone else, much better, and more devastating in the end.
 
-**The worst movie I saw this year** was *The Whale*. Unbelievably bad, condescending, hard to believe really.
+**The worst movie I saw this year** was *The Whale*. Unbelievably bad, condescending. 
 
-**The best movie that came out in 2023** was *May December*. I love Julianne Moore, and I love Todd Haynes. This movie does something super well that I love: take a well-worn story/trope/narrative ("the teacher slept with the student") and makes you see it from a new angle, makes what's become ordinary seem strange again.
+**The best movie that came out in 2023** was *May December*. I love Julianne Moore and I love Todd Haynes. This movie also does something super well that I love: take a well-worn story/trope/narrative ("the teacher slept with the student") and makes you see it from a new angle, makes what's become ordinary seem strange again.
 
 ## Full list of movies
 

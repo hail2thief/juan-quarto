@@ -167,7 +167,7 @@ read_itunes_library <- function(path) {
 
 ## New albums in my library
 
-First, the **albums I first added to my Apple Music library this year**. These are the records I discovered this year, whether they came out this year or earlier. Below are the top five by play count^[One limitation is that, all else equal, albums with more songs will have higher play counts.].
+First, the **albums I added to my Apple Music library this year**. These are the records I discovered this year, whether they came out this year or earlier. Below are the top five by play count^[One limitation is that, all else equal, albums with more songs will have higher play counts.].
 
 ```{r}
 music |> 
@@ -180,7 +180,7 @@ music |>
   my_kbl(caption = "Top albums added to my Apple Music library in 2025")
 ```
 
-- I obviously did not add VU this year, one of those unfortunate quirks of streaming services where you end up with ten versions of the same album, and then you have to delete them all and re-add the original so you can listen start to end. *VU* is one of my top five albums.
+- I did not add VU this year: one of those unfortunate quirks of streaming services where you end up with ten versions of the same album, and then you have to delete them all and re-add the original so you can listen start to end. *VU* is one of my top five albums.
 - *The peaceful side of jazz*. A surprise jazz discovery this year. Mellow, I love all the ambient texture / sounds. Reminds me of Akira Kosemura's *Polaroid Piano*.
 - I read the Lou Reed biography this year, which means I listened to Cory Hanson's tender tribute song "Lou Reed" a ton: *"You were a prince and a fighter / and you were a tai chi master"*
 
@@ -378,11 +378,11 @@ Watched a lot of good movies this year, tough to make choices.
 **The two best movies I saw this year**:
 
 - *High and Low*. Wow! Did not expect this at all, not a Kurosawa fan generally. Plays with interpersonal and class-based tension, and the bad guy is Joker-fied before that was a thing.
-- *Brian Wilson: I Just Wasn't Made for These Times*. Odd choice but I love Brian Wilson and was blown away by this doc, clearly made for fans, chock-full of little easter eggs. When I saw the Brian Wilson portrait my eyes popped out.
+- *Brian Wilson: I Just Wasn't Made for These Times*. Odd choice but I love Brian Wilson and was impressed by this simple doc, clearly made for fans, chock-full of little easter eggs. "Shortnin' bread!"
 
 **The worst movie I saw this year** was *Heretic*. The cringe, "new atheist" politics is tough to stomach but what really sunk it was the awkward transition to monster movie halfway through.
 
-**The best movie that came out this year**: *Eddington*, funny and has something new to say about how technology mediates reality (also the pandemic that no one wants to remember).
+**The best movie that came out this year**: *Eddington*, funny and has something new to say about technology (also the pandemic that no one wants to remember). Can't think of a movie that better portrays how screens mediate our lives and relationships. 
 
 ## Full list of movies
 

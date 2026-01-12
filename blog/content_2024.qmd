@@ -166,7 +166,7 @@ read_itunes_library <- function(path) {
 
 ## New albums in my library
 
-First, the **albums I first added to my Apple Music library this year**. These are the records I discovered this year, whether they came out this year or earlier. Below are the top five by play count^[One limitation is that, all else equal, albums with more songs will have higher play counts.].
+First, the **albums I added to my Apple Music library this year**. These are the records I discovered this year, whether they came out this year or earlier. Below are the top five by play count^[One limitation is that, all else equal, albums with more songs will have higher play counts.].
 
 ```{r}
 music |> 
@@ -181,7 +181,7 @@ music |>
 
 - *Adrianne Lenker* is always good, respect for musicians who put out a lot of music. Some great tracks on this one, and I love the versions on the live album.
 - *Karen Dalton*, new discovery for me. Odd voice, and I love the bass on some of these songs.
-- The *Nap Eyes* record is great. I first listened to them years ago. They came to that vineyard near here but I couldn't go see them.
+- The *Nap Eyes* record is great. They came to that vineyard near here but I couldn't go see them.
 
 ## Favorite records of the year
 
@@ -304,8 +304,7 @@ ggplot(filter(books_bell, date_added >= ymd("2023-01-01")), aes(y = title)) +
 **Favorite books** I read this year:
 
 - *Lituma en los Andes*. A sorta police procedural / mystery novel set in the Peruvian highlands during the time of Shining Path. Incredible atmosphere and treatment of SP as a kind of ghost haunting this town.
-- I can't believe I read *Temporada de huracanes* and *2666* in the same year. Both incredible. Books that deal directly with violence. Bolaño just an unbelievable writer, he can do anything.
-- I'm over the limit now but *Maus* is just devastating. And I don't even like graphic novels.
+- I can't believe I read *Temporada de huracanes* and *2666* in the same year. Both incredible. Bolaño just an unbelievable writer, he can do anything. And *Huracanes* gives us something new: a "Gummo"-like view of a rural Mexican town where deindustrialization has hollowed out the community. 
 
 **Surprise read**: *My Year of Rest and Relaxation*. The gender-flipped version of American Psycho. I'm a big Ottessa Moshfegh fan now.
 
