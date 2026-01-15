@@ -8,10 +8,84 @@ format:
     anchor-sections: false
 include-in-header:
   text: |
-    <style type="text/css">
-      h2, .h2 {
-        border-bottom: none;
+    <style>
+      /* Layout + typography */
+      main.content { max-width: 900px; }
+      body { line-height: 1.65; }
+      h2 { border-bottom: none; margin-top: 1.6rem; }
+
+      /* Top links row */
+      .profile-links{
+        display:flex;
+        gap:.75rem;
+        justify-content:center;
+        flex-wrap:wrap;
+        margin: .25rem 0 1.25rem 0;
       }
+      .icon-link{
+        display:inline-flex;
+        align-items:center;
+        gap:.45rem;
+        padding:.35rem .7rem;
+        border:1px solid rgba(0,0,0,.12);
+        border-radius:999px;
+        text-decoration:none;
+        font-size:.95rem;
+      }
+      .icon-link:hover{ text-decoration:none; border-color: rgba(0,0,0,.25); }
+
+      /* Publications list as “cards” */
+      .pub-list{ list-style:none; padding-left:0; margin:0; }
+      .pub{
+        padding: .9rem 1rem;
+        margin: 0 0 .9rem 0;
+        border: 1px solid rgba(0,0,0,.10);
+        border-radius: 12px;
+        background: rgba(0,0,0,.015);
+      }
+      .pub-title{
+        font-weight: 650;
+        font-size: 1.02rem;
+        margin: 0 0 .15rem 0;
+      }
+      .pub-title a{
+        text-decoration: none;
+      }
+      .pub-title a:hover{
+        text-decoration: underline;
+      }
+      .pub-meta{
+        color: rgba(0,0,0,.68);
+        font-size: .96rem;
+      }
+      .pub-meta em{ font-style: italic; }
+      .pub-year{
+        display:inline-block;
+        margin-left:.35rem;
+        padding:.05rem .45rem;
+        border-radius: 999px;
+        border: 1px solid rgba(0,0,0,.12);
+        font-size: .82rem;
+        color: rgba(0,0,0,.65);
+      }
+
+      /* Details/Abstract */
+      details.pub-details { margin-top: .45rem; }
+      details.pub-details summary{
+        cursor:pointer;
+        user-select:none;
+        color: inherit;
+        font-size: .92rem;
+      }
+      details.pub-details[open] summary{ margin-bottom:.35rem; }
+      .pub-summary{
+        margin: 0;
+        color: rgba(0,0,0,.70);
+        font-size: .95rem;
+      }
+
+      /* Optional: bold your name without HTML injection */
+      .me{ font-weight:700; }
     </style>
 ---
 
@@ -82,10 +156,9 @@ pubs_raw |>
       <strong style='font-size: 1.05em;'>{ifelse(!is.na(url), paste0('<a href=\"', url, '\" style=\"color: #2c5aa0; text-decoration: none;\">',
 title, '</a>'), title)}</strong><br>
       <span style='color: #555;'>{author}</span><br>
-      {ifelse(!is.na(pub_date), paste0(' (', format(pub_date, '%Y'), ')'), '')}
       {ifelse(!is.na(summary), paste0(
         '<details style=\"margin-top: 0.5em;\">
-          <summary style=\"cursor: pointer; color: #2c5aa0; font-size: 0.9em;\">Summary</summary>
+          <summary style=\"cursor: pointer; color: #2c5aa0; font-size: 0.9em;\">Abstract</summary>
           <p style=\"margin-top: 0.5em; color: #555; font-size: 0.95em;\">', summary, '</p>
         </details>'
       ), '')}
@@ -125,7 +198,7 @@ title, '</a>'), title)}</strong><br>
       {ifelse(!is.na(pub_date), paste0(' (', format(pub_date, '%Y'), ')'), '')}
       {ifelse(!is.na(summary), paste0(
         '<details style=\"margin-top: 0.5em;\">
-          <summary style=\"cursor: pointer; color: #2c5aa0; font-size: 0.9em;\">Summary</summary>
+          <summary style=\"cursor: pointer; color: #2c5aa0; font-size: 0.9em;\">Abstract</summary>
           <p style=\"margin-top: 0.5em; color: #555; font-size: 0.95em;\">', summary, '</p>
         </details>'
       ), '')}
@@ -233,7 +306,7 @@ title, '</a>'), title)}</strong><br>
       {ifelse(!is.na(pub_date), paste0(' (', format(pub_date, '%Y'), ')'), '')}
       {ifelse(!is.na(summary), paste0(
         '<details style=\"margin-top: 0.5em;\">
-          <summary style=\"cursor: pointer; color: #2c5aa0; font-size: 0.9em;\">Summary</summary>
+          <summary style=\"cursor: pointer; color: #2c5aa0; font-size: 0.9em;\">Abstract</summary>
           <p style=\"margin-top: 0.5em; color: #555; font-size: 0.95em;\">', summary, '</p>
         </details>'
       ), '')}
