@@ -307,5 +307,26 @@
   },
   "blog/books/latecomer-state-formation.qmd": {
     "latecomer-state-formation.html": "00d2028a"
+  },
+  "blog/books/putin.qmd": {
+    "putin.html": "0f10e2b5"
+  },
+  "blog/books/2666.qmd": {
+    "2666.html": "19acaf16"
+  },
+  "blog/books/everyday-stalinism.qmd": {
+    "everyday-stalinism.html": "a5b5d2f2"
+  },
+  "blog/books/generation-kill.qmd": {
+    "generation-kill.html": "a372237c"
+  },
+  "blog/books/the-dope.qmd": {
+    "the-dope.html": "5a20239d"
+  },
+  "blog/leaflet-travel.qmd": {
+    "leaflet-travel.html": "0ce746a2"
+  },
+  "blog/multicollinearity-draft.qmd": {
+    "multicollinearity-draft.html": "1805ab3c"
   }
 }

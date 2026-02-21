@@ -1,6 +1,6 @@
 ---
 title: "Hard-Boiled Wonderland and the End of the World"
-date: "2024-06-05"
+date: "2026-02-16"
 author: "Juan Tellez"
 categories:
   - books

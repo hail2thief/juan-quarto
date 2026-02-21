@@ -1,6 +1,6 @@
 ---
 title: "How Asia Works"
-date: "2024-06-05"
+date: "2025-03-12"
 author: "Juan Tellez"
 categories:
   - books

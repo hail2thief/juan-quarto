@@ -1,6 +1,6 @@
 ---
 title: "Zen at War"
-date: "2024-06-05"
+date: "2025-11-21"
 author: "Juan Tellez"
 categories:
   - books

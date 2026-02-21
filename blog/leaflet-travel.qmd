@@ -1,12 +1,35 @@
-# libraries
+---
+title: "Places I've been"
+author: "Juan Tellez"
+date: "2026-02-21"
+categories: [R, travel]
+---
+
+
+```{r}
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  cache.extra = 1234
+)
+```
+
+
+A map of places I've traveled.
+
+```{r}
+#| echo: false
+
 library(tidyverse)
 library(leaflet)
 library(tidygeocoder)
 
-# make travel data
-travels = tribble(~year, ~city, ~country,
+travels <- tribble(~year, ~city, ~country,
         2012, c("Mexico City", "Puebla"), "Mexico",
-        2018, c("Tel Aviv", "Haifa", "Jerusalem", 
+        2018, c("Tel Aviv", "Haifa", "Jerusalem",
                 "Bethlehem", "Nazareth"), "Israel",
         2017, c("Berlin", "Munich"), "Germany",
         2017, c("Prague"), "Czech Republic",
@@ -17,10 +40,10 @@ travels = tribble(~year, ~city, ~country,
         2015, c("Belfast", "Derry"), "Northern Ireland",
         2015, c("Edinburgh"), "Scotland",
         2017, c("Medellin", "Cartagena", "Cali", "Bogota", "Corinto"), "Colombia",
-        2014, c("Rio de Janeiro"), "Brazil", 
+        2014, c("Rio de Janeiro"), "Brazil",
         2017, c("Shanghai", "Beijing", "Huangshan", "Hangzhou", "Zhuzhou"), "China",
         2015, c("Mumbai", "Dehli", "Udaipur"), "India",
-        2024, c("Buenos Aires", "Mendoza"), "Argentina", 
+        2024, c("Buenos Aires", "Mendoza"), "Argentina",
         2024, c("Santiago", "Valparaiso"), "Chile",
         2025, c("Medellin", "Cali"), "Colombia",
         2023, c("Tokyo", "Kyoto", "Hiroshima", "Osaka"), "Japan",
@@ -28,22 +51,23 @@ travels = tribble(~year, ~city, ~country,
         2019, c("Guatemala City", "Antigua"), "Guatemala",
         2019, c("Copenhagen", "Aarhus"), "Denmark",
         2019, c("Bergen", "Oslo"), "Norway",
-        2019, c("Toronto"), "Canada") |> 
+        2019, c("Toronto"), "Canada") |>
   unnest(city)
 
-
-# geocode
-travels_geo = travels |>
+travels_geo <- travels |>
   mutate(location = paste0(city, ", ", country)) |>
   geocode(location, method = "osm", lat = latitude, long = longitude)
 
+pal <- colorFactor("Set2", travels_geo$country)
 
-# plot
 leaflet(travels_geo) |>
-  addTiles() |>
+  addProviderTiles(providers$CartoDB.Positron) |>
+  setView(lng = -20, lat = 25, zoom = 2) |>
   addCircleMarkers(
     lng = ~longitude, lat = ~latitude,
-    popup = ~paste0("<strong>", city, ", ", country, "</strong><br>Year: ", year),
+    label = ~paste0(city, ", ", country, " (", year, ")"),
     radius = 5, fillOpacity = 0.8,
-    color = ~colorFactor("Set1", year)(year)
+    color = ~pal(country), stroke = FALSE,
+    clusterOptions = markerClusterOptions()
   )
+```

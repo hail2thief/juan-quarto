@@ -1,6 +1,6 @@
 ---
 title: "A History of Modern Uganda"
-date: "2024-06-05"
+date: "2025-10-15"
 author: "Juan Tellez"
 categories:
   - books

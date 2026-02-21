@@ -1,6 +1,6 @@
 ---
 title: "Nights at the Circus"
-date: "2024-06-05"
+date: "2024-12-19"
 author: "Juan Tellez"
 categories:
   - books

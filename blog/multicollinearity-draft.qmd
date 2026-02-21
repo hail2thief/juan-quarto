@@ -1,0 +1,275 @@
+---
+title: "Multicollinearity is not a disease"
+date: "2026-02-21"
+author: "Juan Tellez"
+format: html
+toc: true
+categories: [R, causality]
+draft: true
+---
+
+
+```{r}
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(
+  fig.width = 8,
+  fig.height = 10 * 0.618,
+  fig.retina = 3,
+  dev = "ragg_png",
+  fig.align = "center",
+  out.width = "90%",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  echo = TRUE,
+  cache.extra = 1234
+)
+
+options(
+  digits = 4,
+  width = 300,
+  dplyr.summarise.inform = FALSE
+)
+
+## libraries
+library(tidyverse)
+library(kableExtra)
+
+# Nice ggplot theme
+theme_nice <- function() {
+  theme_minimal(base_size = 12) +
+    theme(
+      panel.grid.minor = element_blank(),
+      plot.title = element_text(face = "bold", size = rel(1.25)),
+      plot.subtitle = element_text(face = "plain"),
+      plot.caption = element_text(face = "plain"),
+      axis.title = element_text(face = "bold", size = rel(0.8)),
+      axis.title.x = element_text(hjust = 0),
+      axis.title.y = element_text(hjust = 1),
+      strip.text = element_text(
+        face = "bold",
+        size = rel(0.8), hjust = 0
+      ),
+      strip.background = element_rect(fill = "grey90", color = NA),
+      legend.title = element_text(size = rel(0.8)),
+      legend.text = element_text(size = rel(0.8)),
+      legend.position = "bottom",
+      legend.justification = "left",
+      legend.title.position = "top",
+      legend.margin = margin(l = 0, t = 0)
+    )
+}
+
+theme_set(theme_nice())
+
+pal <- MoMAColors::moma.colors("VanGogh")
+
+my_kbl <- function(x, ...) {
+  kbl(
+    x,
+    digits = 2,
+    booktabs = TRUE,
+    align = "c",
+    ...
+  ) |>
+    kable_styling(
+      full_width = FALSE,
+      bootstrap_options = c("striped", "hover"),
+      position = "center"
+    )
+}
+```
+
+
+## Introduction
+
+
+Many econometrics textbooks have a section on "multicollinearity" that treats it as a diagnosable problem. They present VIF statistics, tolerance thresholds, and condition numbers, leaving students with the impression that high correlation among regressors is a kind of disease that needs treatment. Some even suggest dropping variables or combining them via PCA.
+
+Wooldridge pushes back on this in *Introductory Econometrics*. He argues that multicollinearity is not a violation of any OLS assumption and that textbooks which "test" for it or try to "solve" it are misleading. As he puts it, multicollinearity is essentially a small-sample problem: it means you don't have enough variation in your data to precisely estimate what you want to estimate. Blanchard makes the point even more bluntly: "multicollinearity is God's will, not a problem with OLS."
+
+This post uses a simulation to build intuition for what multicollinearity actually is and why Wooldridge and Blanchard are right.
+
+
+## Setup: press freedom and FDI
+
+
+Suppose we want to estimate the effect of press freedom on foreign direct investment (FDI). We believe that regime type — whether a country is a democracy or not — confounds this relationship: democracies tend to have freer presses *and* tend to attract more FDI. So we control for democracy.
+
+Here is the data-generating process. The true effect of press freedom on FDI is $\beta = 0.5$: for each unit increase in press freedom, FDI increases by half a unit. Democracy independently boosts both press freedom and FDI:
+
+```{r}
+set.seed(42)
+n <- 200
+
+# democracy is binary
+democracy <- rbinom(n, 1, 0.4)
+
+# press freedom: democracies have higher and more variable press freedom
+press_freedom <- case_when(
+  democracy == 1 ~ rnorm(n, mean = 7, sd = 1.5),
+  democracy == 0 ~ rnorm(n, mean = 2, sd = 0.5)
+)
+
+# FDI: function of press freedom + democracy + noise
+beta_true <- 0.5
+fdi <- beta_true * press_freedom + 3 * democracy + rnorm(n, sd = 2)
+
+df <- tibble(democracy = factor(democracy, labels = c("Autocracy", "Democracy")),
+             press_freedom, fdi)
+```
+
+
+## The data
+
+
+Let's look at what this data looks like:
+
+
+```{r}
+#| echo: false
+ggplot(df, aes(x = press_freedom, y = fdi, color = democracy)) +
+  geom_point(alpha = 0.6) +
+  scale_color_manual(values = pal[c(1, 4)]) +
+  labs(x = "Press freedom", y = "FDI", color = "Regime type")
+```
+
+Two things are clear. First, there is a strong positive relationship between press freedom and FDI. Second, democracies and autocracies occupy very different regions of the press freedom axis. Within autocracies, press freedom barely varies — it's almost always between 1 and 3.
+
+This is the "multicollinearity": press freedom and democracy are highly correlated, so when we control for democracy, there isn't much variation left in press freedom to work with — especially within the autocracy group.
+
+
+## The naive and controlled estimates
+
+```{r}
+library(estimatr)
+library(modelsummary)
+
+mod_naive <- lm_robust(fdi ~ press_freedom, data = df)
+mod_controlled <- lm_robust(fdi ~ press_freedom + democracy, data = df)
+
+modelsummary(list("No controls" = mod_naive,
+                  "Control for democracy" = mod_controlled),
+             gof_map = "nobs", stars = TRUE)
+```
+
+
+The naive estimate overstates the effect of press freedom because it's picking up the effect of democracy. The controlled estimate is closer to the truth ($\beta = 0.5$) — but the standard error is much larger. This is multicollinearity at work.
+
+
+## What's happening: the stratification view
+
+
+As we saw in the [controls post](what-are-controls.qmd), controlling for democracy is equivalent to estimating the press freedom-FDI relationship *within* each regime type and taking a weighted average. Let's look at those within-group estimates:
+
+
+```{r}
+df |>
+  group_by(democracy) |>
+  summarise(
+    beta = coef(lm(fdi ~ press_freedom))[2],
+    se = summary(lm(fdi ~ press_freedom))$coefficients[2, 2],
+    n = n(),
+    var_x = var(press_freedom),
+    weight = (n() - 1) * var(press_freedom)
+  ) |>
+  my_kbl(caption = "Within-group estimates")
+```
+
+
+The autocracy group has much less variation in press freedom, so it gets less weight. But more importantly, the within-autocracy estimate has a huge standard error because there's so little variation in $X$ to work with. The overall controlled estimate is being driven almost entirely by the democracy subsample.
+
+This is the Wooldridge point. The "problem" isn't that the regression is doing something wrong. OLS is unbiased. The problem is that the data doesn't give us enough within-group variation to estimate the effect precisely. That's a property of the world — autocracies really do have uniformly low press freedom — not a flaw in the method.
+
+
+## Simulation: imprecision, not bias
+
+
+To make this concrete, let's run the same data-generating process many times and look at the *sampling distribution* of the controlled estimate:
+
+
+```{r}
+simulate_once <- function(n = 200) {
+  democracy <- rbinom(n, 1, 0.4)
+  press_freedom <- case_when(
+    democracy == 1 ~ rnorm(n, mean = 7, sd = 1.5),
+    democracy == 0 ~ rnorm(n, mean = 2, sd = 0.5)
+  )
+  fdi <- 0.5 * press_freedom + 3 * democracy + rnorm(n, sd = 2)
+  d <- tibble(democracy, press_freedom, fdi)
+
+  mod <- lm(fdi ~ press_freedom + democracy, data = d)
+  coef(mod)["press_freedom"]
+}
+
+sims <- tibble(beta_hat = map_dbl(1:1000, ~simulate_once()))
+```
+
+```{r}
+#| echo: false
+ggplot(sims, aes(x = beta_hat)) +
+  geom_histogram(fill = pal[1], color = "white", bins = 40) +
+  geom_vline(xintercept = 0.5, linetype = "dashed", linewidth = 0.8) +
+  labs(x = expression(hat(beta)[press_freedom]),
+       y = "Count",
+       title = "Sampling distribution of the controlled estimate",
+       subtitle = "Dashed line = true effect (0.5)")
+```
+
+
+The distribution is centered on the truth. OLS is unbiased. But the distribution is wide — in any given sample, the estimate could be quite far from 0.5. This is what imprecision looks like.
+
+
+## The "cure" is worse than the disease
+
+
+Now, what do some textbooks recommend? Drop the collinear variable. Let's see what happens if we drop the democracy control:
+
+```{r}
+sims_no_control <- tibble(
+  beta_hat = map_dbl(1:1000, function(i) {
+    democracy <- rbinom(200, 1, 0.4)
+    press_freedom <- case_when(
+      democracy == 1 ~ rnorm(200, mean = 7, sd = 1.5),
+      democracy == 0 ~ rnorm(200, mean = 2, sd = 0.5)
+    )
+    fdi <- 0.5 * press_freedom + 3 * democracy + rnorm(200, sd = 2)
+    coef(lm(fdi ~ press_freedom))["press_freedom"]
+  })
+)
+```
+
+```{r}
+#| echo: false
+bind_rows(
+  mutate(sims, model = "With democracy control"),
+  mutate(sims_no_control, model = "Without democracy control")
+) |>
+  ggplot(aes(x = beta_hat, fill = model)) +
+  geom_histogram(bins = 40, color = "white", alpha = 0.7,
+                 position = "identity") +
+  geom_vline(xintercept = 0.5, linetype = "dashed", linewidth = 0.8) +
+  scale_fill_manual(values = pal[c(1, 4)]) +
+  labs(x = expression(hat(beta)[press_freedom]),
+       y = "Count",
+       fill = NULL,
+       title = "Dropping the control reduces variance but introduces bias",
+       subtitle = "Dashed line = true effect (0.5)")
+```
+
+
+The uncontrolled estimates are more precise — the distribution is tighter. But they are *biased*: the distribution is centered well above 0.5 because the regression attributes some of democracy's effect on FDI to press freedom. This is the classic bias-variance tradeoff, and in a causal inference setting, bias is usually the bigger concern. An imprecise but unbiased estimate is honest about what the data can tell you. A precise but biased estimate is confidently wrong.
+
+This is why Wooldridge's framing matters. If you think of multicollinearity as a disease with a "cure" (dropping variables), you are trading a cosmetic problem (wide confidence intervals) for a substantive one (omitted variable bias). The right response to multicollinearity is usually to do nothing — or to get more data.
+
+
+## Summary
+
+
+Multicollinearity means your regressors are correlated. When you control for a variable that is highly correlated with your treatment, you're left with little variation to estimate the treatment effect. Your estimates will be imprecise. This is annoying but it's not a methodological failure. It's the data telling you that it can't cleanly distinguish the effects of two things that move together.
+
+The standard errors are already telling you everything you need to know. There is no additional diagnostic needed. And "solutions" that involve dropping confounders to reduce collinearity are almost always worse than the disease.
+
+As Blanchard put it: multicollinearity is God's will, not a problem with OLS.

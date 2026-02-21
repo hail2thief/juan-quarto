@@ -16,7 +16,8 @@ quarto publish netlify # Deploy to Netlify
 
 ## Directory Structure
 
-- `blog/` — Blog posts (policy briefs, technical posts, yearly content roundups)
+- `blog/` — Blog posts (policy briefs, technical posts, yearly content roundups, R package showcase)
+- `blog/books/` — Individual book reviews
 - `courses/grad/` and `courses/undergrad/` — Course pages used by the teaching listing
 - `files/` — Downloadable files (CV, etc.)
 - `html/` — Custom SCSS styling
@@ -37,7 +38,8 @@ quarto publish netlify # Deploy to Netlify
 
 ### Blog
 - `blog.qmd` is the listing page; individual posts live in `blog/*.qmd`
-- Posts include policy briefs, technical tutorials, and yearly content roundups
+- Posts include policy briefs, technical tutorials, yearly content roundups, and book reviews
+- Book reviews live in `blog/books/*.qmd` — each is a standalone post with categories metadata
 
 ### Course Listings
 - Teaching page uses Quarto listings to auto-generate course cards from `courses/grad/*.qmd` and `courses/undergrad/*.qmd`
@@ -51,9 +53,25 @@ quarto publish netlify # Deploy to Netlify
 - Font Awesome icons via `_extensions/quarto-ext/fontawesome/`
 - Use shortcodes like `{{< fa brands github >}}`
 
+## Blog Post Conventions
+
+- Setup chunk uses `theme_nice()` helper, `MoMAColors::moma.colors("VanGogh")` palette, and `kableExtra` for tables
+- Code-heavy posts use `echo: true`; data-driven posts use `echo: false` with `code-fold: true` for optional visibility
+- Posts that run R code rely on `_freeze/` caching; change `cache.extra` to force re-execution
+- Use `#|` style chunk options (not `{r, option = value}` style)
+- Draft posts use `draft: true` in YAML front matter — they render but don't appear in listings
+
+### Book Reviews
+- Live in `blog/books/*.qmd`
+- Minimal YAML: `title`, `date`, `author`, `categories` (always includes `books` plus topic tags)
+- No setup chunk needed — plain prose, no R code
+- Dates should match the `date_read` column in `personal_files/goodreads_clean.rds`
+
 ## R Dependencies
 
 - `googlesheets4` — Pulls publication data from Google Sheets for `research.qmd`
+- `juanr` — Juan's teaching datasets package (used in `blog/juanr.qmd`); install via `remotes::install_github("hail2thief/juanr")`
+- `MoMAColors` — Color palettes used across blog posts
 - A bibliography file is referenced from an external path (`master.bib`); it is not in this repo
 
 ## Key Files

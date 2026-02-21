@@ -1,6 +1,6 @@
 ---
 title: "Collapse: The Fall of the Soviet Union"
-date: "2024-06-05"
+date: "2024-12-03"
 author: "Juan Tellez"
 categories:
   - books

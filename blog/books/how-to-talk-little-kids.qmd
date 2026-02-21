@@ -1,6 +1,6 @@
 ---
 title: "How to Talk So Little Kids Will Listen"
-date: "2024-06-05"
+date: "2025-08-24"
 author: "Juan Tellez"
 categories:
   - books

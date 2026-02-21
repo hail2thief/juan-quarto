@@ -1,6 +1,6 @@
 ---
 title: "The White Guard"
-date: "2024-06-05"
+date: "2026-01-09"
 author: "Juan Tellez"
 categories:
   - books

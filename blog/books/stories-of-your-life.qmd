@@ -1,6 +1,6 @@
 ---
 title: "Stories of Your Life and Others"
-date: "2024-06-05"
+date: "2025-02-26"
 author: "Juan Tellez"
 categories:
   - books

@@ -1,6 +1,6 @@
 ---
 title: "Lituma en los Andes"
-date: "2024-06-05"
+date: "2024-10-02"
 author: "Juan Tellez"
 categories:
   - books

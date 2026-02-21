@@ -1,6 +1,6 @@
 ---
 title: "The Frontier Effect"
-date: "2024-06-05"
+date: "2025-02-06"
 author: "Juan Tellez"
 categories:
   - books
@@ -18,4 +18,4 @@ I knew about parapolitica, and I've written about the dispossession of peasant l
 
 Before reading this book, I thought the absence of the effective, legitimate state in large swaths of Colombia's territory was a major factor in the war. After reading this, I still mostly feel the same way. I'm not sure I buy the move Ballve makes here -- that state absence can't explain violence, because other orders emerge. The orders he describes don't seem to last all that long, and they seem normatively worse than an effective, legitimate state.
 
-All said, impressive book!
+All said, impressive book.

@@ -1,6 +1,6 @@
 ---
 title: "War in the Age of Trump"
-date: "2024-06-05"
+date: "2025-09-28"
 author: "Juan Tellez"
 categories:
   - books

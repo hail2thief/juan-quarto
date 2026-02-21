@@ -1,6 +1,6 @@
 ---
 title: "Lou Reed: The King of New York"
-date: "2024-06-05"
+date: "2025-08-25"
 author: "Juan Tellez"
 categories:
   - books

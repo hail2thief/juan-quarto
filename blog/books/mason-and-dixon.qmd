@@ -1,6 +1,6 @@
 ---
 title: "Mason & Dixon"
-date: "2024-06-05"
+date: "2025-09-07"
 author: "Juan Tellez"
 categories:
   - books

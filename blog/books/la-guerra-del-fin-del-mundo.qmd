@@ -1,6 +1,6 @@
 ---
 title: "La guerra del fin del mundo"
-date: "2024-06-05"
+date: "2025-04-17"
 author: "Juan Tellez"
 categories:
   - books

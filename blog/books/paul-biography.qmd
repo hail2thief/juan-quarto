@@ -1,6 +1,6 @@
 ---
 title: "Paul: A Biography"
-date: "2024-06-05"
+date: "2026-02-20"
 author: "Juan Tellez"
 categories:
   - books

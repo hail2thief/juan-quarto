@@ -1,6 +1,6 @@
 ---
 title: "La dimensión desconocida"
-date: "2024-06-05"
+date: "2025-01-21"
 author: "Juan Tellez"
 categories:
   - books

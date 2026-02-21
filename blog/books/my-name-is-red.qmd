@@ -1,6 +1,6 @@
 ---
 title: "My Name Is Red"
-date: "2024-06-05"
+date: "2025-07-30"
 author: "Juan Tellez"
 categories:
   - books
