@@ -5,11 +5,12 @@
       "grad/*.qmd",
       "software/*.qmd"
     ],
-    "policy.qmd": [
-      "policy/*.qmd"
-    ],
     "blog.qmd": [
-      "blog"
+      "blog",
+      "blog/content_*.qmd",
+      "blog/*.qmd",
+      "!blog/content_*.qmd",
+      "blog/books/*.qmd"
     ]
   }
 }
