@@ -1,0 +1,26 @@
+---
+title: "Collapse: The Fall of the Soviet Union"
+date: "2024-06-05"
+author: "Juan Tellez"
+categories:
+  - books
+  - soviet union
+  - russia
+  - history
+---
+
+*Collapse: The Fall of the Soviet Union* is a history of the final days of the Soviet Union. The book starts with Gorbachev's ascent to power and ends with the dissolution of the Soviet Union, the hammer and sickle over the Kremlin replaced by the Russian flag.
+
+The central argument of this book is that the conventional wisdom in the West as to why the Soviet Union collapsed is wrong. This conventional wisdom says that the Soviet Union's collapse was inevitable: the command economy, political authoritarianism, etc., had to break eventually and Gorbachev's reforms made the fissures that finally broke the dam.
+
+Zubok is emphatic in saying no: things didn't have to turn out this way. Yes, reform was needed, but slower. Gorbachev's reforms were too fast and incoherent. The political reforms that devolved economic power to cooperatives and political power to the republics set the ground for economic collapse and for the constituent republics to want to go their separate ways.
+
+Zubok *hates* Gorbachev. It's Gorbachev's perestroika reforms that cause all this chaos, but also his leadership. Gorbachev's commitment to liberal reformism prevents him from taking authoritative stances that could have produced better, or less bad, outcomes. A great bit from the book:
+
+> It is hard to find a case or a metaphor that captures what the Gorbachev leadership did during 1989. One thinks of the captain of a huge ship who suddenly decides to sail towards a distant Promised Land. He does so against the mood and instincts of his crew. He and his followers have no map; their compass is broken. They are under the impression that the ship is sailing westwards, whereas in reality it is heading south. As the voyage becomes more and more difficult, the captain decides that his crew are unreliable saboteurs. So he turns to inexperienced passengers keen to take part in the voyage and lets them deliberate among themselves on the best ways to reach the Promised Land.
+
+I learned a lot from this book. I had never really thought about the fact that the Soviet Union was this union of republics (literally in the name) and that the collapse was in many ways a function of the republics and aligned states in Eastern Europe wanting to go their own way. The fact that it is ultimately *Russia* under Yeltsin's drunken leadership that wants to "break off" from the Soviet Union was mind-blowing to me. The Bush administration's position in all this is fascinating: half the admin wants to encourage the Soviet Union to break up, the other half fears a Yugoslavia Part II but with nuclear weapons. The half-hearted coups were also interesting to see up close; Zubok seems right in saying that, in this period of Soviet history, no one had the "heart" to take control of society. Why? Not super clear; for Gorbachev it's clearly this anti-Stalinist reaction. But for the others I'm not sure.
+
+I can't say I feel super convinced by Zubok's main thesis: at the point at which Gorbachev takes over, things seem really messed up, and messed up in ways that seem a direct consequence of the command economy and being overly reliant on oil exports. The counterfactual Zubok has in mind is never perfectly clear, but is maybe China: you liberalize the economy a lot, liberalize the political system only a smidge, and keep going forward. Maybe the Soviet Union would still be around then. It's possible!
+
+The other thing that stands out, which gets a lot of pages in Philip Short's *Putin* biography, is resentment at the role of the US in the collapse. It almost feels like those moments in soccer where one team's player is injured but no foul is called -- either it went unseen or there was no foul. Most times, the other team will kick the ball out of bounds to let the injured player off the field in a symbol of good faith and good sportsmanship, rather than press their advantage. That's what it looks like to me: the US and Soviet Union are competing, the Soviet Union takes a very hard fall, and the US, rather than help it get back up, presses forward. Yes, it would have been nice for the US to help the USSR back up; but would the USSR have done any differently if the shoe were on the other foot?

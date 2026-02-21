@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Model Policing Precinct in Guatemala"
 subtitle: "Endline data collection for a community policing project in Guatemala aimed at improving police-citizen relations, increasing inter-police collaboration, and reducing crime."
 date: "2019-04-27"

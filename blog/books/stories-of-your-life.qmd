@@ -1,0 +1,17 @@
+---
+title: "Stories of Your Life and Others"
+date: "2024-06-05"
+author: "Juan Tellez"
+categories:
+  - books
+  - sci-fi
+  - fiction
+---
+
+*Stories of Your Life and Others* is a collection of short stories by Ted Chiang. Chiang's move is to take what are often obtuse academic concepts and humanize them, give them stakes, and build characters who interact in worlds where these concepts have weight. That's more or less what he does in each of these stories, drawing on the Bible in "Tower of Babylon," linguistics in "Story of Your Life," math in "Division by Zero," and so on.
+
+For my money, the standout in the bunch is "Tower of Babylon." Chiang focuses on the routine, daily mechanics of building the tower: what material to use, how workers make the climb, how people live on the tower. The engineering focus gives the story a realism that produces a clever and pleasing sort of dramatic irony where, as you read, you expect that the builders will discover what you already know -- that there is no "vault of heaven," but rather outer space. This makes the moment when they reach the vault of heaven very effective and opens the narrative up. That the builders never give a positive account of *why* they are building the tower is interesting, especially once the vault is reached and you learn that piercing it could trigger world-ending flooding. The question is never "should we do this?" but rather the mechanics of minimizing the potential damage. Obvious parallels there to real-world science: the atom bomb, the hadron collider, and so on.
+
+The second-best story is the one that the book is named after. "Story of Your Life" is impressive in sketching out what it would feel like to interact with a non-human language, one that still conformed to some kind of structure. There's a kind of "pleasure of mastery" as the narrator slowly develops the ability to communicate with the Heptapods. Unfortunately, the story ends up suffering from what I'll call "Interstellar Syndrome," named after the sci-fi movie by Christopher Nolan. Nolan's movie begins with "hard science" and ends up in the world of "woo" after the main character falls into a black hole and discovers the universe is powered by Love. This short story similarly made me squirm with the time-traveling bit revealed at the end.
+
+The other stories are not very good.

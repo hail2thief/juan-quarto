@@ -1,0 +1,22 @@
+---
+title: "Electoral Violence, Corruption and Order"
+date: "2024-06-05"
+author: "Juan Tellez"
+categories:
+  - books
+  - violence
+  - elections
+  - democracy
+---
+
+It's worth mentioning here that when I score these books it is about my enjoyment, not about how objectively good or bad the book is. I gave Paxton's *Vichy France* a 2/5 and it's a classic work of history.
+
+This book has all the markers of political science books today that I don't like. It is short and full of overviews and summaries. The introduction summarizes the whole book, including what each subsequent chapter does. Each chapter begins with a summary of itself and ends with a summary. It makes the book feel as though there is not much content, which is a shame given how much Birch clearly knows about the subject.
+
+Birch's core argument is that electoral violence is primarily driven by state actors, and that it is one tool among many that political actors can use to sway elections (vote buying, patronage, ballot stuffing, changing electoral rules, etc.). In Birch's formulation, violence is in some sense a "weapon of the weak," as a stronger ruler would rely on these other tactics to reduce the uncertainty that elections generate.
+
+A move I keep seeing come up in books about authoritarian politics is the idea that in these systems, leaders cannot guarantee their survival post-tenure, so they face strong incentives to hold on at all costs. The idea seems OK, but maybe exaggerated. There are scenarios in which Putin's exit from power means he has to flee abroad. But it's also easy to imagine he could one day retire from power.
+
+Birch takes a broad view of electoral violence, but it seems to me that electoral violence driven by non-state armed actors and that driven by state or other political actors is pretty different. The Taliban might blow up a voting booth to disrupt the election, sending a message about how incapable the state is to govern. They might then target more visible voting booths and be indifferent about the actual target. An incumbent, on the other hand, might use violence to push the election in a particular direction. They might think more carefully about who to target (e.g., opposition leaders). This has implications for her final chapter on the prevention of electoral violence. If incumbents are using violence, one might try to empower the judicial branch to hold leaders accountable. But this would be irrelevant for stopping insurgent violence.
+
+One small point that bothered me is the question of whether electoral violence is a complement or substitute for other forms of electoral manipulation. Birch says that empirically we often observe both so they must be complements. But this seems too quick of a conclusion to me; it's easy to imagine that, in the counterfactual where incumbents don't use electoral violence, they might end up using other forms of manipulation more, and vice versa.

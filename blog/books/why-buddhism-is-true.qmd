@@ -1,0 +1,23 @@
+---
+title: "Why Buddhism Is True"
+date: "2024-06-05"
+author: "Juan Tellez"
+categories:
+  - books
+  - philosophy
+  - religion
+---
+
+The point of this book is to provide scientific grounding to the ideas that animate Buddhism. The chapters roughly alternate between ones where the author recounts his experiences with meditation, silent retreats, and Buddhism, and chapters that deal with research in psychology or evolutionary biology that seem to support those experiences.
+
+For instance, Buddhists might say human suffering is the result of desire being fundamentally insatiable, or of an over-identification with a false self. The author then follows up with some just-so story about how evolution selected for survival traits that keep us desiring, or psychological studies about the instability of identity.
+
+But why is this worth doing? At parts it felt like the book was aimed at an audience that was Buddhism-curious but squeamish about the idea it is a religion (at least how most Buddhists practice it). The book gives this audience permission to be curious by reminding the reader that, in this house, Science is Real and it says secular Buddhism is OK.
+
+Except the Buddhism that most people in the West are exposed to is so secularized that there's really not much to be squeamish about — very little metaphysical content. It is mostly philosophy and introspection: if you think about "you" over the years, or "you" right now, who's to say that you are this stable, identifiable thing? I don't think I need a psychology experiment to make that feel plausible.
+
+That being said, I did find many of his claims reasonable, and independently of the book have found it interesting that counseling approaches in particular seem to take on Buddhist ideas. He doesn't talk about psychoanalysis at all, but Lacanian psychoanalysis especially (see *The Lacanian Subject*) seems to adopt many Buddhist viewpoints, including the denial of a stable "self" and the suffering that attachment causes.
+
+The book brings up something that I have always found funny about evolutionary psychology. As far as I can tell, it is a mostly theoretical discipline — there is no way to empirically test whether the reason we are afraid of the dark is that our ancestors feared predators. Now, there are plenty of empirical facts to support the idea, and it sounds plausible. But it is not "falsifiable" science since the theory can always change to fit the facts; these are just-so stories. So for instance, maybe we look down on gossipers because natural selection selected towards seeing that as a trait that brings disunity, etc. But it's easy to imagine a world (or actual contexts, in our world) where being a gossiper is a positive trait because of what it implies about that person's access to information. There's no way to really test whether nature selected for these traits. What's funny about this is that this is the same critique made of psychoanalysis, and probably by evolutionary psych people, who see themselves as doing science and the psychoanalysts as doing something else (something worse).
+
+Anyway, too long, and I would have rather heard more about his experiences meditating and with silent retreats.

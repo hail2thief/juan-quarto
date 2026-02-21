@@ -14,6 +14,17 @@ quarto preview         # Local development server with live reload
 quarto publish netlify # Deploy to Netlify
 ```
 
+## Directory Structure
+
+- `blog/` — Blog posts (policy briefs, technical posts, yearly content roundups)
+- `courses/grad/` and `courses/undergrad/` — Course pages used by the teaching listing
+- `files/` — Downloadable files (CV, etc.)
+- `html/` — Custom SCSS styling
+- `images/` — Site images
+- `_extensions/` — Quarto extensions (Font Awesome)
+- `_freeze/` — Cached R execution output (committed to repo)
+- `_site/` — Generated static HTML (not committed)
+
 ## Architecture
 
 ### Data-Driven Content
@@ -23,6 +34,10 @@ quarto publish netlify # Deploy to Netlify
 ### Frozen Execution
 - `execute: freeze: true` in `_quarto.yml` caches R code output
 - Change `#| cache.extra:` value in R chunks to force re-execution
+
+### Blog
+- `blog.qmd` is the listing page; individual posts live in `blog/*.qmd`
+- Posts include policy briefs, technical tutorials, and yearly content roundups
 
 ### Course Listings
 - Teaching page uses Quarto listings to auto-generate course cards from `courses/grad/*.qmd` and `courses/undergrad/*.qmd`
@@ -36,6 +51,11 @@ quarto publish netlify # Deploy to Netlify
 - Font Awesome icons via `_extensions/quarto-ext/fontawesome/`
 - Use shortcodes like `{{< fa brands github >}}`
 
+## R Dependencies
+
+- `googlesheets4` — Pulls publication data from Google Sheets for `research.qmd`
+- A bibliography file is referenced from an external path (`master.bib`); it is not in this repo
+
 ## Key Files
 
 - `_quarto.yml` - Main Quarto configuration
@@ -43,8 +63,8 @@ quarto publish netlify # Deploy to Netlify
 - `html/custom.scss` - All custom styling
 - `chicago-fullnote-bibliography.csl` - Citation format
 
-## Build Artifacts (not committed)
+## Build Artifacts
 
-- `_site/` - Generated static HTML
-- `_freeze/` - Execution cache
-- `.quarto/` - Quarto metadata
+- `_site/` — Generated static HTML (gitignored)
+- `.quarto/` — Quarto metadata (gitignored)
+- `_freeze/` — Execution cache (committed to repo so builds don't require re-running R)

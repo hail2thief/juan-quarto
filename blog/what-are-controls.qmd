@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "What do controls do?"
 date: "2026-01-01"
 author: "Juan Tellez"
@@ -111,7 +112,7 @@ dagify(
   theme_dag(legend.position = "none")
 ```
 
-But what does it mean to "control" for Z? What are trying to do, exactly?
+But what does it mean to "control" for Z? What are we trying to do, exactly?
 
 
 Some textbooks discuss controlling in terms of comparisons. Here's Gelman in *Regression and other stories*:
@@ -132,7 +133,7 @@ But how is regression *doing this*? What about the regression makes this compari
 Here is one way of thinking about this that clarified regression *controls* for me and their limitations. 
 
 
-# Example: ideology and campaign finance
+## Example: ideology and campaign finance
 
 
 Say we're looking at Adam Bonica's data on campaign finance, from my `{juanr}` package. Each row is a political candidate:
@@ -215,6 +216,97 @@ We see that within each party, the relationship between ideology and fundraising
 So how do we get from these three estimates to one overall estimate that *controls for party*, as in the model at the top of the page?
 
 
-The answer is that regression is doing a kind of weighted average of these estimates, where the weights depend on how many observations there are in each party and how much variation in ideology there is within each party.
+The answer is that regression is doing a kind of weighted average of these within-group estimates. But it's not a simple average — the weights depend on specific features of each group.
+
+
+## The weighting formula
+
+
+When we estimate `lm(Y ~ X + Z)` where $Z$ is categorical, the coefficient on $X$ is a weighted average of the within-group slopes:
+
+$$
+\hat{\beta}_{\text{pooled}} = \frac{\sum_{g=1}^{G} w_g \cdot \hat{\beta}_g}{\sum_{g=1}^{G} w_g}
+$$
+
+where $\hat{\beta}_g$ is the slope of $X$ on $Y$ estimated within group $g$, and the weight $w_g$ is:
+
+$$
+w_g = (n_g - 1) \cdot \text{Var}_g(X)
+$$
+
+That is, the weight for each group reflects two things:
+
+1. **Group size**: groups with more observations contribute more squared deviations, so they get more weight. This makes sense — we have more information about the relationship in larger groups.
+2. **Within-group variance of $X$**: groups where the treatment variable $X$ varies more get more weight. This also makes sense — if everyone in a group has the same value of $X$, we can't learn anything about the effect of $X$ from that group.
+
+This is an important result. It tells us that when we "control for $Z$", we are not giving equal voice to every level of $Z$. We are letting the levels of $Z$ that have more data and more variation in $X$ drive the overall estimate.
+
+
+## Checking this with the Bonica data
+
+
+Let's verify this with our running example. First, we compute the within-party slopes, group sizes, and variances of ideology:
+
+
+```{r, echo = TRUE}
+# drop rows with missing ideology or receipts (same as lm does internally)
+bonica_complete <- bonica |>
+  filter(!is.na(dwnom1), !is.na(total_receipts))
+
+# within-party estimates, sample sizes, and variance of X
+strat <- bonica_complete |>
+  group_by(party) |>
+  summarise(
+    beta_g = coef(lm(total_receipts ~ dwnom1))["dwnom1"],
+    n_g = n(),
+    var_g = var(dwnom1)
+  ) |>
+  mutate(
+    weight = (n_g - 1) * var_g
+  )
+
+strat |>
+  my_kbl(caption = "Within-party estimates and weights")
+```
+
+Now we can compute the weighted average and compare it to the OLS estimate:
+
+
+```{r, echo = TRUE}
+# weighted average of within-party slopes
+beta_weighted <- with(strat, sum(weight * beta_g) / sum(weight))
+
+# OLS with party control
+beta_ols <- coef(lm(total_receipts ~ dwnom1 + party, data = bonica_complete))["dwnom1"]
+
+tibble(
+  `Weighted average` = beta_weighted,
+  `OLS with controls` = beta_ols
+) |>
+  my_kbl(caption = "Stratified weighted average vs. OLS coefficient")
+```
+
+
+The two estimates are the same.^[There can be minor numerical differences due to floating point arithmetic, but they are substantively identical.] This confirms that "controlling for party" in OLS is equivalent to: (1) estimating the ideology-fundraising relationship separately within each party, and (2) taking a weighted average of those estimates, where groups with more observations and more ideological variation get more influence.
+
+
+Look back at the weights in the table above. This tells us which parties are driving the overall estimate. If one party has far more candidates and more spread in ideology, its within-party slope will dominate the controlled estimate.
+
+
+## What this tells us about controls
+
+
+This decomposition clarifies a few things about what controls do and don't do:
+
+
+1. **Controls are about within-group comparisons.** When we control for $Z$, we are comparing units that share the same value of $Z$. The regression coefficient is a summary of these within-group relationships.
+
+2. **The summary is not a simple average.** Groups with more data and more variation in $X$ contribute more. This means the controlled estimate might be driven by a subset of the data that you didn't intend to emphasize.
+
+3. **With categorical controls, the logic is transparent.** We can literally split the data, estimate within each group, and see how the pieces combine. This is a good exercise to build intuition.
+
+4. **With continuous controls, we're trusting linearity.** When $Z$ is continuous, we can't literally stratify — there are too many unique values of $Z$. Instead, regression assumes the relationship between $Z$ and $Y$ is linear, and "controls for $Z$" by removing a linear function of $Z$ from both $X$ and $Y$.^[This is the Frisch-Waugh-Lovell theorem: the coefficient on $X$ in `lm(Y ~ X + Z)` is the same as the coefficient from regressing the residuals of $Y \sim Z$ on the residuals of $X \sim Z$.] This is a stronger assumption than the categorical case, where we make no assumptions about the shape of the $Z$-$Y$ relationship within each group.
+
+If the true relationship between $Z$ and $Y$ is nonlinear, a linear control for $Z$ may not fully remove the confounding. This is one reason why researchers sometimes use flexible controls (polynomials, splines, or fixed effects for binned continuous variables) — they're trying to get closer to the stratification ideal.
 
 

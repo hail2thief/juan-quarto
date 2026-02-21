@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Guatemala Smart and Secure Cities"
 subtitle: "Scoping activity for impact evaluation of the USAID Guatemala Smart and Secure Cities program."
 date: "2024-05-03"

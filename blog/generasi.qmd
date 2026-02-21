@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "GENERASI in Indonesia"
 subtitle: "Impact evaluation of a massive community-driven development project in Indonesia bearing on improving health and education outcomes among mothers and young children."
 date: "2016-04-27"

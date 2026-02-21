@@ -1,0 +1,16 @@
+---
+title: "Mutual Aid: A Factor of Evolution"
+date: "2024-02-29"
+author: "Juan Tellez"
+categories:
+  - books
+  - philosophy
+---
+
+Kropotkin's *Mutual Aid* was a surprising read. I was vaguely aware of him, knew he was an anarchist, knew he was writing in the late 1800s, and so was expecting this dense, militant, Marxist writing. But you open it and a dozen pages in are reading about the burrowing habits of squirrels. Fun read!
+
+Kropotkin wants to stake out a middle position between, on the one hand, social Darwinists who (Kropotkin would argue: misreading Darwin) see life as fundamentally structured by conflict, a war of all against all, the Hobbes bit about life being "nasty, brutish, and short." On the other hand is Rousseau, who holds these more Romantic views about human nature -- that in the pre-society state of nature, people are fundamentally good, good-natured, etc. -- that percolates among some left thinkers. He says both of these positions are basically wrong. Kropotkin argues that species have, in fact, evolved in ways that reflect a "survival of the fittest," but what makes animals fit, and especially the most intelligent animals, is their capacity to cooperate and engage in what he calls "mutual aid." Animals (and people) mostly go out of their way to avoid conflict.
+
+The book's first few chapters are full of really nice, clean, convincing examples of this idea with respect to the animal world. Where things get hairier (and less clear) is when he enters the human world, beginning with "primitive" cultures and then moving on to medieval cities and finally industrial societies. He seems really fixated on the medieval city as the sort of climax of human cooperation, with guilds, organizations, communal ownership, etc. In his telling, things were basically great at that point but somehow (this part is unclear) States emerge, dominate cities, and deliberately try to extinguish mutual aid behaviors. Why the State is able to do this, why they "want" to do it -- it's not super clear. But I did leave tentatively convinced that medieval cities had some good stuff going for them.
+
+Something that's interesting about *Mutual Aid* is that the central premise -- that humans evolutionarily prefer and benefit from mutual aid -- doesn't necessarily point to a particular political ideology. You could imagine a communist or anarchist reading this and nodding their head. But I could also see a Hayek-flavored free market libertarian, who sees market exchange everywhere (not just in the obvious places), looking at this and saying, "yeah, he's just describing markets." Kropotkin clearly hates the State; he sees it as stifling mutual aid and cooperation, which is why he's an anarchist. But I'm not exactly sure why.

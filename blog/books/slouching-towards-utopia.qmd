@@ -1,0 +1,15 @@
+---
+title: "Slouching Towards Utopia"
+date: "2024-06-05"
+author: "Juan Tellez"
+categories:
+  - books
+  - history
+  - economics
+---
+
+*Slouching Towards Utopia* is (in the words of the author) a grand narrative about the economic history of the global north from roughly 1870 to 2010. The book is surprisingly rosy and makes a simple point that often gets lost in debates about economic progress: the quality of life in the world has improved dramatically over this period, although much more in some areas than others. The emphasis, however, is on the improvement, and the technological and political factors that contributed to this dramatic growth in productivity and standards of living.
+
+On the technology side, there are a lot of interesting details about things I had never thought about, such as shipping containers or microprocessors. On the political side, DeLong is a self-avowed neoliberal: he thinks the market is responsible for all of this growth, but that it alone will not produce socially good outcomes; the market must be tamed and guided. I think he does a convincing job of threading this needle. The writing is also engaging and lively.
+
+Where it falls short is that it engages with macroeconomic theory in this loose way that leaves a lot (too much) unexplained. The book also gets lost through long portions that don't feel much at all like economic history; there's this truly bizarre chapter that goes on and on about the military errors Hitler made during World War II.

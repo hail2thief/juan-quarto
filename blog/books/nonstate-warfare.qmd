@@ -1,0 +1,17 @@
+---
+title: "Nonstate Warfare"
+date: "2024-09-04"
+author: "Juan Tellez"
+categories:
+  - books
+  - war
+  - theory
+---
+
+In *Nonstate Warfare*, Biddle wants to blow up the assumption that state and non-state armed groups -- because of baseline differences in strength -- fight in fundamentally different ways, with the former using conventional weapons and tactics and the latter using irregular, guerrilla tactics. He argues instead for thinking about armed actors (non-state *and* state) as falling along a *Fabian-Napoleonic* continuum.
+
+The two poles of this continuum correspond to the classic distinction between conventional (Napoleonic) and guerrilla styles of warfare (the Fabian strategy, named for the Roman dictator Quintus Fabius Maximus Verrucosus). Biddle's first innovation is to argue for a *continuum* as opposed to distinct types: all groups live along the continuum, none perfectly at one pole or the other. The second is to argue that the style of warfare is not totally a function of actor type: states can use Fabian strategies, and rebels can rely on Napoleonic ones. The examples Biddle provides of states relying on Fabian strategies are interesting and convincing, especially those from WW2 -- Soviet reliance on irregular partisans, German / Allied use of coercive bombing, etc.
+
+The final contribution is to present a theory to predict where actors land on this continuum, based on the internal political makeup of the actor -- their internal institutions and stakes in fighting. This part feels less interesting and less convincing. Less interesting because in the process his theory ends up generating predictions that are not so different from the conventional wisdom: that rebels use guerrilla tactics, and states mostly use conventional tactics, because of differences in relative strength. The upshot is (if Biddle is right) we now have a clearer sense of why relative strength varies, but it's not super different. Less convincing because the theory starts to feel a little overdetermined, generating too many buckets for groups to fall into.
+
+As a last note, Biddle is clearly very smart and a great writer. You can tell he can nerd out about military tech and strategy. But the format of academic books is so dry, formulaic -- here's my DV, here are my IVs, here's the scope condition -- boring. This book would be so much better as a popular press book (which unfortunately are not taken as seriously).

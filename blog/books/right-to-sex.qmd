@@ -1,0 +1,42 @@
+---
+title: "The Right to Sex"
+date: "2024-04-03"
+author: "Juan Tellez"
+categories:
+  - books
+  - philosophy
+---
+
+*The Right to Sex* is a series of essays on some of the big, contemporary debates among feminists concerning consent, pornography, power, the use of the state to redress injustice, etc.
+
+The standout essay is the titular "Right to Sex," which nicely sets up a spicy philosophical problem. When we think about the complaints raised by MRAs, incels, Elliot Rodger types, etc., about how they are systematically excluded from sex by women, do we feel sympathy for them? Do they have a right to or are they owed sex? Obviously no. But then the author says: what about people who are disabled, trans, non-white, etc., who *also* bemoan exclusion and discrimination in their respective dating scenes? Do we feel sympathy for them? Yes. But are *they* owed sex, or do they have a right to it?
+
+The author sets up the problem pretty frankly: some people are undesired, or desired less, because of who they are. Some of this seems more "neutral" (i.e., all people can be more or less beautiful or alluring, and some are less) and some of this seems "exclusionary" (i.e., rejection based on race, body type, etc.). But are the two really so different? And what can we do about it? Can people change what they desire as a way to be more equitable? Or is what they desire something pre-political, and therefore fine? This is a question that divides some feminists. As the author sets it up:
+
+> This is not to say that we can just change at will the sort of sexed bodies we are attracted to. Neither is it to deny that for some women (including some trans women) the penis might be a symbol of male power and violence such that it cannot be, for them, a viable object of desire. The crucial question, in a sense, is whether a sexual aversion to women with penises is best explained by an unjustified transphobia, or a justified wariness of men.
+
+The author seems to land on "yes, we can change our desire." But she also refuses to say that this requires a kind of discipline:
+
+> There is a kind of discipline here, in that it requires us to quiet the voices that have spoken to us since birth, the voices that tell us which bodies and ways of being in the world are worthy and which are unworthy. What is disciplined here isn't desire itself, but the political forces that presume to instruct it…Is there no difference between "telling people to change their desires" and asking ourselves what we want, why we want it, and what it is we want to want? Must the transformation of desire be a disciplinary project (willfully altering our desires in line with our politics) or can it be an emancipatory one (setting our desires free from politics)?
+
+To me, this feels like wanting to have your cake and eat it too. She could say: no, we can't and shouldn't try to coerce our desire and therefore, whatever inequities emerge in the sexual marketplace, they are morally neutral or, at least, we shouldn't fret about them so much. Or: yes, we can and should change our desire even if this means disciplining or coercing the will in that particular direction.
+
+This is a problem I see throughout the other essays, which are much weaker in my opinion. The first essay deals with the question of the rights of the accused in the context of sexual assault accusations, MeToo, etc. She argues "believe women" is a corrective against a legal standard that protects the rights of the accused in a way that ends up protecting abusers, but refuses to grant that shifting that threshold of guilt would result in more false positives:
+
+> The presumption of innocence is a legal principle: it answers to our sense that it is worse, all else being equal, for the law to wrongly punish than to wrongly exonerate. It is for this reason that in most legal systems the burden of proof rests with the accuser, not the accused. "Believe women" is not an injunction to abandon this legal principle, at least in most cases, but a political response to what we suspect will be its uneven application. Under the law, people accused of crimes are presumed innocent, but some—we know—are presumed more innocent than others. Against this prejudicial enforcement of the presumption of innocence, "Believe women" operates as a corrective norm, a gesture of support for those people women whom the law tends to treat as if they were lying.
+
+Again, I just don't see how you get around the fact that changing standards of evidence will change the number of false positives and false negatives in our legal and moral evaluations of culpability.
+
+She does it again with the question of pornography, which she rejects as a question of freedom of speech:
+
+> The very fact that judges, lawyers, and philosophers insist on treating porn as a question of free speech as a question of what porn says rather than what it does betrays their implicitly male perspective, their failure to see porn as many women see it.
+
+Regardless of whether or not you think it's speech, creating constraints on the production of pornography (something that is hard to define) will, probably by definition, have implications for the kinds of production that feminists like the author might think are OK (e.g., erotic fiction). Again, I think it's totally fine to say "yeah, and I'm willing to take that tradeoff, because pornography is bad." But she just refuses to accept that there are tradeoffs, which feels disappointing for a philosopher.
+
+Beyond these gripes, I thought the descriptions of some of the feminist debates from the 1970s and 1980s around sex and pornography were very interesting and the details new to me. I wish there was less description and more argument, especially since some of the famous cases discussed in the book (e.g., Weinstein, Brock Turner, etc.) are pretty well known.
+
+Last thing: what is interesting (and frustrating) about these debates is how little there is in the way of a common underlying principle for deciding which arguments are more or less persuasive. One feminist might say pornography is exploitative and demeaning, while another says that, actually, it is liberatory, or that placing any kind of prohibition on sex is a prudish impulse. For instance:
+
+> there may be salutary possibilities in sexual objectification. Jennifer Nash argues that feminists like Alice Walker and Patricia Hill Collins have been too quick to condemn mainstream porn featuring black women for its contribution to black women's racial and sexual subordination. For, Nash says, such depictions can "represent blackness as a locus of pleasure and sexual arousal"…
+
+Who's to say who is right or wrong here? What is at stake? Is this totally about preferences and opinions?

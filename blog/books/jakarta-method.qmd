@@ -1,0 +1,27 @@
+---
+title: "The Jakarta Method"
+date: "2024-06-05"
+author: "Juan Tellez"
+categories:
+  - books
+  - history
+  - indonesia
+---
+
+It takes a long time for this book to get off the ground, probably 50--60% of the way in before I started hitting content that felt new. This is a shame because the book is pretty short. Bevins is looking at anticommunist campaigns globally, which means he moves very quickly over (at this point) well-known cases. In the introduction, he foreshadows an incredible "coincidence" in the anticommunist campaigns he covered in his reporting. As he moved across instances of US covert action in the Third World, I wondered: is the "coincidence" that the US was doing this in all these places at once? Or that what they did in one place, they tried or did in another? That seems pretty obvious!
+
+The coincidence turns out to be something narrower, less obvious: that the anticommunist campaign in Indonesia was "ground zero" for the tactics that would be deployed in other contexts. Brazilian leftists in the 1960s might find "Jakarta is coming" spray-painted in their neighborhoods, and some of the cast of spooks in Indonesia also show up in Guatemala and Brazil. The details and scale of the extermination of the Indonesian left were entirely new to me. I'm on the market now for a history of this period.
+
+Fort Leavenworth also stood out as an understudied site of anticommunist training. The School of the Americas is infamous, but I'd honestly never heard of Leavenworth outside of my family. And here, an interesting and disturbing personal connection: my grandfather (whom I didn't know) was in the Colombian military and spent some years at Leavenworth in some kind of program. This is *why* my father was randomly born in the US (in those years they were living in Kansas), which in turn is *why* we were able to fairly easily acquire US citizenship after migrating in the 1990s. I always joked my grandfather came to the US to learn how to torture communists, but maybe he actually did.
+
+Another thing I found interesting was anticommunism as an ideology, especially in South America. Most people have some vague sense that many Latin American militaries had a strong anticommunist culture, and there are a few non-military groups that are well-known (Mano Blanca in Guatemala), but otherwise it's perceived as this external, Cold War-contingent thing. What one sees in the book, however, is that even as the Cold War is winding down and the US doesn't care as much, there are still some who are obsessed with the idea of purging the society of communists. Bolsonaro is the most famous example, but there are others.
+
+At the same time, Bevins does have some "tics" of left-wing analysis of IR and foreign policy that I find annoying. First, the insistence that anticommunists were primarily driven by paranoia, that the true communist "threat" was extremely exaggerated or wouldn't have materialized in the absence of repression. Second, the insistence that, yes, there were openly communist and socialist movements, parties, and candidates, but actually these were social democratic and not revolutionary, or rather that they were interested only in national liberation. And third, that revolutionary communism and socialism was an obvious or naturally appealing ideology to people in the Third World.
+
+To me, these claims are in tension (if communism was a naturally appealing ideology, then it stands to reason it would be threatening to the US during this time) and also fundamentally don't deal with the fact that knowledge at the time was only partial. As Bevins notes, Indonesia at its peak had the largest communist party in the world outside of the communist regimes, with a staggering two million members. Bevins might claim that a correct reading of their program would tell you that the US should not have been concerned about a revolutionary Indonesia, but one can also understand why that wouldn't be convincing to national security people in Washington.
+
+What leftists like Bevins want to do here, understandably, is appeal to liberals who are critical of these anticommunist campaigns but are also squeamish about communism. This leads them to either want to "disarm" the Cold War, by treating it as either all a big misunderstanding -- the anticommunist crusade either targeted "innocents" exclusively or leftists who were not revolutionary but incrementalists -- or a ruse to advance the economic interests of elites (i.e., United Fruit Company).
+
+But the Cold War is more complicated than that. As Bevins acknowledges, the US carried out shockingly radical levels of land reform via expropriation in some countries. And they tolerated (had to) open left-wing movements in Europe to a greater degree than in the Third World. I also think it seems hard to believe there would not have been more Soviet or communist-aligned regimes in the world had these brutal anticommunist campaigns not happened. I'm (hopefully obviously) not saying the anticommunist campaigns were good, right, or worth doing. More that the History 101 view of the Cold War as a battle between communist and capitalist ideologies is not entirely wrong, and it's something you have to grapple with in reading about this period.
+
+Overall, a worthwhile read with lots of little insights that can spin off into further reading or research ideas.

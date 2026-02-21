@@ -1,0 +1,21 @@
+---
+title: "Museveni's Uganda: Paradoxes of Power in a Hybrid Regime"
+date: "2024-06-05"
+author: "Juan Tellez"
+categories:
+  - books
+  - uganda
+  - democracy
+---
+
+The best part of my job is that I get paid to learn about the world. Two months ago, the most I could have told you about Uganda was how it was spelled. But I was pulled onto a project, mostly as a methodologist, located in the north of Uganda, and so now I need to know more than I did before. This book has been part of the effort to correct my ignorance.
+
+Tripp more or less sees the hybrid nature (semi-democratic, electoral autocracy, all synonyms as far as I can tell) of the Ugandan regime as the core of the country's politics. In her view, hybrid regimes suffer from contradictions not present (to the same extent) in full democracies or autocracies. Leaders of hybrid regimes must allow some basic level of civil rights and political competition while at the same time containing them so that they do not meaningfully alter their hold on power. A core problem is that there is no neat and easy way for leaders to cycle out of office in these systems. Leaders must use patronage and violence to remain in power, which: a) makes many enemies in the process, and b) means exiting power is a dangerous proposition. Tripp illustrates these ideas by focusing on Museveni, who has ruled Uganda since the 1980s, when his rebel movement took power by force.
+
+There are many interesting insights in this book about Ugandan politics and leadership in hybrid regimes more generally. For one, Tripp identifies a common pattern in these regimes, in which leaders come into office promising reform but quickly fall back on old forms of rule. This was true of Uganda's last three major rulers (Museveni, Amin, Obote) who came to power explicitly identifying sectarianism as Uganda's central ill, of which Uganda has several: a north-south divide, a Protestant-Catholic divide, the pre-Ugandan kingdoms, as well as ethnic categories. Yet once in power they end up organizing systems of ethnic patronage that favor their "home" communities. Tripp would argue this tendency is structural: without institutions to exit power peacefully, leaders must anxiously surround themselves with those who seem likely to be loyal.
+
+Another is Uganda's switch from a "no-party" system, in which Museveni's NRM movement (also called "the movement") was seen as indistinguishable from the state, to a multi-party system in the early 2000s. This reform seems at least partially instigated by international donor pressure, who seem to play a "questionable" role in Ugandan national politics.
+
+A final one is Uganda's remarkable number of active conflicts and an enormous IDP and refugee population in the north. Tripp enumerates 12 distinct episodes since 1986 (note: her book was published in 2010). There are aggrieved ethnic groups in many parts of the country, but the north is especially plagued by instability, where the infamous Joseph Kony-led Lord's Resistance Army operated. As is always the case, reading about the LRA in this book made me realize they were much more "political" than typically depicted in media. Their organizing mission appears to be the representation of the Acholi ethnic group in the north, even if they behave in ways that seem contradictory to those political beliefs (e.g., by targeting members of this group). The cross-border dynamics are also fascinating, both Ugandan incursions into the DRC for what seems like unabashed pillaging of natural resources, as well as the proxy war with Sudan to their north.
+
+This is an academic text, for sure, but comes out ahead of its competitors by leaning on theory and storytelling relative to hammering at simple causal claims with an abundance of data (something I enjoy, but in article format).

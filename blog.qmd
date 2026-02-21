@@ -1,12 +1,39 @@
 ---
 title: "Blog"
-subtitle: "Syllabi and websites for my courses"
 listing:
-  contents: blog
-  sort: "date desc"
+  - id: year-in-content
+    contents: "blog/content_*.qmd"
+    sort: "date desc"
+    type: grid
+    grid-columns: 3
+  - id: posts
+    contents:
+      - "blog/*.qmd"
+      - "!blog/content_*.qmd"
+    sort: "date desc"
+    categories: true
+  - id: books
+    contents: "blog/books/*.qmd"
+    sort: "date desc"
+    categories: true
 page-layout: full
 title-block-banner: false
 format:
   html:
     anchor-sections: false
 ---
+
+## Year in Content
+
+:::{#year-in-content}
+:::
+
+## Posts
+
+:::{#posts}
+:::
+
+## Book Reviews
+
+:::{#books}
+:::

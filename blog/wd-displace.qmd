@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Synthesis report on forced displacement and social cohesion"
 subtitle: "Report synthesizes findings from a joint series of 26 working papers on forced displacement and social cohesion."
 date: "2023-01-20"

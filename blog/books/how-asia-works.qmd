@@ -1,0 +1,25 @@
+---
+title: "How Asia Works"
+date: "2024-06-05"
+author: "Juan Tellez"
+categories:
+  - books
+  - economics
+  - development
+---
+
+*How Asia Works* argues that the reason some Asian economies succeeded (the so-called "tiger" economies, e.g., Japan, Taiwan, South Korea) and others failed (e.g., the Philippines, Myanmar) comes down to industrial policy: some states aggressively pointed their economies in the direction of development while others did not.
+
+The book is provocative and interesting to read in light of all that is going on with Trump and his tariffs. Studwell is arguing principally against the neoclassical economic take that state intervention in the economy is bad and that free trade is fundamentally good; in Studwell's view, free trade is a position that advantages already-rich countries to the detriment of poorer ones, and that if one looks at the history of how rich countries developed, one would see that they did so squarely through heavy state intervention in the economy, via land reform and protectionist policies that sheltered domestic manufacturing, allowing firms to grow and become globally competitive. He uses Asia to test these ideas.
+
+This summary makes Studwell sound like a conventional left-wing economist, but his ideas are actually a lot more heterodox and interesting. Early in a country's development, he advocates for land reform, and particularly land redistribution -- away from feudal estates and towards smaller landholdings -- but on the grounds that these small farms are in fact more competitive, more "capitalist" in some sense, than the big farms where landowners can grow fat off rents.
+
+The history in this chapter is fascinating. I had: a) no idea of the substantial level of land reform and redistribution that some Asian countries took on, but even more surprising: b) the degree to which the US encouraged these reforms both as development measures in their own right (in Japan, Korea, Taiwan) and as counterinsurgency tools to demobilize rural unrest. In Taiwan and Korea in particular it seems the US actively pushed for breaking up big farms, which is shocking.
+
+He is also heterodox with respect to protectionist policies once states are at the development stage where manufacturing is plausible. States need to protect their domestic industries through tariffs and subsidies, but must maintain "export discipline": that is, the protected industries must be forced to compete in the global marketplace. Absent being forced, domestic industries will happily absorb the subsidies and do little that will generate wider development. So in some sense, a pretty dangerous tool: there needs to be the willpower to push companies to compete globally even when it's not in their interest (given protections). The narrative here is also interesting, especially Korea's impressive development of car and steel manufacturing so "late" in their history. One feels that if Korea can do it, why not, say, Brazil?
+
+Something striking about the policies that Studwell proposes is that, broadly, they are probably 1) quite painful to implement and 2) unlikely to easily generate a coalition of people whose interest is in maintaining them. As economists will note, the costs of tariffs and other protections are borne by consumers. We are currently screaming about 6-7% interest rates; Studwell points to something like a decade of 10-15% interest rates in Korea. Could people really tolerate that? In the pursuit of some long-term goal? With respect to (2), you can't help but notice that the people pushing painful development through in South Korea, China, and Taiwan are dictators. Can democracies do this? The rich democracies certainly did, so maybe there's hope.
+
+Overall, the history of state intervention in the economy is interesting in that for most of the time period discussed it actually seems to intersect little with the traditional left-right spectrum or the Cold War. Today these ideas are totally "polarized": if you're on the right you oppose intervention, on the left support it, and what's at stake is some trade-off between efficiency and equity. But for these early leaders, these were simply tools that they could choose to use (or not). Which makes sense: for most of history, the idea that a country's leaders would "not meddle" in their country's economic activity was implausible. The question was not if, but how.
+
+I do have to say I found Studwell kind of grating at times. There's a ton of "telling" in this book but not a lot of showing; huge, vast claims are made about why something happened or what effect X has on Y. Claims about the size of farms, how wealthy or poor people were at some particular time and place, etc., are rattled off, but it's unclear how Studwell can really "know" any of this. In fact, he reminds me a lot of Noah Smith, who also has an unpleasant tendency to over-claim expertise and to tell these grand narrative-type stories that are nice and neat but seem implausibly overconfident.

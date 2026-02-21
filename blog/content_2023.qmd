@@ -3,6 +3,7 @@ title: "The year in *content*: 2023"
 subtitle: "Music, books, and movies"
 author: "Juan Tellez"
 toc: true
+date: "2022-12-31"
 ---
 
 ```{r}
@@ -35,7 +36,7 @@ library(kableExtra)
 
 # Nice ggplot theme
 theme_nice = function() {
-  theme_minimal(base_size = 12) + 
+  theme_minimal(base_size = 12) +
     theme(
       panel.grid.minor = element_blank(),
       plot.title = element_text(face = "bold", size = rel(1.25)),
@@ -81,9 +82,9 @@ my_kbl = function(x, ...) {
 
 # Load data
 music = readr::read_rds(here::here("personal_files/itunes_library.rds"))
-books = readr::read_rds(here::here("personal_files/goodreads_clean.rds")) |> 
+books = readr::read_rds(here::here("personal_files/goodreads_clean.rds")) |>
   filter(year(date_read) == 2023)
-movies = read_rds(here::here("personal_files/letterboxd_clean.rds")) |> 
+movies = read_rds(here::here("personal_files/letterboxd_clean.rds")) |>
   filter(year(watched_date) == 2023)
 ```
 
@@ -100,12 +101,12 @@ The code I used to clean up the Apple Music data is slightly adapted from Andrew
 
 read_itunes_library <- function(path) {
   raw <- xml2::read_xml(path)
-  
+
   res <- xml2::as_list(raw)
   res <- purrr::pluck(res, "plist", "dict", "dict")
   res <- res[names(res) != "key"]
-  
-  res <- 
+
+  res <-
     tibble::enframe(res) %>%
     dplyr::rowwise() %>%
     dplyr::mutate(value = list(tibble::enframe(value))) %>%
@@ -123,26 +124,26 @@ read_itunes_library <- function(path) {
     ) %>%
     dplyr::ungroup() %>%
     tidyr::pivot_wider(
-      id_cols = c(id, entry_id), 
-      names_from = name, 
-      values_from = value, 
+      id_cols = c(id, entry_id),
+      names_from = name,
+      values_from = value,
       values_fn = list
     ) %>%
     tidyr::pivot_longer(
-      cols = 4:ncol(.), 
-      names_to = "type", 
+      cols = 4:ncol(.),
+      names_to = "type",
       values_drop_na = TRUE
     ) %>%
     dplyr::select(-type) %>%
     tidyr::pivot_wider(id_cols = id, names_from = key, values_from = value) %>%
     janitor::clean_names() %>%
     dplyr::select(
-      id, track_title = name, artist, album_artist, album, 
+      id, track_title = name, artist, album_artist, album,
       genre, total_time, date_added, skip_count, play_count, year
     ) %>%
     dplyr::rowwise() %>%
     dplyr::mutate(dplyr::across(
-      everything(), 
+      everything(),
       ~dplyr::if_else(is.null(.x), list(NA), list(.x))
     )) %>%
     dplyr::mutate(dplyr::across(everything(), unlist)) %>%
@@ -157,7 +158,7 @@ read_itunes_library <- function(path) {
     ) %>%
     dplyr::ungroup() %>%
     dplyr::arrange(dplyr::desc(play_count))
-  
+
   res
 }
 ```
@@ -169,13 +170,13 @@ read_itunes_library <- function(path) {
 First, the **albums I added to my Apple Music library this year**. These are the records I discovered this year, whether they came out this year or earlier. Below are the top five by play count^[One limitation is that, all else equal, albums with more songs will have higher play counts.].
 
 ```{r}
-music |> 
+music |>
   filter(year(date_added) == 2023) |>
-  filter(genre != "Holiday") |> 
-  group_by(artist, album) |> 
+  filter(genre != "Holiday") |>
+  group_by(artist, album) |>
   summarise(play_count = sum(play_count), .groups = "drop") |>
-  slice_max(order_by = play_count, n = 5) |> 
-  select(Artist = artist, Album = album) |> 
+  slice_max(order_by = play_count, n = 5) |>
+  select(Artist = artist, Album = album) |>
   my_kbl(caption = "Top albums added to my Apple Music library in 2023")
 ```
 
@@ -188,13 +189,13 @@ music |>
 These are the records that *came out this year* and that I *added to my library this year*.
 
 ```{r}
-music |> 
-  group_by(artist, album) |> 
-  mutate(year = round(mean(year), 0), .groups = "drop") |> 
-  filter(year == 2023) |> 
+music |>
+  group_by(artist, album) |>
+  mutate(year = round(mean(year), 0), .groups = "drop") |>
+  filter(year == 2023) |>
   filter(year(date_added) == 2023) |>
-  filter(album %in% c("ARIGATO", "É o que a casa oferece")) |> 
-  distinct(album, .keep_all = TRUE) |> 
+  filter(album %in% c("ARIGATO", "É o que a casa oferece")) |>
+  distinct(album, .keep_all = TRUE) |>
   select(Artist = artist, Album = album, Genre = genre) |>
   my_kbl(caption = "Favorite albums of 2023")
 ```
@@ -212,9 +213,9 @@ Here's the books I finished reading this year and my rating:
 
 ```{r results='asis'}
 last_books <- books %>%
-  mutate(`Date Read` = date_read) |> 
+  mutate(`Date Read` = date_read) |>
   filter(!is.na(`Date Read`)) |>
-  arrange(desc(`Date Read`)) |> 
+  arrange(desc(`Date Read`)) |>
   mutate(
     formatted_date = format(`Date Read`, "%B %d, %Y"),
     stars = map_chr(`my_rating`, ~ strrep("★", .x))
@@ -240,20 +241,20 @@ How do my ratings compare versus the averages reported by Goodreads?
 #| code-fold: true
 #| fig.height: 6
 
-books |> 
-  select(title, my_rating, average_rating) |> 
+books |>
+  select(title, my_rating, average_rating) |>
   mutate(title = str_remove(title, ":.*$")) |>
-  mutate(diff = my_rating - average_rating) |>  
+  mutate(diff = my_rating - average_rating) |>
   ggplot(aes(y = reorder(title, diff), x = diff, fill = diff > 0)) +
-  geom_col(alpha = 0.8) + 
+  geom_col(alpha = 0.8) +
   labs(
-    title = "Difference between my ratings and the\naverage Goodreads user", 
-    x = "My rating - average Goodreads user", 
-    fill = "Books I liked:", 
+    title = "Difference between my ratings and the\naverage Goodreads user",
+    x = "My rating - average Goodreads user",
+    fill = "Books I liked:",
     y = NULL
-  ) + 
+  ) +
   scale_fill_manual(
-    values = pal[c(1, 7)], 
+    values = pal[c(1, 7)],
     labels = c(
       "...less than the Goodreads average",
       "...more than the Goodreads average"
@@ -263,7 +264,7 @@ books |>
     panel.grid.major = element_blank(),
     axis.line = element_blank(),
     legend.position = "top"
-  ) + 
+  ) +
   scale_y_discrete(labels = scales::label_wrap(30))
 ```
 
@@ -274,19 +275,19 @@ How long am I spending on each book? Caveat: the dates added / read are approxim
 #| fig.height: 6
 
 books_bell = books %>%
-  mutate(title = str_remove(title, ":.*$")) |> 
-  mutate(title = fct_reorder(title, date_read)) 
+  mutate(title = str_remove(title, ":.*$")) |>
+  mutate(title = fct_reorder(title, date_read))
 
-hilite = books_bell |> 
-  mutate(duration = date_read - date_added) |> 
-  slice_max(order_by = duration, n = 3) |> 
-  mutate(title = str_remove(title, ":.*$")) |> 
+hilite = books_bell |>
+  mutate(duration = date_read - date_added) |>
+  slice_max(order_by = duration, n = 3) |>
+  mutate(title = str_remove(title, ":.*$")) |>
   mutate(title = fct_reorder(title, date_added))
 
 ggplot(filter(books_bell, date_added >= ymd("2023-01-01")), aes(y = title)) +
   geom_segment(
-    aes(x = date_added, xend = date_read, yend = title), 
-    color = "gray70", 
+    aes(x = date_added, xend = date_read, yend = title),
+    color = "gray70",
     size = 2
   ) +
   geom_point(aes(x = date_added), color = pal[1], size = 4) +
@@ -304,29 +305,29 @@ ggplot(filter(books_bell, date_added >= ymd("2023-01-01")), aes(y = title)) +
 **Favorite books** I read this year:
 
 - *Savage detectives*. Bolaño is one of the best "pure writers" of the last 50 years. He also loves Mexico, and you can see that all over "detectives".
-- *Generation Kill*. Caught off guard by how good this was. With many war memoirs, there is a bad tendency to superimpose contemporary views on past events. This book avoids doing that and gives a vivid look at one of the GWOT wars. 
+- *Generation Kill*. Caught off guard by how good this was. With many war memoirs, there is a bad tendency to superimpose contemporary views on past events. This book avoids doing that and gives a vivid look at one of the GWOT wars.
 - *The Dope*. So much has been written about the war on drugs, it's hard to find a new angle. This book has lots of new things to say. Unfortunately, it is a bit too loose with the facts at times; read carefully.
 
 **Surprise read**: *Naomi*. What a weird, perverted book. And from 1924!
 
-**Worst book**: *Un-American*. Preachy with not much "stuff" to look at beyond an interesting chapter on the war academy. 
+**Worst book**: *Un-American*. Preachy with not much "stuff" to look at beyond an interesting chapter on the war academy.
 
 # Movies
 
 You can see all the movies I watched in 2023 at the bottom. Here's my stats for the year:
 
 ```{r}
-movies |> 
+movies |>
   summarise(
     `Number of movies watched` = n(),
     `Average rating` = mean(rating),
     `Highest rated movie` = name[which.max(rating)],
-    `Lowest rated movie` = name[which.min(rating)], 
+    `Lowest rated movie` = name[which.min(rating)],
     `Cor(rating, release date)` = cor(rating, year)
-  ) |> 
+  ) |>
   mutate(across(is.numeric, ~round(.x, 2))) |>
-  mutate(across(everything(), as.character)) |> 
-  pivot_longer(everything(), names_to = "Statistic", values_to = "Value") |> 
+  mutate(across(everything(), as.character)) |>
+  pivot_longer(everything(), names_to = "Statistic", values_to = "Value") |>
   my_kbl(caption = "My movie watching stats for 2023")
 ```
 
@@ -335,18 +336,18 @@ Here's when I watched:
 ```{r}
 #| fig.height: 4
 
-movies |> 
+movies |>
   mutate(
     month = month(watched_date, label = TRUE),
     day = day(watched_date)
-  ) |> 
-  count(month, day) |> 
+  ) |>
+  count(month, day) |>
   ggplot(aes(x = day, y = month, fill = factor(n))) +
-  geom_tile(color = "white") + 
-  coord_fixed(ratio = 1) + 
+  geom_tile(color = "white") +
+  coord_fixed(ratio = 1) +
   scale_y_discrete(expand = c(0, 0)) +
-  scale_x_continuous(breaks = c(1, 5, 10, 15, 20, 25, 31), expand = c(0, 0)) + 
-  scale_fill_manual(values = c(pal[5], pal[3])) + 
+  scale_x_continuous(breaks = c(1, 5, 10, 15, 20, 25, 31), expand = c(0, 0)) +
+  scale_fill_manual(values = c(pal[5], pal[3])) +
   theme(
     panel.grid = element_blank(),
     panel.grid.major.y = element_line(color = "grey92", linewidth = 0.3),
@@ -355,7 +356,7 @@ movies |>
     legend.title = element_blank(),
     legend.position = "bottom",
     plot.margin = margin(5, 5, 5, 5)
-  ) + 
+  ) +
   labs(x = NULL, y = NULL, title = "Movie watching calendar", fill = NULL)
 ```
 
@@ -364,10 +365,10 @@ And here's the distribution of ratings:
 ```{r}
 #| fig.height: 4
 
-movies |> 
-  ggplot(aes(x = rating)) + 
-  geom_histogram(binwidth = 0.5, fill = pal[7], color = "white", alpha = .8) + 
-  labs(x = "My rating", y = "Number of movies watched") + 
+movies |>
+  ggplot(aes(x = rating)) +
+  geom_histogram(binwidth = 0.5, fill = pal[7], color = "white", alpha = .8) +
+  labs(x = "My rating", y = "Number of movies watched") +
   scale_x_continuous(breaks = seq(0, 5, by = 0.5))
 ```
 
@@ -375,7 +376,7 @@ movies |>
 
 **The two best movies I saw this year** were *Sunset Boulevard* and *The Last Picture Show*. With Boulevard, I was imagining a paint by numbers noir, but it was much weirder and darker. And Picture Show does the "small town is actually rotting from within" bit way before anyone else, much better, and more devastating in the end.
 
-**The worst movie I saw this year** was *The Whale*. Unbelievably bad, condescending. 
+**The worst movie I saw this year** was *The Whale*. Unbelievably bad, condescending.
 
 **The best movie that came out in 2023** was *May December*. I love Julianne Moore and I love Todd Haynes. This movie also does something super well that I love: take a well-worn story/trope/narrative ("the teacher slept with the student") and makes you see it from a new angle, makes what's become ordinary seem strange again.
 
@@ -384,8 +385,8 @@ movies |>
 ```{r}
 #| code-fold: true
 
-movies |> 
-  arrange(watched_date) |> 
-  select(` ` = name, `Release year` = year, `My rating` = rating) |> 
+movies |>
+  arrange(watched_date) |>
+  select(` ` = name, `Release year` = year, `My rating` = rating) |>
   kableExtra::kbl(caption = "Movies I watched this year")
 ```
