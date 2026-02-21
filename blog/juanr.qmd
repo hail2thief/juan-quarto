@@ -1,0 +1,267 @@
+---
+title: "The `juanr` package"
+subtitle: "Some datasets for teaching and poking around"
+author: "Juan Tellez"
+date: "2026-02-20"
+toc: true
+categories: [R, data, teaching]
+---
+
+
+```{r}
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(
+  fig.width = 8,
+  fig.height = 10 * 0.618,
+  fig.retina = 3,
+  dev = "ragg_png",
+  fig.align = "center",
+  out.width = "90%",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  cache.extra = 1234
+)
+
+options(
+  digits = 4,
+  width = 300,
+  dplyr.summarise.inform = FALSE
+)
+
+
+## libraries
+library(tidyverse)
+library(juanr)
+
+# Nice ggplot theme
+theme_nice <- function() {
+  theme_minimal(base_size = 12) +
+    theme(
+      panel.grid.minor = element_blank(),
+      plot.title = element_text(face = "bold", size = rel(1.25)),
+      plot.subtitle = element_text(face = "plain"),
+      plot.caption = element_text(face = "plain"),
+      axis.title = element_text(face = "bold", size = rel(0.8)),
+      axis.title.x = element_text(hjust = 0),
+      axis.title.y = element_text(hjust = 1),
+      strip.text = element_text(
+        face = "bold",
+        size = rel(0.8), hjust = 0
+      ),
+      strip.background = element_rect(fill = "grey90", color = NA),
+      legend.title = element_text(size = rel(0.8)),
+      legend.text = element_text(size = rel(0.8)),
+      legend.position = "bottom",
+      legend.justification = "left",
+      legend.title.position = "top",
+      legend.margin = margin(l = 0, t = 0)
+    )
+}
+
+theme_set(theme_nice())
+
+# Palette
+pal <- MoMAColors::moma.colors("VanGogh")
+```
+
+
+![](../images/juanr-sticker.png){fig-align="center" width="25%"}
+
+I maintain an R package called `juanr` that I use for teaching. It's a grab-bag of 30+ datasets that I've collected over the years from published research, government sources, and the occasional fun API. I use them for in-class exercises, problem sets, and demos.
+
+You can install it from GitHub:
+
+```r
+remotes::install_github("hail2thief/juanr")
+```
+
+The full list of datasets is on the [GitHub repo](https://github.com/hail2thief/juanr). Most of the datasets are ready to go: clean names, reasonable variable types, no encoding nightmares. Below I want to highlight three of the less obvious ones that I think are interesting in their own right.
+
+
+# Art auction prices
+
+The `art` dataset has about 18,000 records from art auctions around the world, from a [2024 study](https://doi.org/10.1038/s41598-024-72275-z) on what predicts art prices. It includes the sale price, the artist's nationality and gender, and whether they went to an elite art school.
+
+One natural question: how big is the gender gap in art prices?
+
+```{r}
+#| echo: true
+#| fig.height: 5
+
+art |>
+  filter(real_price_usd > 0) |>
+  mutate(gender = if_else(gender_male == 1, "Male", "Female")) |>
+  ggplot(aes(x = real_price_usd, fill = gender)) +
+  geom_density(alpha = 0.6, color = NA) +
+  scale_x_log10(labels = scales::dollar_format()) +
+  scale_fill_manual(values = pal[c(1, 7)]) +
+  labs(
+    title = "Art sold by women sells for less",
+    subtitle = "Distribution of auction prices (log scale) by artist gender",
+    x = "Sale price (USD)",
+    y = "Density",
+    fill = NULL
+  )
+```
+
+The gap is substantial. Part of this is selection — the art world has historically funneled resources and attention toward male artists, so the women who make it to auction are a different population. But even conditional on being auctioned, male artists command higher prices.
+
+Does going to an elite art school help? Here's the median price by gender and elite school attendance:
+
+```{r}
+#| echo: true
+
+art |>
+  filter(real_price_usd > 0) |>
+  mutate(
+    gender = if_else(gender_male == 1, "Male", "Female"),
+    school = if_else(elite_school == 1, "Elite school", "Non-elite school")
+  ) |>
+  summarise(
+    `Median price (USD)` = median(real_price_usd),
+    `N` = n(),
+    .by = c(gender, school)
+  ) |>
+  arrange(school, gender) |>
+  mutate(`Median price (USD)` = scales::dollar(`Median price (USD)`)) |>
+  kableExtra::kbl(
+    col.names = c("Gender", "School", "Median price", "N"),
+    align = "llrc",
+    booktabs = TRUE
+  ) |>
+  kableExtra::kable_styling(
+    full_width = FALSE,
+    bootstrap_options = c("striped", "hover"),
+    position = "center"
+  )
+```
+
+Elite school helps, but the gender gap persists within both categories. The art world is not exactly known for meritocracy.
+
+
+# Vietnam War hamlets
+
+The `vietnam` dataset comes from [Kalyvas and Kocher (2009)](https://doi.org/10.1017/S0003055409090194) and contains over 70,000 hamlet-month observations from the Hamlet Evaluation System (HES) — the US military's attempt to track "progress" during the Vietnam War. Each hamlet was assessed on who controlled it (the government, the Vietcong, or somewhere in between), along with information on bombing, population, and whether the Vietcong used selective terror against civilians.
+
+The HES is a wild dataset. The US government was essentially trying to quantify a counterinsurgency in real time, rating hamlets on a control scale the way you'd rate a restaurant on Yelp.
+
+Here's the relationship between territorial control and bombing:
+
+```{r}
+#| echo: true
+#| fig.height: 5
+
+vietnam |>
+  filter(!is.na(control), !is.na(bombs)) |>
+  summarise(
+    avg_bombs = mean(bombs),
+    .by = control
+  ) |>
+  ggplot(aes(x = factor(control), y = avg_bombs)) +
+  geom_col(fill = pal[3], alpha = 0.8) +
+  labs(
+    title = "Bombing intensity by territorial control",
+    subtitle = "Average bomb sorties per hamlet-month",
+    x = "Control (government \u2190 \u2192 Vietcong)",
+    y = "Average bomb sorties",
+    caption = "Source: Kalyvas and Kocher (2009)"
+  )
+```
+
+The pattern is telling: bombing was concentrated in contested and Vietcong-controlled areas. Not surprising on its face, but when you think about the stated goal of winning "hearts and minds," the strategy of bombing the places you're trying to win over is... something.
+
+We can also look at the relationship between bombing and Vietcong selective violence:
+
+```{r}
+#| echo: true
+#| fig.height: 5
+
+vietnam |>
+  filter(!is.na(control), !is.na(selective_terror)) |>
+  summarise(
+    pct_terror = mean(selective_terror) * 100,
+    .by = control
+  ) |>
+  ggplot(aes(x = factor(control), y = pct_terror)) +
+  geom_col(fill = pal[7], alpha = 0.8) +
+  labs(
+    title = "Selective violence follows control",
+    subtitle = "Percent of hamlet-months with Vietcong selective terror",
+    x = "Control (government \u2190 \u2192 Vietcong)",
+    y = "% with selective terror"
+  )
+```
+
+The Vietcong used selective violence most in contested areas — exactly what the theory of irregular war would predict^[See Kalyvas, *The Logic of Violence in Civil War* (2006).]. Violence is a tool for establishing control, not a byproduct of it.
+
+
+# Colorism in Latin America
+
+The `race` dataset comes from the 2014 wave of the [Latin American Public Opinion Project (LAPOP)](https://www.vanderbilt.edu/lapop/). Enumerators rated each respondent's skin color on a scale from 1 (lightest) to 11 (darkest) using a standardized color palette. The data covers Colombia, Brazil, Mexico, Guatemala, and the Dominican Republic.
+
+Skin color is one of those things that everyone in Latin America knows matters but that can be hard to pin down empirically. This dataset lets you see the variation:
+
+```{r}
+#| echo: true
+#| fig.height: 6
+
+race |>
+  filter(!is.na(colorr), !is.na(pais)) |>
+  ggplot(aes(x = colorr)) +
+  geom_histogram(binwidth = 1, fill = pal[5], color = "white", alpha = 0.8) +
+  facet_wrap(~pais, scales = "free_y", ncol = 2) +
+  scale_x_continuous(breaks = 1:11) +
+  labs(
+    title = "Distribution of skin color across Latin America",
+    subtitle = "Enumerator-rated skin color, 1 (lightest) to 11 (darkest)",
+    x = "Skin color",
+    y = "Count",
+    caption = "Source: LAPOP 2014"
+  )
+```
+
+The distributions are pretty different across countries. Brazil and Colombia have wider spreads, while Mexico and Guatemala cluster more tightly. The Dominican Republic is interesting — recall that colorism there operates in the context of a long history of anti-Haitian politics.
+
+Does skin color predict income? Roughly:
+
+```{r}
+#| echo: true
+#| fig.height: 5
+
+race |>
+  filter(!is.na(colorr), !is.na(q10new_14), !is.na(pais)) |>
+  summarise(
+    avg_income = mean(q10new_14),
+    .by = c(pais, colorr)
+  ) |>
+  ggplot(aes(x = colorr, y = avg_income, color = pais)) +
+  geom_point(alpha = 0.7, size = 2) +
+  geom_smooth(method = "lm", se = FALSE, linewidth = 0.8) +
+  scale_color_manual(values = pal[c(1, 3, 5, 7, 2)]) +
+  scale_x_continuous(breaks = seq(1, 11, by = 2)) +
+  labs(
+    title = "Darker skin, lower income",
+    subtitle = "Average household income by enumerator-rated skin color",
+    x = "Skin color (lighter \u2192 darker)",
+    y = "Household income (0-16 scale)",
+    color = NULL
+  )
+```
+
+The negative gradient is there in every country. This is descriptive, of course — skin color is correlated with all sorts of other things (education, geography, family wealth). But the raw relationship is striking, and consistent across very different national contexts.
+
+
+# Wrapping up
+
+These are just three of the datasets in the package. There's also data on [coups](https://github.com/hail2thief/juanr), [campaign finance](https://github.com/hail2thief/juanr), [colonial Peru](https://github.com/hail2thief/juanr), [European elections](https://github.com/hail2thief/juanr), and — yes — [Pokémon](https://github.com/hail2thief/juanr).
+
+If you teach with R and want some ready-to-go data that's a little more interesting than `mtcars`, feel free to take it for a spin:
+
+```r
+remotes::install_github("hail2thief/juanr")
+library(juanr)
+data(package = "juanr")
+```
