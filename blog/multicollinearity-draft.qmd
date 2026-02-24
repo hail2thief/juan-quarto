@@ -1,5 +1,5 @@
 ---
-title: "Multicollinearity is not a disease"
+title: "Multicollinearity is not a data problem"
 date: "2026-02-21"
 author: "Juan Tellez"
 format: html
@@ -93,12 +93,34 @@ Wooldridge pushes back on this in *Introductory Econometrics*. He argues that mu
 This post uses a simulation to build intuition for what multicollinearity actually is and why Wooldridge and Blanchard are right.
 
 
-## Setup: press freedom and FDI
+## Perfect collinearity: the real problem
 
 
-Suppose we want to estimate the effect of press freedom on foreign direct investment (FDI). We believe that regime type — whether a country is a democracy or not — confounds this relationship: democracies tend to have freer presses *and* tend to attract more FDI. So we control for democracy.
+Say we want to estimate the effect of press freedom on corruption. The idea is that media scrutiny deters corrupt behavior: countries with freer presses tend to have less corruption. We believe that regime type — whether a country is a democracy or not — confounds this relationship: democracies tend to have freer presses *and* tend to have less corruption. So we control for democracy.
 
-Here is the data-generating process. The true effect of press freedom on FDI is $\beta = 0.5$: for each unit increase in press freedom, FDI increases by half a unit. Democracy independently boosts both press freedom and FDI:
+Before we get to the interesting case, it's worth being clear about the uninteresting one. *Perfect* collinearity — where one regressor is an exact linear function of another — is a genuine problem. It's not a statistical nuance; it means the model literally cannot be estimated.
+
+Imagine press freedom is a perfect function of regime type: every democracy gets a press freedom score of 1 and every autocracy gets a 0:
+
+```{r}
+set.seed(123)
+n <- 200
+democracy <- rbinom(n, 1, 0.4)
+press_freedom_perfect <- democracy
+corruption_perfect <- -2 * press_freedom_perfect + rnorm(n)
+
+lm(corruption_perfect ~ press_freedom_perfect + democracy) |>
+  summary() |>
+  coef()
+```
+
+R drops one of the terms. The reason is straightforward: if you know whether a country is a democracy, you know its press freedom score exactly. There is no observation in the data — and no observation that *could* exist — where press freedom changes but democracy doesn't. So there is no way to estimate the independent effect of one holding the other constant.
+
+This is a real constraint, but it's also obvious. In practice, perfect collinearity comes up with things like including a full set of dummy variables alongside an intercept, or including a variable and its exact linear transformation. R and Stata handle these automatically by dropping redundant terms.
+
+The case that textbooks worry about — and that Wooldridge argues they worry about too much — is *imperfect* collinearity: when regressors are correlated but not perfectly so. In reality, press freedom is not a perfect function of democracy. Some autocracies have more press freedom than others; some democracies restrict theirs. There is variation within regime type — just not very much. This is the common scenario in applied work.
+
+So let's make the example realistic. The true effect of press freedom on corruption is $\beta = -0.5$: for each unit increase in press freedom, corruption decreases by half a unit. Democracy independently boosts press freedom and reduces corruption. But now press freedom is continuous and only *correlated* with democracy, not determined by it:
 
 ```{r}
 set.seed(42)
@@ -113,30 +135,25 @@ press_freedom <- case_when(
   democracy == 0 ~ rnorm(n, mean = 2, sd = 0.5)
 )
 
-# FDI: function of press freedom + democracy + noise
-beta_true <- 0.5
-fdi <- beta_true * press_freedom + 3 * democracy + rnorm(n, sd = 2)
+# corruption: function of press freedom + democracy + noise
+beta_true <- -0.5
+corruption <- beta_true * press_freedom - 3 * democracy + rnorm(n, sd = 2)
 
 df <- tibble(democracy = factor(democracy, labels = c("Autocracy", "Democracy")),
-             press_freedom, fdi)
+             press_freedom, corruption)
 ```
 
-
-## The data
-
-
-Let's look at what this data looks like:
-
+Here's what the data looks like:
 
 ```{r}
 #| echo: false
-ggplot(df, aes(x = press_freedom, y = fdi, color = democracy)) +
+ggplot(df, aes(x = press_freedom, y = corruption, color = democracy)) +
   geom_point(alpha = 0.6) +
   scale_color_manual(values = pal[c(1, 4)]) +
-  labs(x = "Press freedom", y = "FDI", color = "Regime type")
+  labs(x = "Press freedom", y = "Corruption", color = "Regime type")
 ```
 
-Two things are clear. First, there is a strong positive relationship between press freedom and FDI. Second, democracies and autocracies occupy very different regions of the press freedom axis. Within autocracies, press freedom barely varies — it's almost always between 1 and 3.
+Two things are clear. First, there is a strong negative relationship between press freedom and corruption. Second, democracies and autocracies occupy very different regions of the press freedom axis. Within autocracies, press freedom barely varies — it's almost always between 1 and 3.
 
 This is the "multicollinearity": press freedom and democracy are highly correlated, so when we control for democracy, there isn't much variation left in press freedom to work with — especially within the autocracy group.
 
@@ -147,8 +164,8 @@ This is the "multicollinearity": press freedom and democracy are highly correlat
 library(estimatr)
 library(modelsummary)
 
-mod_naive <- lm_robust(fdi ~ press_freedom, data = df)
-mod_controlled <- lm_robust(fdi ~ press_freedom + democracy, data = df)
+mod_naive <- lm_robust(corruption ~ press_freedom, data = df)
+mod_controlled <- lm_robust(corruption ~ press_freedom + democracy, data = df)
 
 modelsummary(list("No controls" = mod_naive,
                   "Control for democracy" = mod_controlled),
@@ -156,30 +173,27 @@ modelsummary(list("No controls" = mod_naive,
 ```
 
 
-The naive estimate overstates the effect of press freedom because it's picking up the effect of democracy. The controlled estimate is closer to the truth ($\beta = 0.5$) — but the standard error is much larger. This is multicollinearity at work.
+The naive estimate overstates the effect of press freedom because it's picking up the effect of democracy. The controlled estimate is closer to the truth ($\beta = -0.5$) — but the standard error is much larger. This is multicollinearity at work.
 
 
 ## What's happening: the stratification view
 
 
-As we saw in the [controls post](what-are-controls.qmd), controlling for democracy is equivalent to estimating the press freedom-FDI relationship *within* each regime type and taking a weighted average. Let's look at those within-group estimates:
+As we saw in the [controls post](what-are-controls.qmd), controlling for democracy is equivalent to estimating the press freedom-corruption relationship *within* each regime type and taking a weighted average. The plot below makes the problem visible:
 
 
 ```{r}
-df |>
-  group_by(democracy) |>
-  summarise(
-    beta = coef(lm(fdi ~ press_freedom))[2],
-    se = summary(lm(fdi ~ press_freedom))$coefficients[2, 2],
-    n = n(),
-    var_x = var(press_freedom),
-    weight = (n() - 1) * var(press_freedom)
-  ) |>
-  my_kbl(caption = "Within-group estimates")
+#| echo: false
+ggplot(df, aes(x = press_freedom, y = corruption)) +
+  geom_point(alpha = 0.5, color = "grey40") +
+  geom_smooth(method = "lm", se = TRUE, color = pal[1], fill = pal[1], alpha = 0.2) +
+  facet_wrap(~democracy, scales = "free_x") +
+  labs(x = "Press freedom", y = "Corruption",
+       title = "Within-group variation in press freedom",
+       subtitle = "Note the different x-axis scales")
 ```
 
-
-The autocracy group has much less variation in press freedom, so it gets less weight. But more importantly, the within-autocracy estimate has a huge standard error because there's so little variation in $X$ to work with. The overall controlled estimate is being driven almost entirely by the democracy subsample.
+Look at the x-axes. Among democracies, press freedom ranges from about 3 to 11 — plenty of variation to estimate a slope. Among autocracies, it's crammed between about 1 and 3. The regression line is there, but the confidence band is enormous because there's almost nothing to work with. The overall controlled estimate is being driven almost entirely by the democracy subsample.
 
 This is the Wooldridge point. The "problem" isn't that the regression is doing something wrong. OLS is unbiased. The problem is that the data doesn't give us enough within-group variation to estimate the effect precisely. That's a property of the world — autocracies really do have uniformly low press freedom — not a flaw in the method.
 
@@ -197,10 +211,10 @@ simulate_once <- function(n = 200) {
     democracy == 1 ~ rnorm(n, mean = 7, sd = 1.5),
     democracy == 0 ~ rnorm(n, mean = 2, sd = 0.5)
   )
-  fdi <- 0.5 * press_freedom + 3 * democracy + rnorm(n, sd = 2)
-  d <- tibble(democracy, press_freedom, fdi)
+  corruption <- -0.5 * press_freedom - 3 * democracy + rnorm(n, sd = 2)
+  d <- tibble(democracy, press_freedom, corruption)
 
-  mod <- lm(fdi ~ press_freedom + democracy, data = d)
+  mod <- lm(corruption ~ press_freedom + democracy, data = d)
   coef(mod)["press_freedom"]
 }
 
@@ -211,15 +225,15 @@ sims <- tibble(beta_hat = map_dbl(1:1000, ~simulate_once()))
 #| echo: false
 ggplot(sims, aes(x = beta_hat)) +
   geom_histogram(fill = pal[1], color = "white", bins = 40) +
-  geom_vline(xintercept = 0.5, linetype = "dashed", linewidth = 0.8) +
+  geom_vline(xintercept = -0.5, linetype = "dashed", linewidth = 0.8) +
   labs(x = expression(hat(beta)[press_freedom]),
        y = "Count",
        title = "Sampling distribution of the controlled estimate",
-       subtitle = "Dashed line = true effect (0.5)")
+       subtitle = "Dashed line = true effect (-0.5)")
 ```
 
 
-The distribution is centered on the truth. OLS is unbiased. But the distribution is wide — in any given sample, the estimate could be quite far from 0.5. This is what imprecision looks like.
+The distribution is centered on the truth. OLS is unbiased. But the distribution is wide — in any given sample, the estimate could be quite far from -0.5. This is what imprecision looks like.
 
 
 ## The "cure" is worse than the disease
@@ -235,8 +249,8 @@ sims_no_control <- tibble(
       democracy == 1 ~ rnorm(200, mean = 7, sd = 1.5),
       democracy == 0 ~ rnorm(200, mean = 2, sd = 0.5)
     )
-    fdi <- 0.5 * press_freedom + 3 * democracy + rnorm(200, sd = 2)
-    coef(lm(fdi ~ press_freedom))["press_freedom"]
+    corruption <- -0.5 * press_freedom - 3 * democracy + rnorm(200, sd = 2)
+    coef(lm(corruption ~ press_freedom))["press_freedom"]
   })
 )
 ```
@@ -250,17 +264,17 @@ bind_rows(
   ggplot(aes(x = beta_hat, fill = model)) +
   geom_histogram(bins = 40, color = "white", alpha = 0.7,
                  position = "identity") +
-  geom_vline(xintercept = 0.5, linetype = "dashed", linewidth = 0.8) +
+  geom_vline(xintercept = -0.5, linetype = "dashed", linewidth = 0.8) +
   scale_fill_manual(values = pal[c(1, 4)]) +
   labs(x = expression(hat(beta)[press_freedom]),
        y = "Count",
        fill = NULL,
        title = "Dropping the control reduces variance but introduces bias",
-       subtitle = "Dashed line = true effect (0.5)")
+       subtitle = "Dashed line = true effect (-0.5)")
 ```
 
 
-The uncontrolled estimates are more precise — the distribution is tighter. But they are *biased*: the distribution is centered well above 0.5 because the regression attributes some of democracy's effect on FDI to press freedom. This is the classic bias-variance tradeoff, and in a causal inference setting, bias is usually the bigger concern. An imprecise but unbiased estimate is honest about what the data can tell you. A precise but biased estimate is confidently wrong.
+The uncontrolled estimates are more precise — the distribution is tighter. But they are *biased*: the distribution is centered well below -0.5 because the regression attributes some of democracy's effect on corruption to press freedom. This is the classic bias-variance tradeoff, and in a causal inference setting, bias is usually the bigger concern. An imprecise but unbiased estimate is honest about what the data can tell you. A precise but biased estimate is confidently wrong.
 
 This is why Wooldridge's framing matters. If you think of multicollinearity as a disease with a "cure" (dropping variables), you are trading a cosmetic problem (wide confidence intervals) for a substantive one (omitted variable bias). The right response to multicollinearity is usually to do nothing — or to get more data.
 
