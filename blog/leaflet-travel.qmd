@@ -18,7 +18,12 @@ knitr::opts_chunk$set(
 ```
 
 
-A map of places I've traveled.
+Here's a list of places I've traveled to that I'll hopefully keep updating. I'm probably missing a bunch of trips to Colombia but haven't kept close tally.
+
+As of writing:
+
+- **Best trip**: India in 2015.
+- **Worst trip**: Prague in 2017. Felt like Disneyland.
 
 ```{r}
 #| echo: false

@@ -5,3 +5,5 @@
 .quarto/*
 .claude/
 personal_files
+
+**/*.quarto_ipynb

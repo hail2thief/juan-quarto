@@ -1,0 +1,75 @@
+---
+title: "Books: January 2026"
+date: "2026-01-31"
+author: "Juan Tellez"
+categories:
+  - books
+  - africa
+  - democracy
+  - fiction
+  - history
+  - middle-east
+  - politics
+  - religion
+  - russia
+  - violence
+  - ww2
+---
+
+## *The Ottomans: Khans, Caesars and Caliphs* — Marc David Baer
+
+⭐⭐⭐⭐
+I heard about this book on the [[Fall of Ottoman Empire, empire pod]] podcast. I was inspired to read it after finishing [[My name is red]] but also from realizing how many people I know from Turkey. 
+
+This is an accessible history of the Ottoman Empire going back to the 14th century. An enormous empire that at one point was stronger than any European country and that stood out for its "pluralistic" way of governing, but that eventually collapsed and turned to genocidal purges of its ethnic minorities. I have a clearer sense now for contemporary Turkey's relations to its neighbors. I struggle to care about world history pre-17th century, so I wish the book had leaned more toward the present. Some interesting anecdotes:
+
+- The Ottoman Empire did not use a primogeniture rule for succession. Instead, there was typically a battle amongst the male heirs to kill or exile the others and take control. As an institution, this is fascinating: obvious chaos and bloodshed at the point of succession, but the melee could also sort for better leaders and warriors. 
+- The Ottoman Empire's connections to the Roman Empire, and the fact that some viewed it as a succession of Rome. Baer implores readers to see Ottomans as part of European history.
+- Some of the earliest contact between Ottomans and England involves the latter trying to get the former to ally against Spain. Part of the pitch was that both societies rejected "idolatry" (the English as Protestants, the Ottomans as Muslims), which is funny. How much stronger the Empire was than England is captured in this great quote: "*When Murad III initially received Elizabeth I's letter, the Sultan had to examine a map to see precisely where England was located... he peered at it in astonishment and wondered aloud why the King of Spain did not take a spade, dig it up and throw it into the sea.*"
+- The 20th century, when the Empire unravels – the Armenian genocide, wars with Greece, the move from "we are Ottoman" to "we are Turks" – was the most interesting part. Should read a book just on this period.
+
+## *The White Guard* — Mikhail Bulgakov
+
+⭐⭐⭐⭐⭐
+*The White Guard* is set during the Ukrainian war of 1917-1921, a conflict seen by Ukrainian nationalists as a failed war of independence and by Russian/Soviet perspectives as a successful liberation of Ukraine from Western, especially German, control. It is a complex, multi-party conflict involving Ukrainian nationalists, White Russians, Germany, and the Bolsheviks. The family at the center live in Kiev, are of Russian heritage, and are Tsarist. 
+
+This is a really great war novel. The most impressive element is its thick atmosphere, the sense of confusion, fear, dread that is present in everything the characters do. The war is "happening" but for the residents of Kiev it is happening offscreen, outside of their houses. Gunshots and explosions are heard in the distance, the characters try to wring sense from their direction, timing, frequency. They hear rumors about the Nationalists, the Germans, the Bolsheviks, but ultimately they cannot tell what is happening, who is winning, what that means for them. There is a sense that some great blood-letting is coming. We get multiple references to Revelations, rivers and fountains of water turning to blood. 
+
+Bulgakov is capturing something unique (for fiction) about how war is experienced by civilians, particularly in urban areas. Life in some sense continues but there is this constant search for information, trying to interpret what is going on so that preparations can be made. And civilians view the warring actors primarily through the lens of risk and safety. Even the Turbins, who have ideological affinities in the fight, seem to view all of the warring actors with equal foreboding. 
+
+The novel also has a great sense for place. You really feel like you are in this city, in the winter, during a war. So many incredible scenes. One that stands out is near the end, at the morgue, where the main character has to sort through bodies and stench to identify a friend. 
+
+Something I kept coming back to was how "neutral" Bulgakov and the Turbins seem toward the different warring parties. Whether Ukraine falls to the nationalists or Bolsheviks seems equally bad to the Turbins. And yet the decision to start and end the novel with the lynching of a Jewish man by Ukrainian nationalists seems important. 
+
+A fun anecdote about Bulgakov from Kotkin's *Stalin* series: Stalin seemed to be a big fan (huge fan of the theater generally). Even though censors wanted to ban Bulgakov's work, about a White Russian family, he basically let it slide.
+
+## *Social Movements and Civil War: When Protests for Democratization Fail (Routledge Studies in Civil Wars and Intra-State Conflict)* — Donatella della Porta
+
+⭐
+This is an edited book on the role of social movements in civil wars by the influential Italian sociologist Donatella della Porta. It opens with a chapter laying out persistent themes in the evolution of "peaceful" social movements into armed conflicts, then case study chapters on Syria, Libya, Yemen, and Yugoslavia. 
+
+This was more of a skim than a read as it's pretty tedious. The main theoretical chapter reads more like a shortened textbook on the causes of conflict and protest than something original. Della Porta highlights some themes (too many) of which the most memorable are the fragmentation of social movements in response to exogenous shocks and the internationalization of conflicts. 
+
+The case study chapters are a mixed bag. The Syria chapter is OK. One interesting puzzle is that Islamist groups (ultimately the most successful movements in the Syrian civil war) have broad appeal via religion yet also tend toward highly sectarian tendencies. Sectarianism in general is interesting: if what you want is to defeat a sitting ruler who is vastly stronger, why dedicate resources to targeting other sects? One explanation is that's just what they believe, but this is unsatisfying. 
+
+The Yugoslavia chapter is very interesting, perhaps because I know so little about it. I didn't know Yugoslavia was designed in such a way to keep the various nationalities under the same roof. It reminded me of the paper I'm finishing on Ethiopia and how the TPLF undertook ethnic federalism to contain separatist elements. I also didn't know Yugoslavia was arguably further along the path of ethnic federalism than Ethiopia, with each republic having its own security forces. 
+
+The chapters on Libya and Yemen are forgettable.
+
+## *Vichy France: Old Guard and New Order, 1940-1944* — Robert O. Paxton
+
+⭐⭐
+After the Nazis' shocking defeat of France in WW2, they split the country in half: the north they occupied while the south was left under the control of a French "Vichy" government that collaborated with the Nazi regime. This book is a history of Vichy France. It's a famous work of history, in part for arguing that Vichy was eager to collaborate with the Nazis on its own fascist nation-building project – an uncomfortable claim in France where the official narrative was closer to reluctant, "slow walk" participation. 
+
+This is fascinating history in a book clearly aimed at academic historians. If you don't know who Pétain was before reading this, Paxton is not going to tell you. I know very little about this period of French history, so I ended up skimming long portions. 
+
+Why did the French collaborate? For ordinary people, including many in the civil service, the core desire was a return to normalcy. WW1 was not even a generation away; there was little appetite for continued war. Many expected the war would end soon with a German victory. Resistance seemed too costly to most and so was scarce. There's an incredible story about Simone de Beauvoir hitchhiking back to Paris, feeling relief at being able to teach at the lycée again, not concerned about having to swear an oath to fascist Pétain. 
+
+At the elite level, collaboration was more active. Elites of various ideological stripes interpreted France's loss as a sign of the need for domestic revolution, that France had fallen to "decadence". The Vichy leadership imagined promoting a National Revolution that would reconfigure French society; they imagined working with Hitler so France held some space in the new German European order; they imagined Germany protecting French colonies from British expansion (an incredible thing to worry about while occupied by a foreign army). Most incredible: for the most part, Hitler was not interested. "Collaboration was not a German demand which some Frenchmen acceded, through sympathy or guile. Collaboration was a French proposal that Hitler ultimately rejected." 
+
+Vichy actively participated in antisemitic (especially deportations) and anti-Masonic policy. Most shocking to me, there was even direct combat between American forces and French Vichy forces as the former invaded North Africa. French soldiers killing American soldiers on behalf of Germany: I had no idea. 
+
+I would have loved more discussion of everyday collaboration. Paxton largely splits French society into regular people who just did their jobs, and elites who saw Vichy as an opportunity for restructuring French society.
+
+(2/5 because low utility for a casual reader of this period)
+

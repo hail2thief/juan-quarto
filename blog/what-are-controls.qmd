@@ -92,7 +92,7 @@ my_kbl = function(x, ...) {
 ## Introduction
 
 
-I remember being confused in grad school about the use of *controls* in regression analysis. The problem was clear: we have a situation where we want to estimate the effect of $X$ on $Y$, but there is a third variable, $Z$, that affects both $X$ and $Y$. $Z$ will confound our estimates of $X$ on $Y$, so we need to "control for" $Z$ in our regression.
+When I first learned about regression I found the use of *controls* mysterious. The "why" was clear: we have a situation where we want to estimate the effect of $X$ on $Y$, but there is a third variable, $Z$, that affects both $X$ and $Y$. $Z$ will confound our estimates of $X$ on $Y$, so we need to "control for" $Z$ in our regression.
 
 
 ```{r}
@@ -112,19 +112,19 @@ dagify(
   theme_dag(legend.position = "none")
 ```
 
-But what does it mean to "control" for Z? What are we trying to do, exactly?
 
+But what does it mean to "control" for Z? What does that "do"?
 
 Some textbooks discuss controlling in terms of comparisons. Here's Gelman in *Regression and other stories*:
 
 > We interpret the regression slopes as comparisons of individuals that differ in one predictor while being at the same levels of the other predictors.
 
-Or from *The Effect*:
+Or from Nick Huntington-Klein's *The Effect*:
 
 > If two observations have the same values of the other variables in the model, but one has a value of𝑋  that is one unit higher, the observation with the X one unit higher will on average have a𝑌that is B1 units higher
 
 
-I love this intuition. We'd say that *comparing two people of identical Z*, we'd expect someone with an additional year of $X$ to have $\beta_1$ more in $Y$.
+I love this intuition. We'd say that *comparing two people of identical Z*, we'd expect someone with an additional unit of $X$ to have $\beta_1$ more in $Y$.
 
 
 But how is regression *doing this*? What about the regression makes this comparison possible?
@@ -151,7 +151,7 @@ bonica |>
 Say we wanted to estimate the effect of ideology (`dwnom1`) on the amount of money raised (`total_receipts`). `dwnom1` measures ideology using the DW-NOMINATE score, which theoretically ranges from -1 (left-wing) to 1 (right-wing).
 
 
-We estimate this simple model:
+We estimate a simple model, below. For the purposes of this exercise, let's ignore the standard error and focus only on the point estimate.
 
 ```{r}
 library(estimatr)
@@ -166,7 +166,7 @@ modelsummary(list("No controls" = mod),
 We see that more left-wing candidates tend to raise more money: going from a perfect moderate to a perfect left-winger results in a $258,416 increase in fundraising. Considering the median candidate raises about 15k, this is sizable.
 
 
-Many things might confound this relationship. One potential confound ($Z$) is political party: the parties systematically have different ideologies and might also have different fundraising capacities. So we control for party:
+Many things might confound this relationship. One potential confound ($Z$) is political party: the parties have different ideologies and might also have different fundraising capacities. So we control for party:
 
 
 ```{r}
@@ -191,7 +191,7 @@ But how do we get here?
 
 One way to think about the "comparisons" interpretation of controls is as a kind of **stratification**: when we control for $Z$, what we would like to do is see if the relationship between $X$ and $Y$ "holds" *within* levels of $Z$.
 
-To put it in the "defensive" terms in which researchers typically operate, if someone says that the relationship between $X$ and $Y$ is confounded by $Z$, we can respond: "Well, if we look at two people with the same $Z$, do we still see a relationship between $X$ and $Y$?" If yes, then we can say that the relationship between $X$ and $Y$ is not fully explained by $Z$.
+To put it in the "defensive" terms in which researchers typically operate: if someone says that the relationship between $X$ and $Y$ is confounded by $Z$, the researcher can respond by looking at two people with the same value of $Z$. If there is still a relationship between $X$ and $Y$, then $Z$ alone doesn't explain it away.
 
 
 In our case, this would look like estimating the relationship between ideology and fundraising *within* each of the three parties in the data (Democrats, Republicans, and Independents):
@@ -211,13 +211,13 @@ bonica |>
   my_kbl(caption = "Effect of ideology on fundraising, by party")
 ```
 
-We see that within each party, the relationship between ideology and fundraising is different, big and positive for Democrats, big and negative for Republicans, and weakly positive for Independents.
+We see that within each party, the relationship between ideology and fundraising is different: large and positive for Democrats, larege and negative for Republicans, and weakly positive for Independents.
 
 
 So how do we get from these three estimates to one overall estimate that *controls for party*, as in the model at the top of the page?
 
 
-The answer is that regression is doing a kind of weighted average of these within-group estimates. But it's not a simple average — the weights depend on specific features of each group.
+The answer is that regression is doing a kind of weighted average of these within-group estimates.
 
 
 ## The weighting formula
@@ -240,7 +240,7 @@ That is, the weight for each group reflects two things:
 1. **Group size**: groups with more observations contribute more squared deviations, so they get more weight. This makes sense — we have more information about the relationship in larger groups.
 2. **Within-group variance of $X$**: groups where the treatment variable $X$ varies more get more weight. This also makes sense — if everyone in a group has the same value of $X$, we can't learn anything about the effect of $X$ from that group.
 
-This is an important result. It tells us that when we "control for $Z$", we are not giving equal voice to every level of $Z$. We are letting the levels of $Z$ that have more data and more variation in $X$ drive the overall estimate.
+This is an important result. It tells us that when we "control for $Z$", we are not giving equal weight to every level of $Z$. We are letting the levels of $Z$ that have more data and more variation in $X$ drive the overall estimate.
 
 
 ## Checking this with the Bonica data
@@ -293,9 +293,6 @@ tibble(
 The two estimates are the same.^[There can be minor numerical differences due to floating point arithmetic, but they are substantively identical.] This confirms that "controlling for party" in OLS is equivalent to: (1) estimating the ideology-fundraising relationship separately within each party, and (2) taking a weighted average of those estimates, where groups with more observations and more ideological variation get more influence.
 
 
-Look back at the weights in the table above. This tells us which parties are driving the overall estimate. If one party has far more candidates and more spread in ideology, its within-party slope will dominate the controlled estimate.
-
-
 ## What this tells us about controls
 
 
@@ -306,9 +303,9 @@ This decomposition clarifies a few things about what controls do and don't do:
 
 2. **The summary is not a simple average.** Groups with more data and more variation in $X$ contribute more. This means the controlled estimate might be driven by a subset of the data that you didn't intend to emphasize.
 
-3. **With categorical controls, the logic is transparent.** We can literally split the data, estimate within each group, and see how the pieces combine. This is a good exercise to build intuition.
+3. **With categorical controls, the logic is transparent.** We can literally split the data, estimate within each group, and see how the pieces combine.
 
-4. **With continuous controls, we're trusting linearity.** When $Z$ is continuous, we can't literally stratify — there are too many unique values of $Z$. Instead, regression assumes the relationship between $Z$ and $Y$ is linear. This is a stronger assumption than the categorical case, where we make no assumptions about the shape of the $Z$-$Y$ relationship within each group. If the true relationship between $Z$ and $Y$ is nonlinear, a linear control for $Z$ may not fully remove the confounding. This is one reason why researchers sometimes use flexible controls (polynomials, splines, or fixed effects for binned continuous variables) — they're trying to get closer to the stratification ideal.
+4. **With continuous controls, we're trusting linearity.** When $Z$ is continuous, we can't literally stratify — there are too many unique values of $Z$. Instead, regression assumes the relationship between $Z$ and $Y$ is linear. This is a stronger assumption than the categorical case, where we make no assumptions about the shape of the $Z$-$Y$ relationship within each group. If the true relationship between $Z$ and $Y$ is nonlinear, a linear control for $Z$ may not fully "remove" the confounding.
 
 
 ## The residuals approach: Frisch-Waugh-Lovell
@@ -355,7 +352,7 @@ tibble(
 
 All three approaches produce the same coefficient.
 
-Because party is categorical, the residuals here have a nice interpretation: they are just the group-demeaned values. The residual of a Democrat's ideology score is how far their ideology is from the average Democrat's ideology. The residual of their fundraising is how much they raised relative to the average Democrat. FWL says: among candidates who are more ideologically extreme *for their party*, do they raise more or less *for their party*?
+Because party is categorical, the residuals here have a nice interpretation: they are just the group-demeaned values. The residual of a Democrat's ideology score is how far their ideology is from the average Democrat's ideology. The residual of their fundraising is how much they raised relative to the average Democrat. In other words: among candidates who are more ideologically extreme *for their party*, do they raise more or less *for their party*?
 
 
 ## Two intuitions for controls
@@ -366,5 +363,3 @@ We've now seen two equivalent ways of thinking about what regression controls do
 1. **Stratification**: split the data by $Z$, estimate the $X$-$Y$ relationship within each group, and take a weighted average. Controls ask: *within levels of Z, is there still a relationship between X and Y?*
 
 2. **Residualization (FWL)**: strip out what $Z$ explains from both $X$ and $Y$, and look at what's left. Controls ask: *using only the variation in X and Y that Z can't account for, is there a relationship?*
-
-With categorical controls, stratification is the more intuitive framing — you can literally look at subgroups. With continuous controls, you can't stratify, and FWL becomes the more natural way to think about it: regression removes a linear function of $Z$ from both sides and examines the leftovers. This is also why misspecifying the functional form of $Z$ matters. If $Z$'s true relationship with $Y$ is nonlinear but you control for it linearly, the residuals will still contain some of $Z$'s influence, and the confounding won't be fully removed.

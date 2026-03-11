@@ -1,0 +1,53 @@
+---
+title: "Books: March 2025"
+date: "2025-03-31"
+author: "Juan Tellez"
+categories:
+  - books
+  - asia
+  - democracy
+  - economics
+  - history
+  - politics
+  - ww2
+---
+
+## *How Asia Works: Success and Failure in the World's Most Dynamic Region* — Joe Studwell
+
+⭐⭐⭐⭐
+*How Asia Works* argues that the reason some Asian economies succeeded (the "tiger" economies: Japan, Taiwan, South Korea) and others failed (the Philippines, Myanmar) comes down to industrial policy: some states aggressively pointed their economies in the direction of development while others did not. 
+
+The book is provocative. Studwell is arguing against the neoclassical economic view that state intervention is bad and free trade is fundamentally good. In Studwell's view, free trade advantages already-rich countries, and if one looks at the history of how rich countries developed, they did so through heavy state intervention – land reform and protectionist policies that sheltered domestic manufacturing, allowing firms to grow and become globally competitive. 
+
+This summary makes Studwell sound like a conventional critic of free trade economics, but his ideas are more heterodox. Early in a country's development, he advocates for land redistribution – away from feudal estates and towards smaller landholdings – on the grounds that these small farms are more competitive, more "capitalist" in some sense, than big farms where landowners grow fat off rents. 
+
+The history is fascinating. I had no idea of the substantial level of land reform some Asian countries took on, but even more surprising: the degree to which the US encouraged these reforms both as development measures (in Japan, Korea, Taiwan) and as counterinsurgency tools to demobilize rural unrest. In Taiwan and Korea the US actively pushed for breaking up big farms. 
+
+He is also heterodox on protectionism. States need to protect domestic industries through tariffs and subsidies, but must maintain "export discipline": protected industries must be forced to compete in the global marketplace. Absent that pressure, domestic industries will happily absorb subsidies and do little that generates wider development. A dangerous tool: there needs to be willpower to push companies to compete globally even when it's not in their interest. The narrative on Korea's development of car and steel manufacturing so "late" in its history is impressive. 
+
+Something striking about these policies is that they are probably quite painful to implement and unlikely to generate a coalition interested in maintaining them. The costs of tariffs are borne by consumers. Studwell points to something like a decade of 10-15% interest rates in Korea. You also can't help but notice that the people pushing painful development in South Korea, China, and Taiwan are dictators. Can democracies do this? The rich democracies certainly did, so maybe there's hope. 
+
+I do find Studwell kind of grating at times. There's a ton of "telling" but not a lot of showing; huge claims are rattled off, but it's unclear how he can really "know" any of this.
+
+## *Making Empire: Ireland, Imperialism, and the Early Modern World* — Jane Ohlmeyer
+
+⭐
+I was disappointed by this book, or at least had the wrong expectations. I picked it up after hearing the author on *Empire Pod*, imagining something more accessible about the history of early English imperialism in Ireland. But the book is very academic; the acknowledgments indicate it is based on lectures. There is a frustrating level of detail throughout, at times too little background on characters and at others focusing too narrowly on individuals or towns. 
+
+Here's what I found interesting: the idea that Ireland is the "first" British colony, the only colonized country in western Europe; the steps the English took to "anglicize" Ireland early on; the process of using both settlers ("plantations") to dispossess the locals *and* the "carrot" of being made nobility to win over elites; and the way colonial practices in Ireland would later be reflected in other colonies, down to specific individuals. The Irish diaspora was also surprising but makes sense – that's how you get the hilariously named Bernardo O'Higgins as a Chilean founding father. 
+
+These are interesting ideas but they don't get a lot of development. There's also an emphasis on culture and discourse that some find interesting, but I don't. That colonial administrators conceptualized Ireland's "problems" in disease-like language, and that this language later appeared in India, is less interesting to me than how often the Irish were invoked in North America: "the wild Irish and the Indian do not much differ." There's a dark comedy where the colonizer recognizes "similarities" in otherwise very dissimilar peoples but fails to see the common denominator.
+
+## *Anti-Semite and Jew: An Exploration of the Etiology of Hate* — Jean-Paul Sartre
+
+⭐⭐
+In *Anti-Semite and Jew*, Sartre reflects on the "logic" of antisemitism in France at the end of WW2. In a broad sense, Sartre wants to explore how antisemitism "works" at the level of the individual: what does it "do" for the antisemite to be antisemitic? He sees a psychological dialectic at play in the persistence of these beliefs. 
+
+This book would be hard to write today. As Walzer points out in the preface, Sartre is neither Jewish nor well-versed in Jewish culture. Yet that does not mean he can't say something interesting about antisemitism. He is shockingly candid about how much antisemitism exists in his social circle and much of his theorizing is specific to his experiences in France. The etiquette today – that only members of a group should comment on that group – seems limiting.
+
+The first chapter on the antisemite is really all that's worth reading, and it is a really interesting set of observations, almost aphoristic. He characterizes antisemitism as a *choice* (famously: "if the Jew did not exist, the antisemite would invent him") that seeks out facts to support the view rather than the other way around. At its core, Sartre diagnoses the antisemite with a desire for impenetrability, a discomfort with the ambiguities of truth. 
+
+Especially interesting is Sartre's observation that the antisemite fundamentally "plays," that there is a layer of amusement (today we would say trolling) to their discourse. "They delight in acting in bad faith"; they do not stand by their arguments because their beliefs are not rooted in reason but anti-reason. The tension between the love of order and the desire to break that order – the tendency towards hooliganism, pogrom, destruction – is very interesting. He also clarifies something about conspiracy thinking more broadly: "Thus for the anti-Semite there is a *real* France with a government but diffused and without special organs, and an abstract France, official, Jew-ridden, against which it is proper to rebel."
+
+Walzer's preface is worth reading too; he does not seem like a fan.
+

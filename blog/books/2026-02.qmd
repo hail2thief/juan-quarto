@@ -1,0 +1,90 @@
+---
+title: "Books: February 2026"
+date: "2026-02-28"
+author: "Juan Tellez"
+categories:
+  - books
+  - biography
+  - democracy
+  - fiction
+  - history
+  - philosophy
+  - politics
+  - religion
+  - russia
+  - sci-fi
+  - violence
+  - ww2
+---
+
+## *The Wages of Destruction: The Making and Breaking of the Nazi Economy* — Adam Tooze
+
+⭐⭐⭐⭐⭐
+Now this is why we get up in the morning. What a great book. Something noteworthy: in the introduction, Tooze writes that he will not lay out the book's core conclusions, because this would spoil the process of reading it. What an idea! Meanwhile, the average political science book has an introduction that gives you a painful outline of the book and what each chapter does; each chapter then begins by outlining itself, and concludes by summarizing. How much of these books is just a summary of itself? 
+
+I was intimidated by the book but Tooze is simply a great writer and makes the whole thing come alive. It is essentially a history of WW2 from the German perspective, with an emphasis on how economic resources shaped the behavior and choices by the Nazis during the war. 
+
+This book runs "counter" to the way WW2 is typically taught in American high schools, which emphasizes Nazi ideology and Hitler's singular desire to "conquer the world". Tooze does not wholesale invalidate this telling – he explicitly argues for the role of ideology in German behavior. But the picture he paints is one of choices constrained by economic forces. 
+
+For instance, the reparations imposed on Germany after WW1 are famously onerous because of how they coincided with the Great Depression. The Germans had to make payments in foreign currency at a time when major economies were turning inward through protectionism, meaning nowhere for German exports to go. Among other things, this teaches Hitler that Germany must secure its own resources to survive a contest against Britain and the US. 
+
+The US looms large in Hitler's thinking. He and other Nazis were fixated on US manufacturing – particularly the auto industry – whose capacity they saw as a function of the country's size: access to ample natural resources and a large enough population to sustain domestic demand. Hitler saw the necessity of acquiring resources and growing the German population through a "settling" of the East, analogous to US frontier expansion. 
+
+These economic considerations also help explain why Hitler invades the Soviet Union, a moment usually treated as folly or "madman" decision in US classrooms. Tooze argues that both the defeat of France and the invasion of the Soviet Union were driven by the knowledge that Germany did not have the resources to win a long war. The Germans knew in both instances that if they did not defeat their foe quickly, the war would be lost. High-risk gambles that succeeded in France but failed in the Soviet Union, and only because Stalin was able to generate staggering levels of military production. 
+
+Good book on the Eastern Front that I hadn't encountered in the popular WW2 literature.
+
+## *Electoral Violence, Corruption, and Political Order* — Sarah Birch
+
+⭐
+It's worth mentioning that when I score these books it is about my enjoyment, not how objectively good or bad the book is. I gave Paxton's [[Vichy France]] a low score and it's a classic work of history. 
+
+This book has all the markers of political science books I don't like. It is short, full of overviews and summaries. The introduction summarizes the book, including what each subsequent chapter does. Each chapter begins with a summary of itself, ends with a summary. It makes the book feel as though there is not much content, which is a shame given how much Birch clearly knows about the subject. 
+
+Birch's primary claim is that electoral violence is primarily driven by state actors, and that it is one tool among many for swaying elections (vote buying, patronage, ballot stuffing, changing electoral rules, etc.). In her formulation, violence is in some sense a "weapon of the weak", as a stronger ruler would rely on other tactics to reduce the uncertainty elections generate. 
+
+Birch takes a broad view of electoral violence, but violence driven by non-state armed actors and that driven by state actors seems pretty different. The Taliban might attack a voting booth, sending a message about state incapacity. An incumbent might use violence to push the election in a particular direction, thinking more carefully about targeting. This has implications for her final chapter on prevention: empowering the judicial branch might help with incumbent violence but would be irrelevant for stopping insurgent violence. 
+
+One small point: she asks whether electoral violence is a complement or substitute for other forms of manipulation, concluding they must be complements because we often observe both. But this seems too quick; it's easy to imagine that, counterfactually, incumbents who don't use violence might rely more on other forms of manipulation, and vice versa.
+
+## *Why Buddhism Is True: The Science and Philosophy of Meditation and Enlightenment* — Robert Wright
+
+⭐⭐
+The point of this book is to provide scientific grounding to the ideas that animate Buddhism. The chapters roughly alternate between the author recounting his experiences with meditation and silent retreats, and chapters dealing with research in psychology or evolutionary biology that seem to support those experiences. 
+
+For instance, Buddhists might say human suffering is the result of desire being fundamentally insatiable, or of an over-identification with a false self. The author then follows up with a just-so story about how evolution selected for survival traits that keep us desiring, or psychological studies about the instability of identity. 
+
+But why is this worth doing? At parts it felt like the book was aimed at an audience that was Buddhism-curious but squeamish about the idea it is a religion. The book gives this audience permission to be curious by reminding the reader that Science is Real and secular Buddhism is OK. 
+
+Except the Buddhism most people in the West are exposed to is so secularized there's not much to be squeamish about. It is mostly philosophy and introspection: if you think about "you" over the years, who's to say you are this stable, identifiable thing? I don't need a psychology experiment to make that plausible. 
+
+That said, many of his claims are reasonable and I've found it independently interesting that counseling approaches seem to draw on Buddhist ideas. He doesn't talk about psychoanalysis, but Lacanian psychoanalysis especially (see [[The Lacanian Subject]]) seems to adopt many Buddhist viewpoints, including the denial of a stable "self" and the suffering that attachment causes. 
+
+The book brings up something I've always found funny about evolutionary psychology. As far as I can tell, it is a mostly theoretical discipline – there is no way to empirically test whether the reason we are afraid of the dark is that our ancestors feared predators. The theory can always change to fit the facts; these are "just so" stories. What's funny is that this is the same critique made of psychoanalysis, probably by evolutionary psychology people, who see themselves as doing science and the psychoanalysts as doing something else.
+
+Too long. Would have rather heard more about his experiences meditating and with silent retreats.
+
+## *Hard-Boiled Wonderland and the End of the World* — Haruki Murakami
+
+⭐⭐⭐
+I struggled with what score to give this book. Of any author, we might have the most books at home of Murakami's. I loved *Norwegian Wood* and *Wind-up Bird* when I read them in college, but then mostly lost interest. My wife really loves his books and has read more of them. 
+
+There are some great moments in the novel, the last third is particularly strong. Murakami is great at writing people doing mundane things: drinking beer, eating noodles – it feels comforting. And there is this long sequence where the narrator is escaping through Tokyo's sewer system that is incredible. But I mostly didn't care for the "end of the world" portions, probably because it veers into this cloying, "all you need is love" resolution that some sci-fi uses to resolve overly complicated puzzles. 
+
+As an aside: I'm shocked by how similar this book is to the TV show *Severance*. The narrator is essentially severed, trained (and surgically altered) to complete tasks independently, where one side doesn't know what the other is doing. And his alter ego, in "end of the world", is him but doesn't remember himself, tasked with completing strange tasks in a strange world that he ultimately decides is oppressive. I'd be shocked if no one on *Severance* read this book.
+
+## *Paul: A Biography* — N.T. Wright
+
+⭐⭐⭐
+I was baptized, had my first communion, and went through confirmation, but I had no idea Jesus had a brother (James). My background in Christian history is basically nonexistent in spite of all that religious education. I knew nothing of Paul before reading this book, save for his letters. 
+
+Now I know more, sort of. The author makes clear that what we can know with confidence about Paul is limited. We are not even sure how or where he died. So in concrete terms, there's not a ton to say in terms of pure biography. This is probably why the book is written with a more theological audience in mind; it dives into interpretations and debates about Paul's work and beliefs that I mostly glazed over. 
+
+But it is a fascinating story. Paul is torn between two worlds: the Jewish world, of which he was a devout follower (a Pharisee), and the Christian world that he was helping to create. Paul worked with the Romans to repress early Christianity, seeing it as a threat to Judaism. As the story goes, while on the road to Damascus to continue helping to persecute Christians, he experiences a blinding light that leaves him incapacitated for three days. When he recovers, he is converted into the Apostle Christians know today. 
+
+Much of the biography follows Paul as he works to set up the early Christian church around Asia Minor. At some point he is beaten and stoned; at another there is a gap in his life that the author argues was a likely stint in prison. 
+
+The key problem Paul faced is that even among Jewish communities open to Jesus as a Messianic figure, there was resistance to opening the faith to gentiles. His opponents believed they should still adhere to Judaic law, especially circumcision. Paul wanted a more "universal" faith. Some of his letters are about this (especially Galatians). 
+
+Interesting but too long on the content of Paul's beliefs and not enough on the politics and social dynamics of this time.
+

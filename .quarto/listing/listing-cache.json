@@ -6,7 +6,6 @@
       "software/*.qmd"
     ],
     "blog.qmd": [
-      "blog",
       "blog/content_*.qmd",
       "blog/*.qmd",
       "!blog/content_*.qmd",

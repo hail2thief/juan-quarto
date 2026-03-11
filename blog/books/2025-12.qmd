@@ -1,0 +1,32 @@
+---
+title: "Books: December 2025"
+date: "2025-12-31"
+author: "Juan Tellez"
+categories:
+  - books
+  - history
+  - philosophy
+  - politics
+---
+
+## *The Lacanian Subject: Between Language and Jouissance* — Bruce Fink
+
+⭐⭐
+I have been interested in Lacan since I first (tried to) read him in college. Around that time I heard about Zizek and read some of his easier stuff, watched the "Pervert's Guide" documentaries, which are great. 
+
+Part of Lacan's appeal is that he takes Freud's ideas and "updates" them, rooting them in language rather than the more biological systems Freud seemed to land on. Lacan frames his whole work not as reinterpreting Freud but as claiming that this is what Freud meant all along. 
+
+Freud is mostly treated as a punching bag in modern psychology courses; he is probably only seriously read in Literature departments or by psychoanalysts. But his basic premises seem pretty uncontroversial: that we might behave in certain ways for unconscious reasons, the defense mechanisms, that early experiences are formative – this is pretty vanilla stuff for both practitioners and academic psychologists even if they don't use those terms. 
+
+Where Freud gets in trouble is that he reasons: if there are unconscious thoughts, they must live somewhere, a literal place, perhaps in the brain. As someone with intellectual roots in the 19th century, he is too mechanical, too literal. You see this in his discussion of penis envy, the Oedipal complex, etc. A modern psychologist might talk about unconscious thoughts but not really worry about the implications of those claims. They treat the unconscious as a metaphor. 
+
+So Lacan takes Freud's ideas and roots them in linguistics. We are born into a symbolic order, a world of language, symbols, meaning and prohibitions that we did not get to choose. This is "good", in that it allows us to communicate, live in orderly societies, be comforted in the predictability that a world of stable meaning provides. For Lacan, rejecting this symbolic order is the mark of the psychotic. This order is also "bad" in that it alienates us from ourselves: rather than having an unmediated experience of our own needs and desires, we are taught to use words that are not our own (the "Other's" words) to articulate them. We have desires, but they are never fully our own, so they can never be satisfied. 
+
+Our relation to this symbolic order is a big part of how we understand the world and ourselves. We are, in some sense, always thinking about the symbolic as if it were an Other, a sort of person, and we worry about what "it" wants. Think about anxiety this way: the person at the party, plagued with social anxiety, wondering how others see them. Or the over-achiever, worried about getting the right grades, into the right school. The concern is with this Other: we know it wants something of us, we are not exactly sure what, and we can never quite meet it. 
+
+That's my gloss on the clearest parts of Lacan from this book, which varies tremendously in difficulty. The early chapters are impressive: taking these difficult concepts and making them lucid in a way I hadn't seen before. But the later chapters are nearly inscrutable. The chapter on sexual difference I basically couldn't parse at all. 
+
+Fink is less convincing when he draws on more Freudian-sounding examples: infants and their relations to their mothers and fathers, people's dreams having important meaning, slips of the tongue that reveal everything about a person's hangups. These run into what seem like compelling critiques of psychoanalysis: if you look at tea leaves long enough you'll eventually find patterns that aren't necessarily there. 
+
+Fink does not take seriously any of the critiques from more positivistic psychology, which is frustrating. He seems to reject any biological constraints on the psyche. Early on, he says that for an infant, the whole body has equal potential to be erogenous, that it's only in the symbolic order that we learn which parts "matter" – which seems implausible. Language is powerful, but surely there are general tendencies in human behavior linked to biology. And towards the end, he explicitly says that psychoanalysis is a discourse, that Science is a discourse, and that there's no real difference between any of it. Too strong a claim.
+

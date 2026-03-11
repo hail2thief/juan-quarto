@@ -1,0 +1,56 @@
+---
+title: "Books: March 2026"
+date: "2026-03-31"
+author: "Juan Tellez"
+categories:
+  - books
+  - economics
+  - politics
+  - violence
+---
+
+## *Four Thousand Weeks: Time Management for Mortals* — Oliver Burkeman
+
+⭐⭐⭐
+I first heard of this book because of the associated poster the author sells. It depicts 4,000 boxes, one for each week of the average lifespan. When you order it you provide your age; the number of weeks you've already lived arrive filled in, and the rest you fill out as the weeks pass. 
+
+The premise is that our time on earth is finite and that this means we will never get around to doing everything we want to do. We have made too many plans and yet still want more: more projects, more travel, more memories. We end up stuck living in the future, thinking "if I can just finish XYZ, then I can finally…"
+
+The author especially has in mind productivity hacker types, constantly thinking about how to be more efficient, improve their workflow, automate repetitive tasks. 
+
+I am exactly this kind of person. I am ambiently bothered by tasks that feel repetitive in a way that seems like they could be automated or accomplished faster. Nowadays I'm tinkering with Claude Code so much, amazed at the new efficiency it has unleashed, that I stay up too late and miss sleep. 
+
+But it's not just about being faster, it's about thinking about tasks in a checklist format, failing to grasp that the tasks themselves are the point. Take research projects: I frequently feel I need to make more progress on some existing project. Why? So I can make progress on the other projects. Why? So I can start new projects. And so on. But the projects I am working on *are* my work, they are not things to move past or "cross off" my list. 
+
+As with most self-help books, the diagnosis is insightful but the "so what" is pretty flat. He endorses meditation, OK. He gives an example of being stuck in traffic and asking why we don't feel joy that we get to be in a traffic jam at all, as opposed to not existing. Come on. A phrase he likes is "Joy of Missing Out" – the idea that missing out on things means we are already doing the stuff we want to be doing. Sounds great, but how do you get there? Is it possible? Who knows.
+
+## *Rape Loot Pillage: The Political Economy of Sexual Violence in Armed Conflict (Oxford Studies in Gender and International Relations)* — Sara Meger
+
+⭐⭐
+In the 2010s there was a lot of interest in wartime sexual violence – sexual violence committed, in some broad sense, as an act of war. Both state and rebel actors have committed sexual violence across a range of conflicts. Why?
+
+The conventional wisdom that most scholars argue against is that war simply provides soldiers the opportunity to commit these acts with impunity. One counterargument says that the "opportunity" is largely constant across conflicts yet its use varies a lot, so there must be something else going on. 
+
+In this book, Meger blends critical theory approaches focused on discourse with positivist approaches focused on causal explanations. 
+
+Discursively, she traces how wartime sexual violence came to take on a "fetishized" position in international relations and especially UN approaches to conflict resolution. One thing that stood out: so much aid in the 2000s was earmarked for preventing sexual violence that, in many conflict settings, practitioners and NGOs would shift (or pretend to shift) all of their work towards victims of sexual violence. This kind of perverse incentives story in foreign aid is something I've come across in my own work. 
+
+The more positivistic side, using a political economy lens, was less interesting. Many of the factors Meger highlights – poverty, the availability of lootable wealth – seem more like explanations for war itself than for the specific use of wartime sexual violence. When she does focus more narrowly, she makes claims that seem plausible but underdeveloped: for instance, that wartime sexual violence is used to induce ethnic cleansing or forced migration. 
+
+Meger makes more demanding claims that end up as throwaway lines: for instance, that deindustrialization emasculates men, leading them to commit sexual violence. Quite a claim, but it doesn't get development. 
+
+In general, too many ideas don't get developed because so much time is spent on what scholars aren't taking into account. Academic books need to hurry up referencing the literature and get on with it.
+
+## *The Code of Capital: How the Law Creates Wealth and Inequality* — Katharina Pistor
+
+⭐⭐⭐
+There is a kind of folk morality that says people naturally own things and exchange with one another in markets, and that states unnaturally intervene in these exchanges through taxation, redistribution, etc. The timing is: economic exchange happens organically, and only later the state arrives to alter things. 
+
+One response to this is to point out that property itself is constituted by the state, that it does not arise naturally. That I own something and therefore own it forever, or that I own something because I inherited it, or – even more “out there” – that I own ideas that I can prevent others from using, is a function of state institutions. Property rights thus are part of the state and stand alongside other kinds of institutions. This is not so controversial: libertarians, like Nozick, will acknowledge this feature. 
+
+This book takes that basic idea and expands it, but where the focus is on capital rather than property. Pistor argues that the law imbues capital with four qualities — durability, priority, universality, and convertibility — that generate wealth for their owners, and that *private* law is central to this process. The *private* part here is subtle but important. The law is an institution of the state, thus public; but Pistor (as I understand) effectively says that there is so much mushiness in law that private actors (typically through lawyers) have created a system of capital administration without public input. The state, in the end, will either enforce these laws, or they may choose to reform them, but the point is they are being created outside of the public sphere. 
+
+The book is pretty technical and much of this went over my head or was just not that interesting to me. One feeling I had, however, was that Pistor was presenting some of these institutions in a “partial equilibrium” way of thinking that felt unsatisfying at times. For instance, her discussion of trusts or corporations as allowing business owners to shield themselves from liability or from potential creditors. Some of this is framed as a kind of “trick” played on lenders, but of course, if lenders are aware that this is happening they should adjust accordingly (e.g., through higher interest rates). Now, the group that does *not* adjust is the public, and this is Pistor’s greatest concern: that capital has structured law in such a way that systematically disadvantages the public interest, for instance, through socializing losses (“too big to fail”). 
+
+The chapter on IP was my favorite, probably its because that’s such a strange idea that doesn’t fit quite neatly into left-right divides. The left seems more skeptical of IP than the right, even though it could arguably be the other way around.
+
