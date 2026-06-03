@@ -12,10 +12,6 @@ listing:
       - "!blog/content_*.qmd"
     sort: "date desc"
     categories: true
-  - id: books
-    contents: "blog/books/*.qmd"
-    sort: "date desc"
-    categories: true
 page-layout: full
 title-block-banner: false
 format:
@@ -33,7 +29,3 @@ format:
 :::{#posts}
 :::
 
-## Book Reviews
-
-:::{#books}
-:::

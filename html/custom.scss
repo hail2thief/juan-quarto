@@ -61,7 +61,10 @@ $footer-font-family: "Jost" !default;
 $body-color: $gray-900 !default;
 
 // Links
-$link-color: $blue !default;
+// Brighter, more saturated blue for body hyperlinks ONLY — kept separate from
+// $blue so the navbar ($navbar-bg), TOC ($toc-color), and code-copy button
+// stay their original slate tone.
+$link-color: #1A5DAD !default;
 $link-decoration: none !default;
 $link-hover-color: $light-orange !default;
 $link-hover-decoration: underline !default;

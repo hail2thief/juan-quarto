@@ -1,15 +1,14 @@
 {
   "listingMap": {
+    "blog.qmd": [
+      "blog/content_*.qmd",
+      "blog/*.qmd",
+      "!blog/content_*.qmd"
+    ],
     "teaching.qmd": [
       "undergrad/*.qmd",
       "grad/*.qmd",
       "software/*.qmd"
-    ],
-    "blog.qmd": [
-      "blog/content_*.qmd",
-      "blog/*.qmd",
-      "!blog/content_*.qmd",
-      "blog/books/*.qmd"
     ]
   }
 }

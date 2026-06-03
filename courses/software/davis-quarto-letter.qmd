@@ -1,0 +1,11 @@
+---
+date: "2026-04-03"
+title: "Davis slides template"
+subtitle: "Quarto Reveal.js slide template for UC Davis"
+categories: "Quarto"
+image: ../logos/quarto-revealjs-ucdavis.png
+---
+
+This is a Quarto slides template I put together for UC Davis presentations. It is set up for Reveal.js and meant to make it easier to get to a clean, branded slide deck quickly.
+
+### [GitHub repo](https://github.com/hail2thief/quarto-revealjs-ucdavis)

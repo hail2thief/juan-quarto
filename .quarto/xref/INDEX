@@ -454,5 +454,14 @@
   },
   "blog/books/2024-01.qmd": {
     "2024-01.html": "943fa220"
+  },
+  "courses/software/davis-quarto-letter.qmd": {
+    "davis-quarto-letter.html": "9a00ce06"
+  },
+  "courses/software/davis-site-template.qmd": {
+    "davis-site-template.html": "76a0ba5a"
+  },
+  "session-log.md": {
+    "session-log.html": "b817178f"
   }
 }

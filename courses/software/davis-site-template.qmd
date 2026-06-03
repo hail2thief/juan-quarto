@@ -1,0 +1,11 @@
+---
+date: "2026-04-03"
+title: "Davis website template"
+subtitle: "Quarto website template for UC Davis"
+categories: "Quarto"
+image: ../logos/davis-site-template.jpeg
+---
+
+This is a Quarto website template for simple UC Davis personal or project sites. It is a lightweight starting point for getting a Davis-branded site online without much setup.
+
+### [GitHub repo](https://github.com/hail2thief/davis-site-template)
