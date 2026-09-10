@@ -11,7 +11,7 @@ about:
     - icon: github 
       text: Github
       href: https://github.com/hail2thief
-    - icon: CV
+    - icon: file-earmark-text
       text: CV
       href: https://www.dropbox.com/scl/fi/ya07jp8owfvodqcpssccf/cv-tellez.pdf?rlkey=zww0gyatdvgsxmh43n3kn0883&dl=0
     - icon: mortarboard-fill

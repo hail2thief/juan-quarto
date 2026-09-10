@@ -8,13 +8,15 @@ format:
     anchor-sections: false
 include-in-header:
   text: |
+    <!-- flag-icons: small SVG country flags, used by the .pub-flag chips -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css">
     <style>
       /* Layout + typography */
       main.content { max-width: 900px; }
       body { line-height: 1.65; }
       h2 { border-bottom: none; margin-top: 1.6rem; }
 
-      /* Top links row */
+      /* Top links row (Google Scholar / ORCID pills) */
       .profile-links{
         display:flex;
         gap:.75rem;
@@ -34,58 +36,69 @@ include-in-header:
       }
       .icon-link:hover{ text-decoration:none; border-color: rgba(0,0,0,.25); }
 
-      /* Publications list as “cards” */
+      /* Year header that groups a list: "2026 ────────" */
+      .pub-year{
+        display:flex;
+        align-items:center;
+        gap:.75rem;
+        margin: 1.4rem 0 .6rem 0;
+        font-family: "Fraunces", serif;
+        font-weight: 600;
+        font-size: 1.05rem;
+        color: #355B85;
+      }
+      .pub-year::after{
+        content:"";
+        flex:1;
+        height:1px;
+        background: rgba(53,91,133,.25);
+      }
+
+      /* Publication list -- one <li class="pub"> per paper, built by render_pub() */
       .pub-list{ list-style:none; padding-left:0; margin:0; }
       .pub{
-        padding: .9rem 1rem;
-        margin: 0 0 .9rem 0;
-        border: 1px solid rgba(0,0,0,.10);
-        border-radius: 12px;
-        background: rgba(0,0,0,.015);
+        margin: 0 0 1.25em 0;
+        padding: .15rem 0 .15rem .9rem;
+        border-left: 3px solid #355B85;
+        line-height: 1.55;
       }
-      .pub-title{
-        font-weight: 650;
-        font-size: 1.02rem;
-        margin: 0 0 .15rem 0;
-      }
-      .pub-title a{
-        text-decoration: none;
-      }
-      .pub-title a:hover{
-        text-decoration: underline;
-      }
+      .pub-title{ font-weight: 700; font-size: 1.05em; }
+      .pub-title a{ text-decoration: none; font-weight: 700; } /* bootstrap resets link weight to 400 */
+      .pub-title a:hover{ text-decoration: underline; }
+      .pub-authors{ color: #555; }
+      .pub-authors .me{ font-weight: 700; color: #333; }
+
+      /* Meta line: [flag chip] · venue */
       .pub-meta{
-        color: rgba(0,0,0,.68);
-        font-size: .96rem;
+        display:flex;
+        flex-wrap:wrap;
+        align-items:center;
+        gap:.35rem .6rem;
+        margin-top:.2rem;
+        font-size:.92em;
+        color:#666;
       }
-      .pub-meta em{ font-style: italic; }
-      .pub-year{
-        display:inline-block;
-        margin-left:.35rem;
-        padding:.05rem .45rem;
-        border-radius: 999px;
-        border: 1px solid rgba(0,0,0,.12);
-        font-size: .82rem;
-        color: rgba(0,0,0,.65);
+      .pub-meta .venue{ font-style: italic; }
+      .pub-flag{
+        display:inline-flex;
+        align-items:center;
+        gap:.4rem;
+        padding:.05rem .55rem .05rem .4rem;
+        border:1px solid rgba(0,0,0,.12);
+        border-radius:999px;
+        background: rgba(0,0,0,.02);
+        font-size:.85em;
+        font-style: normal;
+        color:#444;
+        white-space: nowrap;
       }
+      .pub-flag .fi{ border-radius:2px; box-shadow: 0 0 0 1px rgba(0,0,0,.08); }
+      .pub-flag svg{ height:.95em; width:auto; color:#355B85; }
 
-      /* Details/Abstract */
-      details.pub-details { margin-top: .45rem; }
-      details.pub-details summary{
-        cursor:pointer;
-        user-select:none;
-        color: inherit;
-        font-size: .92rem;
-      }
-      details.pub-details[open] summary{ margin-bottom:.35rem; }
-      .pub-summary{
-        margin: 0;
-        color: rgba(0,0,0,.70);
-        font-size: .95rem;
-      }
-
-      /* Optional: bold your name without HTML injection */
-      .me{ font-weight:700; }
+      /* Collapsible abstract */
+      .pub details{ margin-top:.4em; }
+      .pub summary{ cursor:pointer; color:#1A5DAD; font-size:.9em; }
+      .pub details p{ margin-top:.5em; color:#555; font-size:.95em; }
     </style>
 ---
 
@@ -93,44 +106,140 @@ include-in-header:
 ```{r setup, include=FALSE}
 library(tidyverse)
 library(here)
-library(kableExtra)
 library(htmltools)
 library(fontawesome)
 
-# get_cv_sheet() reads publication data from a LOCAL CSV snapshot of the CV
+# get_pubs() reads publication data from a LOCAL CSV snapshot of the CV
 # Google Sheet (personal_files/pubs.csv). Refresh that snapshot by running
-# personal_files/pull_pubs.R whenever the sheet changes. Reading locally means
-# renders need no network and no interactive Google auth, so the build can't
-# break on an expired token. The `sheet` arg is kept for backward
-# compatibility but ignored — only the "pubs" tab is ever used.
-get_cv_sheet <- function(sheet) {
-    return(readr::read_csv(
-        here::here("personal_files", "pubs.csv"),
-        show_col_types = FALSE
-    ))
+# personal_files/pull_pubs.R (or scripts/update_site.sh) whenever the sheet
+# changes. Reading locally means renders need no network and no interactive
+# Google auth, so the build can't break on an expired token.
+#
+# If the sheet has no `country` column yet, one is added (all NA) so the
+# rest of the code can rely on it existing.
+get_pubs = function() {
+  pubs = readr::read_csv(here::here("personal_files", "pubs.csv"), show_col_types = FALSE)
+  if (!"country" %in% names(pubs)) pubs$country = NA_character_
+  pubs
 }
 
-icon_link <- function(
-  icon = NULL,
-  text = NULL,
-  url = NULL,
-  class = "icon-link",
-  target = "_blank"
-) {
-  if (!is.null(icon)) {
-    text <- make_icon_text(icon, text)
+# clean_summary() makes abstracts pasted from LaTeX safe for HTML.
+# Pandoc silently DROPS raw LaTeX commands when the output is HTML, so
+# \textit{one-to-five} would render as nothing at all. We translate the
+# common commands into HTML tags before Pandoc ever sees them.
+clean_summary = function(x) {
+  x |>
+    str_replace_all("\\\\(?:textit|emph)\\{([^}]*)\\}", "<em>\\1</em>") |>
+    str_replace_all("\\\\textbf\\{([^}]*)\\}", "<strong>\\1</strong>") |>
+    str_replace_all("\\\\%", "%") |>
+    str_replace_all("\\\\&", "&amp;")
+}
+
+# Country names for the two-letter ISO codes used in the sheet's `country`
+# column. Add a row here when a new country shows up; unknown codes fall
+# back to showing the code itself.
+country_names = c(
+  BR = "Brazil", CO = "Colombia", ES = "Spain", ET = "Ethiopia",
+  GT = "Guatemala", ID = "Indonesia", IN = "India", TW = "Taiwan",
+  US = "United States", UA = "Ukraine", MX = "Mexico", PE = "Peru",
+  SV = "El Salvador", HN = "Honduras", NG = "Nigeria", KE = "Kenya"
+)
+
+# flag_chip() builds the "[flag] Country" pill for one paper.
+#   country: "CO", "CO, ET" (several flags in one chip), or NA -> globe icon
+flag_chip = function(country) {
+  if (is.na(country) || str_trim(country) == "") {
+    return(paste0("<span class=\"pub-flag\">", fa("globe"), " Cross-national</span>"))
   }
-  return(htmltools::a(
-    href = url, text, class = class, target = target, rel = "noopener"
-  ))
+  codes = str_split(country, ",")[[1]] |> str_trim() |> str_to_upper()
+  # forgive common non-ISO codes typed into the sheet
+  codes = dplyr::recode(codes, SP = "ES", UK = "GB")
+  flags = paste0("<span class=\"fi fi-", str_to_lower(codes), "\"></span>", collapse = " ")
+  names = ifelse(codes %in% names(country_names), country_names[codes], codes)
+  paste0("<span class=\"pub-flag\">", flags, " ", paste(names, collapse = ", "), "</span>")
 }
 
-make_icon_text <- function(icon, text) {
-  return(HTML(paste0(make_icon(icon), " ", text)))
+# render_pub() turns a data frame of publications (one row per paper) into
+# HTML lists and prints them. All three sections on this page go through
+# this one function, so the look is controlled in one place: the CSS block
+# in the YAML header above.
+#
+# Columns used: title, author, url, summary, journal, pub_date, country.
+#   group_by_year: print a "2026 ────" header before each year's papers
+#   show_flag:     add the country chip to the meta line
+#   show_venue:    add the journal / venue to the meta line
+render_pub = function(pubs, group_by_year = TRUE, show_flag = TRUE, show_venue = TRUE) {
+  pubs = pubs |>
+    arrange(desc(pub_date)) |>
+    mutate(
+      year    = ifelse(is.na(pub_date), "Undated", format(pub_date, "%Y")),
+      summary = clean_summary(summary),
+      # bold my name in the author list
+      author  = str_replace(author, "JF Tellez", "<span class=\"me\">JF Tellez</span>"),
+      title_html = ifelse(
+        !is.na(url),
+        paste0("<a href=\"", url, "\">", title, "</a>"),
+        title
+      ),
+      authors_html = ifelse(
+        !is.na(author),
+        paste0("<div class=\"pub-authors\">", author, "</div>"),
+        ""
+      ),
+      flag_html  = if (show_flag) map_chr(country, flag_chip) else "",
+      venue_html = ifelse(
+        show_venue & !is.na(journal),
+        paste0("<span class=\"venue\">", journal, "</span>"),
+        ""
+      ),
+      # only print the meta line if it has something in it
+      meta_html = ifelse(
+        flag_html != "" | venue_html != "",
+        paste0(
+          "<div class=\"pub-meta\">", flag_html,
+          ifelse(flag_html != "" & venue_html != "", " · ", ""),
+          venue_html, "</div>"
+        ),
+        ""
+      ),
+      abstract_html = ifelse(
+        !is.na(summary),
+        paste0("<details><summary>Abstract</summary><p>", summary, "</p></details>"),
+        ""
+      ),
+      item = paste0(
+        "<li class=\"pub\">\n",
+        "  <div class=\"pub-title\">", title_html, "</div>\n",
+        "  ", authors_html, "\n",
+        "  ", meta_html, "\n",
+        "  ", abstract_html, "\n",
+        "</li>"
+      )
+    )
+
+  if (group_by_year) {
+    # one <ul> per year, each preceded by a year header. Walk the years in
+    # the order they already appear (newest first) -- group_by() would
+    # re-sort them ascending.
+    for (yr in unique(pubs$year)) {
+      items = pubs$item[pubs$year == yr]
+      cat(
+        "<div class=\"pub-year\">", yr, "</div>\n",
+        "<ul class=\"pub-list\">\n", paste(items, collapse = "\n"), "\n</ul>\n"
+      )
+    }
+  } else {
+    cat("<ul class=\"pub-list\">\n", paste(pubs$item, collapse = "\n"), "\n</ul>\n")
+  }
+  invisible(NULL)
 }
 
-make_icon <- function(icon) {
-  return(tag("i", list(class = icon)))
+icon_link = function(icon = NULL, text = NULL, url = NULL,
+                     class = "icon-link", target = "_blank") {
+  if (!is.null(icon)) {
+    text = HTML(paste0(tag("i", list(class = icon)), " ", text))
+  }
+  htmltools::a(href = url, text, class = class, target = target, rel = "noopener")
 }
 ```
 
@@ -142,188 +251,35 @@ make_icon <- function(icon) {
 </center>
 
 
-
-
-
 ## Working papers
 
-
-```{r, echo=FALSE, warning=FALSE,message=FALSE, results='asis'}
-# get pubs
-pubs_raw = get_cv_sheet("pubs") |> 
-    filter(category == "working_paper")
-  
-
-pubs_raw |> 
-  arrange(desc(pub_date)) |> 
-  mutate(item = glue::glue(
-    "<li style='margin-bottom: 1.5em; line-height: 1.6;'>
-      <strong style='font-size: 1.05em;'>{ifelse(!is.na(url), paste0('<a href=\"', url, '\" style=\"color: #1A5DAD; text-decoration: none;\">',
-title, '</a>'), title)}</strong><br>
-      <span style='color: #555;'>{author}</span><br>
-      {ifelse(!is.na(summary), paste0(
-        '<details style=\"margin-top: 0.5em;\">
-          <summary style=\"cursor: pointer; color: #1A5DAD; font-size: 0.9em;\">Abstract</summary>
-          <p style=\"margin-top: 0.5em; color: #555; font-size: 0.95em;\">', summary, '</p>
-        </details>'
-      ), '')}
-    </li>"
-  )) |>
-  pull(item) |>
-  (\(x) cat("<ul style='list-style-type: none; padding-left: 0;'>\n", 
-            paste(x, collapse = "\n"), 
-            "\n</ul>"))()
+```{r, echo=FALSE, warning=FALSE, message=FALSE, results='asis'}
+# working papers: flat list, newest first, country flag, no venue
+get_pubs() |>
+  filter(category == "working_paper") |>
+  render_pub(group_by_year = FALSE, show_venue = FALSE)
 ```
-
 
 
 ## Peer-reviewed
 
-
-```{r, echo=FALSE, warning=FALSE,message=FALSE, results='asis'}
-# get pubs
-pubs_raw = get_cv_sheet("pubs") |> 
-    filter(category == "peer_reviewed")
-  
-# clean up
-pubs = pubs_raw |> 
-    mutate(
-    journal  = ifelse(is.na(journal), '', paste0('<i>', journal, '</i>')),
-    number   = ifelse(is.na(number), '', paste0(number, '.')),
-  )
-
-pubs |> 
-  arrange(desc(pub_date)) |> 
-  mutate(item = glue::glue(
-    "<li style='margin-bottom: 1.5em; line-height: 1.6;'>
-      <strong style='font-size: 1.05em;'>{ifelse(!is.na(url), paste0('<a href=\"', url, '\" style=\"color: #1A5DAD; text-decoration: none;\">',
-title, '</a>'), title)}</strong><br>
-      <span style='color: #555;'>{author}</span><br>
-      <em style='color: #777;'>{journal}</em>
-      {ifelse(!is.na(pub_date), paste0(' (', format(pub_date, '%Y'), ')'), '')}
-      {ifelse(!is.na(summary), paste0(
-        '<details style=\"margin-top: 0.5em;\">
-          <summary style=\"cursor: pointer; color: #1A5DAD; font-size: 0.9em;\">Abstract</summary>
-          <p style=\"margin-top: 0.5em; color: #555; font-size: 0.95em;\">', summary, '</p>
-        </details>'
-      ), '')}
-    </li>"
-  )) |>
-  pull(item) |>
-  (\(x) cat("<ul style='list-style-type: none; padding-left: 0;'>\n", 
-            paste(x, collapse = "\n"), 
-            "\n</ul>"))()
+```{r, echo=FALSE, warning=FALSE, message=FALSE, results='asis'}
+# grouped by year, with country flag and journal
+get_pubs() |>
+  filter(category == "peer_reviewed") |>
+  render_pub()
 ```
-
-
-
-
-```{r, echo=FALSE, warning=FALSE,message=FALSE, results='asis', eval = FALSE}
-# get pubs
-pubs_raw = get_cv_sheet("pubs") |> 
-    filter(category == "working_paper")
-  
-# clean up
-pubs = pubs_raw |> 
-    mutate(
-    author = str_replace(author, "JF Tellez", "<b>JF Tellez</b>")
-  )
-
-
-pubs |>
-  arrange(desc(pub_date)) |>
-  mutate(title = ifelse(!is.na(url), cell_spec(title, "html", link = url),
-                        title)) |>
-  select(year, title, author) |>
-  kable(format = "html", escape = FALSE, align = "rlcc",
-        col.names = NULL) %>%
-  kable_styling(bootstrap_options = c("hover", "responsive"))
-
-# pubs |>
-#   mutate(title = cell_spec(title, "html", link = url)) |>
-#   mutate(citation = paste(title, "(", year, ")", "<br>", journal, "<br>", author)) |>
-#   arrange(desc(pub_date)) |>
-#   pull(citation) |>
-#   pandoc.list(style = 'bullet', loose = TRUE)
-```
-
-
-
-```{r, echo=FALSE, warning=FALSE,message=FALSE, results='asis', eval = FALSE}
-# get pubs
-pubs_raw = get_cv_sheet("pubs") |> 
-    filter(category == "peer_reviewed")
-  
-# clean up
-pubs = pubs_raw |> 
-    mutate(
-    journal  = ifelse(is.na(journal), '', paste0('<i>', journal, '</i>')),
-    number   = ifelse(is.na(number), '', paste0(number, '.')),
-    author = str_replace(author, "JF Tellez", "<b>JF Tellez</b>")
-  )
-
-
-pubs |>
-  arrange(desc(pub_date)) |>
-  mutate(title = ifelse(!is.na(url), cell_spec(title, "html", link = url),
-                        title)) |>
-  select(year, title, journal, author) |>
-  kable(format = "html", escape = FALSE, align = "rlcc",
-        col.names = NULL) %>%
-  kable_styling(bootstrap_options = c("hover", "responsive"))
-
-# pubs |>
-#   mutate(title = cell_spec(title, "html", link = url)) |>
-#   mutate(citation = paste(title, "(", year, ")", "<br>", journal, "<br>", author)) |>
-#   arrange(desc(pub_date)) |>
-#   pull(citation) |>
-#   pandoc.list(style = 'bullet', loose = TRUE)
-```
-
 
 
 ## Other writing
 
 Book chapters, reports, blogs...
 
-```{r, echo=FALSE, warning=FALSE,message=FALSE, results='asis'}
-# get pubs
-pubs_raw = get_cv_sheet("pubs") |> 
-    filter(category %in% c("book_chapter", "report")) |> 
-  filter(!str_detect(title, "indicators"))
-  
-# clean up
-pubs = pubs_raw |> 
-    mutate(
-    journal  = ifelse(is.na(journal), '', paste0('<i>', journal, '</i>')),
-    number   = ifelse(is.na(number), '', paste0(number, '.')),
-  )
-
-
-pubs |> 
-  arrange(desc(pub_date)) |> 
-  mutate(item = glue::glue(
-    "<li style='margin-bottom: 1.5em; line-height: 1.6;'>
-      <strong style='font-size: 1.05em;'>{ifelse(!is.na(url), paste0('<a href=\"', url, '\" style=\"color: #1A5DAD; text-decoration: none;\">',
-title, '</a>'), title)}</strong><br>
-      {ifelse(!is.na(author), paste0('<span style=\"color: #555;\">', author, '</span><br>'), '')}
-      <em style='color: #777;'>{journal}</em>
-      {ifelse(!is.na(pub_date), paste0(' (', format(pub_date, '%Y'), ')'), '')}
-      {ifelse(!is.na(summary), paste0(
-        '<details style=\"margin-top: 0.5em;\">
-          <summary style=\"cursor: pointer; color: #1A5DAD; font-size: 0.9em;\">Abstract</summary>
-          <p style=\"margin-top: 0.5em; color: #555; font-size: 0.95em;\">', summary, '</p>
-        </details>'
-      ), '')}
-    </li>"
-  )) |>
-  pull(item) |>
-  (\(x) cat("<ul style='list-style-type: none; padding-left: 0;'>\n", 
-            paste(x, collapse = "\n"), 
-            "\n</ul>"))()
+```{r, echo=FALSE, warning=FALSE, message=FALSE, results='asis'}
+# grouped by year, venue only (no country flags for this section)
+get_pubs() |>
+  filter(category %in% c("book_chapter", "report")) |>
+  # the indicators report is intentionally left off the site
+  filter(!str_detect(title, "indicators")) |>
+  render_pub(show_flag = FALSE)
 ```
-
-
-
-
-

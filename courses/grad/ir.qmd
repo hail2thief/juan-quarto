@@ -1,7 +1,7 @@
 ---
 date: "2022-12-20"
 title: "International Relations"
-subtitle: "Taught: Winter 2023"
+subtitle: "Taught: W23"
 categories: "Graduate"
 format:
   html:

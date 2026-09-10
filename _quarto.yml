@@ -10,7 +10,7 @@ execute:
 website:
   title: "Juan F. Tellez"
   search: false
-  description: "Juan F. Tellez is an assistant professor at UC Davis."
+  description: "Juan F. Tellez is an associate professor of political science at UC Davis."
   site-url: "https://juanftellez.com/"
   repo-url: "https://github.com/hail2thief/juan-quarto"
   navbar:
@@ -26,7 +26,7 @@ website:
         text: Blog
   page-footer:
     left: |
-      <span class="faux-block">{{< fa brands creative-commons >}} 2019-2025 Juan Tellez</span>
+      <span class="faux-block">{{< fa brands creative-commons >}} 2019-2026 Juan Tellez</span>
       <span class="faux-block">All content licensed under[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-sa >}} Creative Commons CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</span>      
     right: |
       <span class="faux-block">Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)</span>

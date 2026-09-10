@@ -44,16 +44,16 @@ $dark:      $black !default;
 // Fonts
 
 
-$font-family-sans-serif: "Libre Franklin" !default;
+$font-family-sans-serif: "Source Sans 3" !default;
 
-$headings-font-family: "Jost" !default;
+$headings-font-family: "Fraunces" !default;
 $headings-font-weight: 600 !default;
 
-$navbar-font-family: "Jost" !default;
-$toc-font-family: "Jost" !default;
-$footer-font-family: "Jost" !default;
+$navbar-font-family: "Fraunces" !default;
+$toc-font-family: "Fraunces" !default;
+$footer-font-family: "Fraunces" !default;
 
-// $font-size-base: 1.1rem !default; // Assumes the browser default, typically `16px`
+$font-size-base: 1.05rem !default; // Source Sans 3 runs small; browser default is 16px
 // $font-size-sm: $font-size-base * .875 !default;
 
 
@@ -91,7 +91,7 @@ $footer-fg: $gray-300 !default;
 
 /*-- scss:rules --*/
 
-$web-font-path: "https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" !default;
+$web-font-path: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Source+Sans+3:ital,wght@0,300..900;1,300..900&display=swap" !default;
 
 @if $web-font-path {
     @import url($web-font-path);
