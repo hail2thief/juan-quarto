@@ -1,7 +1,7 @@
 ---
 title: "Juan F. Tellez"
 subtitle: "Associate Professor <br> Department of Political Science <br> University of California, Davis <br> ✉️ [jftellez@ucdavis.edu](mailto:jftellez@ucdavis.edu)"
-image: /images/tellez-portrait-2026.jpg  # previous photo: /images/abimael-cage.jpg
+image: /images/abimael-cage.jpg  # alt photo: /images/tellez-portrait-2026.jpg
 toc: false
 about: 
   template: trestles
