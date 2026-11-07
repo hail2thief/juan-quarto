@@ -8,6 +8,7 @@ personal_files
 
 # Local-only session notes (don't publish to the public repo)
 session-log.md
+SESSION_LOG.md
 .Rhistory
 
 **/*.quarto_ipynb

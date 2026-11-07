@@ -42,16 +42,16 @@ include-in-header:
         align-items:center;
         gap:.75rem;
         margin: 1.4rem 0 .6rem 0;
-        font-family: "Fraunces", serif;
-        font-weight: 600;
-        font-size: 1.05rem;
-        color: #355B85;
+        font-family: "IBM Plex Mono", ui-monospace, monospace; /* years in mono */
+        font-weight: 500;
+        font-size: 1rem;
+        color: #022851;
       }
       .pub-year::after{
         content:"";
         flex:1;
         height:1px;
-        background: rgba(53,91,133,.25);
+        background: rgba(2,40,81,.2);
       }
 
       /* Publication list -- one <li class="pub"> per paper, built by render_pub() */
@@ -59,7 +59,7 @@ include-in-header:
       .pub{
         margin: 0 0 1.25em 0;
         padding: .15rem 0 .15rem .9rem;
-        border-left: 3px solid #355B85;
+        border-left: 3px solid #022851;
         line-height: 1.55;
       }
       .pub-title{ font-weight: 700; font-size: 1.05em; }
@@ -75,8 +75,11 @@ include-in-header:
         align-items:center;
         gap:.35rem .6rem;
         margin-top:.2rem;
-        font-size:.92em;
+        font-size:.85em;
         color:#666;
+        font-family: "Inter", system-ui, sans-serif; /* metadata = label font */
+        font-weight: 500;
+        letter-spacing: .02em;
       }
       .pub-meta .venue{ font-style: italic; }
       .pub-flag{
@@ -93,11 +96,11 @@ include-in-header:
         white-space: nowrap;
       }
       .pub-flag .fi{ border-radius:2px; box-shadow: 0 0 0 1px rgba(0,0,0,.08); }
-      .pub-flag svg{ height:.95em; width:auto; color:#355B85; }
+      .pub-flag svg{ height:.95em; width:auto; color:#022851; }
 
       /* Collapsible abstract */
       .pub details{ margin-top:.4em; }
-      .pub summary{ cursor:pointer; color:#1A5DAD; font-size:.9em; }
+      .pub summary{ cursor:pointer; color:#022851; font-size:.9em; }
       .pub details p{ margin-top:.5em; color:#555; font-size:.95em; }
     </style>
 ---

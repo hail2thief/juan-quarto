@@ -59,8 +59,8 @@ quarto publish netlify          # deploy to Netlify
 - Course pages reference bib and CSL files by absolute path. If the Dropbox path moves, those break.
 
 ### Styling
-- `html/custom.scss` (Bootstrap 5 based). Fonts: Fraunces for headings, navbar, TOC, footer; Source Sans 3 for body. Both load from Google Fonts via `$web-font-path`.
-- `$link-color` (body links, `#1A5DAD`) is deliberately separate from `$blue` (navbar, TOC). Keep them decoupled.
+- `html/custom.scss` (Bootstrap 5 based). Fonts: Fraunces for headings, navbar, TOC, footer; Source Serif 4 for body; Inter (`$label-font-family`) for small labels/metadata; IBM Plex Mono (`$date-font-family`, `.yr` class) for years. All load from Google Fonts via `$web-font-path`.
+- Colors: UC Davis Aggie Blue (`$davis-blue`, `#022851`) drives `$blue`, `$link-color`, and navbar text; Aggie Gold (`$davis-gold`) is accent only (active-nav underline). Body-text links get a soft underline because Davis blue is close to the body text color. `research.qmd` hard-codes its colors in its own CSS block, so update it by hand.
 - Components scoped by class: `.blog`, `.research`, `.teaching`, `.course-entry`.
 
 ### Extensions

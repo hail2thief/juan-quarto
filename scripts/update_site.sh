@@ -42,16 +42,23 @@ rm -rf _freeze/research
 
 # Dropbox must NOT sync _site/ or .quarto/ while Quarto writes them, or it
 # keeps the old file and shunts the fresh render into a "conflicted copy"
-# (which would then get published). The build dirs carry the
-# com.dropbox.ignored attribute; re-apply it in case they were recreated.
+# (which would then get published). This Dropbox runs through macOS File
+# Provider (~/Library/CloudStorage), which only honors the
+# com.apple.fileprovider.ignore#P attribute; com.dropbox.ignored is the
+# legacy-Dropbox flag and is kept as a harmless fallback. Re-apply both in
+# case the dirs were recreated.
 for d in _site .quarto; do
-  [[ -d "$d" ]] && xattr -w com.dropbox.ignored 1 "$d"
+  mkdir -p "$d"
+  xattr -w 'com.apple.fileprovider.ignore#P' 1 "$d"
+  xattr -w com.dropbox.ignored 1 "$d"
 done
 
 echo "==> Rendering the whole site"
 quarto render
 
-# Belt and braces: refuse to publish a build that contains conflicted copies
+# Belt and braces: refuse to publish a build that contains conflicted copies.
+# Dropbox can create them a few seconds AFTER the render ends, so wait first.
+sleep 20
 n_conflicts=$(find _site -name "*conflicted copy*" | wc -l | tr -d ' ')
 if [[ "$n_conflicts" -gt 0 ]]; then
   echo "!! Found $n_conflicts Dropbox conflicted-copy files in _site/. Delete them and re-run." >&2

@@ -18,7 +18,9 @@ $gray-800: #373a3c !default;
 $gray-900: #212529 !default;
 $black:    #000000 !default;
 
-$blue:    #355B85 !default;
+$davis-blue: #022851 !default;   // official UC Davis Aggie Blue
+$davis-gold: #FFBF00 !default;   // official UC Davis Aggie Gold (accent only; too light for text)
+$blue:    $davis-blue !default;  // was slate #355B85; now one blue site-wide
 $indigo:  #6610f2 !default;
 $purple:  #170C3A !default;
 $pink:    #A52C60 !default;
@@ -44,7 +46,16 @@ $dark:      $black !default;
 // Fonts
 
 
-$font-family-sans-serif: "Source Sans 3" !default;
+// Font roles (Nov 2026 refresh):
+//   headings / name / navbar -> Fraunces semibold
+//   body text                -> Source Serif 4
+//   small labels + metadata  -> Inter medium, slightly tracked ($label-font-family)
+//   dates / years            -> IBM Plex Mono ($date-font-family)
+// Bootstrap builds $font-family-base from $font-family-sans-serif, so the
+// body serif goes here even though the variable name says "sans".
+$font-family-sans-serif: "Source Serif 4", Georgia, serif !default;
+$label-font-family: "Inter", system-ui, sans-serif !default;
+$date-font-family: "IBM Plex Mono", ui-monospace, monospace !default;
 
 $headings-font-family: "Fraunces" !default;
 $headings-font-weight: 600 !default;
@@ -53,7 +64,7 @@ $navbar-font-family: "Fraunces" !default;
 $toc-font-family: "Fraunces" !default;
 $footer-font-family: "Fraunces" !default;
 
-$font-size-base: 1.05rem !default; // Source Sans 3 runs small; browser default is 16px
+$font-size-base: 1.05rem !default; // ~16.8px; browser default is 16px
 // $font-size-sm: $font-size-base * .875 !default;
 
 
@@ -64,9 +75,12 @@ $body-color: $gray-900 !default;
 // Brighter, more saturated blue for body hyperlinks ONLY — kept separate from
 // $blue so the navbar ($navbar-bg), TOC ($toc-color), and code-copy button
 // stay their original slate tone.
-$link-color: #1A5DAD !default;
+// Links now use Davis blue (was brighter #1A5DAD); hover stays orange. Davis blue
+// is close to the near-black body text, so links in running text also get a
+// soft underline (see "Body-text links" rule at the bottom of this file).
+$link-color: $davis-blue !default;
 $link-decoration: none !default;
-$link-hover-color: $light-orange !default;
+$link-hover-color: $light-orange !default; // gold-orange hover (#FB9E07)
 $link-hover-decoration: underline !default;
 
 // Inline code
@@ -80,18 +94,19 @@ $btn-code-copy-color-active: $blue !default;
 $toc-color: $blue;
 $toc-font-size: 1em;
 
-// Navbar
-$navbar-bg: $blue !default;
-$navbar-fg: $white !default;
-$navbar-hl: $light-orange !default;
+// Navbar: white bar with UC Davis "Aggie Blue" text (Kieran Healy-style).
+// Old look was $navbar-bg: $blue / $navbar-fg: $white / $navbar-hl: $light-orange.
+$navbar-bg: $white !default;
+$navbar-fg: $davis-blue !default;
+$navbar-hl: #1A5DAD !default; // hover/active in navbar: a brighter blue so hover is visible
 
 // Footer
-$footer-bg: $gray-900 !default;
-$footer-fg: $gray-300 !default;
+$footer-bg: $white !default;    // was $gray-900 (black); light now to match the white header
+$footer-fg: $gray-700 !default;
 
 /*-- scss:rules --*/
 
-$web-font-path: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Source+Sans+3:ital,wght@0,300..900;1,300..900&display=swap" !default;
+$web-font-path: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Inter:ital,wght@0,400..600;1,400..600&family=IBM+Plex+Mono:wght@400;500&display=swap" !default;
 
 @if $web-font-path {
     @import url($web-font-path);
@@ -135,6 +150,24 @@ pre.text, pre.sourceCode, .cell-output pre {
 
 .navbar {
     font-family: $navbar-font-family;
+    border-top: 4px solid $davis-blue;     // thin blue band at the very top
+    border-bottom: 1px solid $gray-200;    // hairline so the pinned bar separates from content on scroll
+    box-shadow: none;
+
+    // Site name: small caps with a little tracking
+    .navbar-title {
+        font-variant: small-caps;
+        letter-spacing: 0.06em;
+        font-weight: 600;
+    }
+
+    // Current page: gold underline as a Davis accent
+    .nav-link.active {
+        text-decoration: underline;
+        text-decoration-color: $davis-gold;
+        text-decoration-thickness: 3px;
+        text-underline-offset: 0.4em;
+    }
 }
 
 // Put all the icons in a single row in the hamburger menu
@@ -197,11 +230,12 @@ pre.text, pre.sourceCode, .cell-output pre {
     align-items: flex-start;  // Align all flex items to the top
     flex-wrap: wrap;
     border: 0 !important;
+    border-top: 1px solid $gray-200 !important;  // hairline, mirrors the navbar's bottom rule
     min-height: 3em;
     font-family: $footer-font-family;
 
     a {
-        color: $light-orange;
+        color: $link-color;
     }
 
     .faux-block {
@@ -659,5 +693,107 @@ pre.text, pre.sourceCode, .cell-output pre {
 
     @media (max-width: map-get($grid-breakpoints, md)) {
         left: 0;
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Label + date fonts (Nov 2026 refresh)
+// ---------------------------------------------------------------------------
+
+// Shared "label" look: Inter medium with a little tracking
+%label-text {
+    font-family: $label-font-family;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+// Home page: degree lines ("PhD in Political Science 2019 | Duke University")
+.custom-subtitle {
+    @extend %label-text;
+    font-size: 0.9em;
+    color: $gray-800;
+    margin-bottom: 0.45em;
+
+    strong { font-weight: 600; }
+    .sep   { color: $gray-500; padding: 0 0.2em; }
+    .svg-inline--fa, .fa-graduation-cap { color: $blue; margin-right: 0.3em; }
+}
+
+// Years anywhere on the site: IBM Plex Mono
+.yr {
+    font-family: $date-font-family;
+    font-weight: 500;
+    letter-spacing: 0;
+    font-size: 0.95em;
+    color: $blue;
+}
+
+// Home page: research interests as small tags
+.interest-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4em;
+
+    span {
+        @extend %label-text;
+        font-size: 0.8em;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: $blue;
+        border: 1px solid rgba($blue, 0.35);
+        border-radius: 999px;
+        padding: 0.2em 0.75em;
+    }
+}
+
+// Blog listing + posts: dates in mono, categories in Inter
+.blog .blog-entry .date,
+.quarto-title-meta-contents .date,
+.listing-date {
+    font-family: $date-font-family;
+    font-weight: 400;
+}
+
+.blog .blog-entry .post-categories .post-category,
+.quarto-title .quarto-categories .quarto-category,
+.listing-categories .listing-category {
+    font-family: $label-font-family;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+}
+
+// Grid listings (Teaching, Year in Content): card subtitles like
+// "Taught: W23, S24" are metadata, so they get the label font
+.quarto-grid-item .card-subtitle {
+    @extend %label-text;
+    font-size: 0.85em;
+}
+
+// Title-block subtitle (home page affiliation lines). Bootstrap's .lead sets
+// font-weight 300, which renders spindly in Source Serif 4; use regular weight.
+.quarto-title .subtitle.lead {
+    font-weight: 400;
+    color: $body-color;
+}
+
+// Home page (trestles about template): drop the vertical divider between the
+// photo column and the bio; whitespace alone separates them more cleanly.
+div.quarto-about-trestles .about-contents {
+    border-left: none;
+    padding-left: 2.5em;
+}
+
+// Body-text links: Davis blue + faint underline that goes solid on hover.
+// Scoped to links inside paragraphs and list items in the main column, so
+// navbar, TOC, buttons, listing cards and research-paper titles are untouched.
+main p a,
+main li a {
+    text-decoration: underline;
+    text-decoration-color: rgba($davis-blue, 0.3);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+
+    &:hover {
+        text-decoration-color: currentColor;  // underline turns orange with the text
     }
 }
